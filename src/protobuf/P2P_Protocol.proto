@@ -1,0 +1,84 @@
+syntax = "proto2";
+
+package p2pfilesharing;
+
+message AddFileRequest{
+  	required int64 filenamehash = 1;
+  	required string sourcehostname = 2;
+}
+
+message LookupFileRequest{
+	required int64 filenamehash = 1;
+	required string sourcehostname = 2;
+	required string sourceport = 3;
+}
+
+message DeleteFileRequest{
+	required int64 filenamehash = 1;
+	required string sourcehostname = 2;
+	required string sourceport = 3;
+}
+
+message LookupFileResponse{
+	required bool ifexists = 1;
+	optional string ownerhostname = 2;
+	optional string ownerport = 3;
+}
+
+message fileInfoRequest{
+	required int64 filenamehash = 1;
+	required string sourcehostname = 2;
+	required string sourceport = 3;
+}
+
+message fileInfoResponse{
+	required string ownerhostname = 1;
+	required string ownerport = 2;
+}
+
+message downloadRequest{
+	required int64 filenamehash = 1;
+	required string sourcehostname = 2;
+	required string sourceport = 3;
+}
+
+message joinRequest{
+	required string sourcehostname = 1;
+	required string sourceport = 2;
+	required int64 hostnamehash = 3;
+}
+
+message routeTableInit{
+	repeated routeTableEntry entry = 1;
+}
+
+message routeTableEntry{
+	required string hostname = 1;
+	required string port = 2;
+	required int64 hostnamehash = 3;
+}
+
+message fileTable{
+	repeated fileTableEntry entry = 1;
+}
+
+message fileTableEntry{
+	required int64 filenamehash = 1;
+	required string ownerhostname = 2;
+	required string ownerport = 3;
+}
+
+message routeInsertRequest{
+	repeated routeTableEntry entry = 1;
+}
+
+message routeDeleteRequest{
+	repeated routeTableEntry entry = 1;
+}
+
+// message <>{
+//   required int64 <> = 1;
+//   repeated int32 <> = 2;
+//   optional string <> = 3;
+//	 repeated Err error = 4;
+// }

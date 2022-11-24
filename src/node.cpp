@@ -22,8 +22,7 @@ void Node::run_server() {
       string request = socketRecvMsg(client_fd);
       cout << "Received a request " << request << endl;
       close(client_fd);
-      // Spawn a new thread to handle the request
-      // threadPool->assign_task(bind(<func>, <arg>));
+      // TODO: Spawn a new thread to handle the request
     } catch (const std::exception& e) {
       std::cerr << e.what() << endl;
       continue;
@@ -53,7 +52,6 @@ void Node::run_user_terminal_interface() {
     cin >> option;
 
     // Process command
-    // 注意这里的所有函数都是spawn一个新thread来执行，并且要停等（thread.join()），执行完了terminal才继续运行
     switch (option) {
       case 1:
         // TODO: fm128 这里调用add file函数
@@ -97,4 +95,37 @@ void Node::main() {
   }
 
   run_user_terminal_interface();
+}
+
+/*
+  Get the SHA-1 hash for a given key
+  Each node will be assigned a unique ID (within 2^m (m is 48 in this case)) 
+  by hashing key which will be hostname of that node by SHA-1 Algorithm
+  => a maximum of 2^48 nodes can join the circle, the finger table length is log2(2^m)=48
+*/
+digest_t Node::get_hash(string key){
+  unsigned char obuf[41];
+    char finalHash[41];
+    string keyHash = "";
+    long unsigned int i;
+    long unsigned int m = my_config::finger_table_length;
+    digest_t mod = pow(2, m);
+
+    // convert string to an unsigned char array because SHA1 takes unsigned char array as parameter
+    unsigned char unsigned_key[key.length()+1];
+    for(i=0;i<key.length();i++){
+        unsigned_key[i] = key[i];
+    }
+    unsigned_key[i] = '\0';
+
+
+    SHA1(unsigned_key,sizeof(unsigned_key),obuf);
+    for (i = 0; i < m/8; i++) {
+        sprintf(finalHash,"%d",obuf[i]);
+        keyHash += finalHash;
+    }
+
+    digest_t hash = stoll(keyHash) % mod;
+
+    return hash;
 }

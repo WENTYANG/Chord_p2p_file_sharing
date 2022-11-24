@@ -7,9 +7,11 @@
 #include "threadpool.h"
 #include "util/config.h"
 #include "util/socket.h"
+#include <openssl/sha.h>
+#include <cmath>
 
 using namespace std;
-typedef long digest_t;                       // The type for the hash digest
+typedef long long int digest_t;                       // The type for the hash digest
 typedef pair<string, string> contactInfo_t;  // The pair of (hostname, port)
 
 class Node {
@@ -35,8 +37,8 @@ class Node {
   }
   void main();        // set up the node
   void run_server();  // initialize the server and listen on port
-  void
-  run_user_terminal_interface();  // Start interacting with user on terminal
+  void run_user_terminal_interface();  // Start interacting with user on terminal
+  digest_t get_hash(string key);
 };
 
 #endif

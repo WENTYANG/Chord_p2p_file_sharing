@@ -3,7 +3,7 @@ CFLAG = -g -Wall
 UTIL_DIR = ./util/
 EXECUTABLE_FILE = p2p_file_sharing
 INCLUDE = -I ./util/ -I ./
-LIBS = -pthread
+LIBS = -pthread	-lssl -lcrypto
 
 all: $(EXECUTABLE_FILE)
 
