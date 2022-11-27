@@ -25,55 +25,65 @@ message LookupFileResponse{
 	optional string ownerport = 3;
 }
 
-message fileInfoRequest{
+message FileInfoRequest{
 	required int64 filenamehash = 1;
 	required string sourcehostname = 2;
 	required string sourceport = 3;
 }
 
-message fileInfoResponse{
+message FileInfoResponse{
 	required string ownerhostname = 1;
 	required string ownerport = 2;
 }
 
-message downloadRequest{
+message DownloadRequest{
 	required int64 filenamehash = 1;
 	required string sourcehostname = 2;
 	required string sourceport = 3;
 }
 
-message joinRequest{
+message JoinRequest{
 	required string sourcehostname = 1;
 	required string sourceport = 2;
 	required int64 hostnamehash = 3;
 }
 
-message routeTableInit{
+message RouteTableInit{
 	repeated routeTableEntry entry = 1;
 }
 
-message routeTableEntry{
+message RouteTableEntry{
 	required string hostname = 1;
 	required string port = 2;
 	required int64 hostnamehash = 3;
 }
 
-message fileTable{
+message FileTable{
 	repeated fileTableEntry entry = 1;
 }
 
-message fileTableEntry{
+message FileTableEntry{
 	required int64 filenamehash = 1;
 	required string ownerhostname = 2;
 	required string ownerport = 3;
 }
 
-message routeInsertRequest{
+message RouteInsertRequest{
 	repeated routeTableEntry entry = 1;
 }
 
-message routeDeleteRequest{
+message RouteDeleteRequest{
 	repeated routeTableEntry entry = 1;
+}
+
+message NodeRequest {
+  required int64 type = 1;
+  optional AddFileRequest addfile= 2;
+  optional LookupFileRequest lookup = 3;
+  optional DeleteFileRequest delete = 4;
+  optional FileInfoRequest fileinfo = 5;
+  optional DownloadRequest download = 6;
+  optional JoinRequest join = 7;
 }
 
 // message <>{

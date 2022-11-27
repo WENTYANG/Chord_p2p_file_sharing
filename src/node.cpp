@@ -5,6 +5,7 @@ Node::Node() {
       my_config::finger_table_length);  // Construct an empty finger table
                                         // with a length (specified in
                                         // config.h)
+  this_IP = get_my_ip();
 }
 
 /*
@@ -92,6 +93,7 @@ void Node::main() {
     // Node is not the first one in the circle
     // TODO: jz399
     // 这里调用新节点加入的函数，第一个联系的随机节点信息存在entryNode这个pair中，first是hostname，second是port
+    // please also update local_start and local_end 
   }
 
   run_user_terminal_interface();
