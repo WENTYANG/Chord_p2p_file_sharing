@@ -49,7 +49,7 @@ message JoinRequest{
 }
 
 message RouteTableInit{
-	repeated routeTableEntry entry = 1;
+	repeated RouteTableEntry entry = 1;
 }
 
 message RouteTableEntry{
@@ -59,7 +59,7 @@ message RouteTableEntry{
 }
 
 message FileTable{
-	repeated fileTableEntry entry = 1;
+	repeated FileTableEntry entry = 1;
 }
 
 message FileTableEntry{
@@ -69,11 +69,11 @@ message FileTableEntry{
 }
 
 message RouteInsertRequest{
-	repeated routeTableEntry entry = 1;
+	repeated RouteTableEntry entry = 1;
 }
 
 message RouteDeleteRequest{
-	repeated routeTableEntry entry = 1;
+	repeated RouteTableEntry entry = 1;
 }
 
 message NodeRequest {

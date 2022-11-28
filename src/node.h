@@ -4,13 +4,19 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+
 #include "threadpool.h"
 #include "util/config.h"
 #include "util/socket.h"
+#include "util/util.h"
+#include "protobuf/P2P_Protocol.pb.h"
+
 #include <openssl/sha.h>
 #include <cmath>
 
 using namespace std;
+using namespace p2pfilesharing;
+
 typedef long long int digest_t;                       // The type for the hash digest
 typedef string IP_addr_t;
 typedef pair<IP_addr_t, string> contactInfo_t;  // The pair of (hostname, port)
