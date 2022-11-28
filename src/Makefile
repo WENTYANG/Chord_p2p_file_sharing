@@ -4,7 +4,7 @@ UTIL_DIR = ./util/
 PROTO_DIR = ./protobuf/
 EXECUTABLE_FILE = p2p_file_sharing
 INCLUDE = -I ./ -I ./util/ -I ./protobuf/lib/ -I ./protobuf/include/ -I ./protobuf/
-LIBS = -pthread	-lssl -lcrypto -lprotobuf
+LIBS = -pthread	-lssl -lcrypto -L./protobuf/lib -lprotobuf
 GPB = `pkg-config --cflags --libs protobuf`
 
 all: $(EXECUTABLE_FILE)
@@ -16,7 +16,7 @@ OBJECTS=$(patsubst %.cpp,%.o,$(SOURCE))	#Find all the .cpp in SOURCE and replace
 PROTO_SOURCE=$(wildcard $(PROTO_DIR)*.cc)
 
 $(EXECUTABLE_FILE): $(OBJECTS) $(PROTO_SOURCE)
-	$(CC) $(CFLAG) $(INCLUDE) $^ -o $@ $(LIBS) $(GPB)
+	$(CC) $(CFLAG) $(INCLUDE) $^ -o $@ $(LIBS)
 
 $(OBJECTS): %.o: %.cpp
 	$(CC) $(CFLAG) $(INCLUDE) -c $< -o $@ $(LIBS)
