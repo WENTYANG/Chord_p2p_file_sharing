@@ -4,7 +4,6 @@ Implementation of Chord P2P Distributed File Sharing System
 ## Usage:
     ./p2p_file_sharing <contact point hostname>
 contact point为node加入circle时第一个联系的random node，若contact point hostname = “0.0.0.0” 则意味是第一个加入circle的node
-**Hostname should be an IP address, we use IP addresses as keys in the unit circle**
 
 ## Structure:  
     [main.cpp]  main(): construct node (Node类为单例，只能construct一次)；设置node的entry_node field  
