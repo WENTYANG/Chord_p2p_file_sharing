@@ -30,3 +30,4 @@
 *.out
 *.app
 .vscode/settings.json
+p2p_file_sharing

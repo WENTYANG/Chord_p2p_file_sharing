@@ -19,15 +19,53 @@ void Node::run_server() {
     try {
       int client_fd = serverAcceptConnection(server_fd, clientIP);
       cout << "Accepted a connection from " << clientIP << endl;
-      string request = socketRecvMsg(client_fd);
-      cout << "Received a request " << request << endl;
+      proto_in * in = new proto_in(client_fd);
+      NodeRequest request;
+      recvMesgFrom<NodeRequest>(request, in);
+      cout << "Received a request " << request.DebugString() << endl;
+      delete in;
       close(client_fd);
       // TODO: Spawn a new thread to handle the request
+      int64_t type = request.type();
+      switch (type) {
+        case 2:
+          // AddFileRequest fm128
+          break;
+        case 3:
+          // LookupFileRequest ky99
+        {
+          const LookupFileRequest& lfr = request.lookup();
+          thread t = thread(&Node::lookup_handle, this, lfr);
+          t.detach();
+          break;
+        }
+        case 4:
+          // DeleteFileRequest fm128
+          break;
+        case 5: 
+          // FileInfoRequest ky99 maybe useless??
+          break;
+        case 6: 
+          // DownloadRequest ky99
+          break;
+        case 7:
+          // JoinRequest jz399
+          break;
+        case 8:
+          // RouteInsertRequest jz399
+          break;
+        case 9:
+          // RouteDeleteRequest jz399
+          break;
+        default:
+          cout << "Invalid Request Type: " << type << endl;
+      }
     } catch (const std::exception& e) {
       std::cerr << e.what() << endl;
       continue;
     }
   }
+  close(server_fd);
 }
 
 /*

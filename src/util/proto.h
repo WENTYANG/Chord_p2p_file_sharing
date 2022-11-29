@@ -4,13 +4,23 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 
+#include "socket.h"
+
 using namespace std;
 typedef google::protobuf::io::FileOutputStream proto_out;
 typedef google::protobuf::io::FileInputStream proto_in;
 
-proto_in* get_proto_in(string& hostname, string&);
+class ProtoStreamOut {
+public: 
+  ProtoStreamOut(string & hostname, string & port) : hostname(hostname), port(port), fd(0), out(nullptr) {}
+  ~ProtoStreamOut();
+  proto_out* get_proto_out();
 
-proto_out* get_proto_out(string& hostname, string&);
+  string hostname;
+  string port;
+  int fd;
+  proto_out * out;
+};
 
 template <typename T>
 bool sendMesgTo(const T& message, google::protobuf::io::FileOutputStream* out) {

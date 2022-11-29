@@ -6,6 +6,9 @@
 using namespace std;
 using namespace p2pfilesharing;
 
-LookupFileResponse generate_lookup_response(bool if_exist, bool owner_host_name, bool owner_port);
+NodeResponse generate_lookup_response(bool if_exist, string owner_host_name, string owner_port);
+
+NodeRequest generate_lookup_request(const LookupFileRequest& req);
+
 
 #endif

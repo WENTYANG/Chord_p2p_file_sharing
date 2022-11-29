@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include <thread>
 
 #include "threadpool.h"
 #include "util/config.h"
@@ -54,11 +55,12 @@ class Node {
     digest_t local_start; // file hash for the first file that the node is responsible to 
     digest_t local_end; // file hash for the last file that the node is responseible to
     
-    void lookup_handle(LookupFileRequest& req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
+    void lookup_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
     void send_lookup_req(digest_t hash_key, string src_port);
     bool wait_for_lookup_rsp(string src_port);
     
     bool is_responsible_to(digest_t file_hash);
+    contactInfo_t get_next_hop_info(digest_t hash);
   /***** Download Related *****/
   private:
     void download_handle(DownloadRequest& req);

@@ -2,13 +2,21 @@
 
 using namespace std;
 
-proto_in* get_proto_in(string& hostname, string&) {
-  proto_in* tmp =  new proto_in(0);
-  return tmp;
+ProtoStreamOut::~ProtoStreamOut() {
+  if (out != nullptr) {
+    delete out;
+  }
+  if (fd != 0) {
+    close(fd);
+  }
 }
-
-proto_out* get_proto_out(string& hostname, string&) {
-  proto_out* tmp =  new proto_out(0);
-  return tmp;
+proto_out* ProtoStreamOut::get_proto_out() {
+  if (out != nullptr) {
+    return out;
+  } else {
+    fd = clientRequestConnection(hostname, port);
+    out = new proto_out(fd);
+    return out;
+  }
 }
 
