@@ -44,18 +44,15 @@ void Node::run_server() {
           // DeleteFileRequest fm128
           break;
         case 5: 
-          // FileInfoRequest ky99 maybe useless??
-          break;
-        case 6: 
           // DownloadRequest ky99
           break;
-        case 7:
+        case 6:
           // JoinRequest jz399
           break;
-        case 8:
+        case 7:
           // RouteInsertRequest jz399
           break;
-        case 9:
+        case 8:
           // RouteDeleteRequest jz399
           break;
         default:
