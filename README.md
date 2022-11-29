@@ -1,5 +1,6 @@
 # p2p_file_sharing
 Implementation of Chord P2P Distributed File Sharing System
+Google Doc: https://docs.google.com/document/d/1jgwUZPEkZfJI1MtdhHUCUf4GK_gOesnj7hNxs2x2Hqc/edit
 
 ## Usage:
     ./p2p_file_sharing <contact point hostname>
@@ -35,3 +36,7 @@ contact point为node加入circle时第一个联系的random node，若contact po
 
 ## TODO: 
 * 在node.cpp中标明了一些TODO，是listen thread和user terminal interface需要调用函数的地方，以后需要加上函数调用
+
+## Lookup:
+调用lookup_successor()可以获得hashvalue的successor，其他部分应该用到这个函数
+
