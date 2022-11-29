@@ -1,11 +1,16 @@
-#ifndef _PROTO_H
-#define _PROTO_H
+#ifndef _PROTO_H__
+#define _PROTO_H__
+#include <string>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 
 using namespace std;
 typedef google::protobuf::io::FileOutputStream proto_out;
 typedef google::protobuf::io::FileInputStream proto_in;
+
+proto_in* get_proto_in(string& hostname, string&);
+
+proto_out* get_proto_out(string& hostname, string&);
 
 template <typename T>
 bool sendMesgTo(const T& message, google::protobuf::io::FileOutputStream* out) {

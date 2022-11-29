@@ -5,6 +5,5 @@
 
 using namespace std;
 
-string get_my_ip();
 
 #endif

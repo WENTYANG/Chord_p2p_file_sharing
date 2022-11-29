@@ -84,6 +84,16 @@ message NodeRequest {
   optional FileInfoRequest fileinfo = 5;
   optional DownloadRequest download = 6;
   optional JoinRequest join = 7;
+  optional RouteInsertRequest insertroute = 8;
+  optional RouteDeleteRequest deleteroute = 9;
+}
+
+message NodeResponse {
+  required int64 type = 1;
+  optional LookupFileResponse lookup = 2;
+  optional FileInfoResponse fileinforsp= 3;
+  optional RouteTableInit routeinit = 4;
+  optional FileTable filetable = 5;
 }
 
 // message <>{

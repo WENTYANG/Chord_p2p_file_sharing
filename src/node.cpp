@@ -5,7 +5,6 @@ Node::Node() {
       my_config::finger_table_length);  // Construct an empty finger table
                                         // with a length (specified in
                                         // config.h)
-  this_IP = get_my_ip();
 }
 
 /*
