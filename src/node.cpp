@@ -1,4 +1,5 @@
 #include "node.h"
+#include "proto_messages.h"
 
 Node::Node() {
   fingerTable = vector<pair<contactInfo_t, digest_t> >(
@@ -35,7 +36,7 @@ void Node::run_server() {
           // LookupFileRequest ky99
         {
           const LookupFileRequest& lfr = request.lookup();
-          thread t = thread(&Node::lookup_handle, this, lfr);
+          thread t = thread(&Node::lookup_req_handle, this, lfr);
           t.detach();
           break;
         }
@@ -86,8 +87,16 @@ void Node::run_user_terminal_interface() {
     cout << "5 Node exit" << endl;
 
     // Receive command from user
+    string option_str;
+    cin >> option_str;
     int option;
-    cin >> option;
+    try {
+      option = stoi(option_str);
+    }
+    catch (const exception& e) {
+      cout << "Invalid input, please select a number from the provided ";
+      continue;
+    }
 
     // Process command
     switch (option) {
@@ -99,7 +108,9 @@ void Node::run_user_terminal_interface() {
         break;
       case 3:
         // TODO: ky99 这里调用lookup file函数
+      {  
         break;
+      }
       case 4:
         // TODO: ky99 这里调用lookup file, 然后downlod file
         break;

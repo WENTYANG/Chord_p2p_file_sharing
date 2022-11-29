@@ -21,14 +21,10 @@ message DeleteFileRequest{
 
 message LookupFileResponse{
 	required bool ifexists = 1;
-	optional string ownerhostname = 2;
-	optional string ownerport = 3;
-}
-
-message FileInfoRequest{
-	required int64 filenamehash = 1;
-	required string sourcehostname = 2;
-	required string sourceport = 3;
+  required string successorhostname = 2;
+  required string successorport = 3;
+  optional string ownerhostname = 4;
+	optional string ownerport = 5;
 }
 
 message FileInfoResponse{
@@ -81,11 +77,10 @@ message NodeRequest {
   optional AddFileRequest addfile= 2;
   optional LookupFileRequest lookup = 3;
   optional DeleteFileRequest delete = 4;
-  optional FileInfoRequest fileinfo = 5;
-  optional DownloadRequest download = 6;
-  optional JoinRequest join = 7;
-  optional RouteInsertRequest insertroute = 8;
-  optional RouteDeleteRequest deleteroute = 9;
+  optional DownloadRequest download = 5;
+  optional JoinRequest join = 6;
+  optional RouteInsertRequest insertroute = 7;
+  optional RouteDeleteRequest deleteroute = 8;
 }
 
 message NodeResponse {

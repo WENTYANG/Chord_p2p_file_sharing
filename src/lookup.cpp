@@ -13,7 +13,7 @@ bool Node::is_responsible_to(digest_t file_hash) {
   return true;
 }
 
-void Node::lookup_handle(LookupFileRequest res) {
+void Node::lookup_req_handle(LookupFileRequest res) {
   digest_t filenamehash = res.filenamehash();
   if (is_responsible_to(filenamehash)) {
     string host_name = res.sourcehostname();
@@ -22,7 +22,9 @@ void Node::lookup_handle(LookupFileRequest res) {
     proto_out* out = proto_stream_out.get_proto_out();
     // check owner's hostname & ip in DHS
     bool does_exist;
-    string owner_host_name, owner_port;
+    string owner_host_name, owner_port, successor_host_name, successor_port;
+    successor_host_name = my_hostname;
+    successor_port = my_config::listening_port_num;
     if (DHT.find(filenamehash) ==DHT.end()) {
       does_exist = false;
       owner_host_name = "0.0.0.0";
@@ -32,7 +34,7 @@ void Node::lookup_handle(LookupFileRequest res) {
       owner_host_name = DHT[filenamehash].first;
       owner_port = DHT[filenamehash].second;
     }
-    NodeResponse rsp = generate_lookup_response(does_exist, owner_host_name, owner_port);
+    NodeResponse rsp = generate_lookup_response(does_exist, successor_host_name, successor_port, owner_host_name, owner_port);
     sendMesgTo<NodeResponse>(rsp, out);    
   } else{
     // check finger table and forward
@@ -43,3 +45,5 @@ void Node::lookup_handle(LookupFileRequest res) {
     sendMesgTo<NodeRequest>(req, out);
   }
 }
+
+

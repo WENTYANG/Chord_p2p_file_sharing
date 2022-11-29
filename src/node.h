@@ -55,7 +55,10 @@ class Node {
     digest_t local_start; // file hash for the first file that the node is responsible to 
     digest_t local_end; // file hash for the last file that the node is responseible to
     
-    void lookup_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
+    pair<bool, contactInfo_t> lookup_successor(digest_t hash); 
+    void lookup_req_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
+    void lookup(digest_t hash); 
+
     void send_lookup_req(digest_t hash_key, string src_port);
     bool wait_for_lookup_rsp(string src_port);
     
