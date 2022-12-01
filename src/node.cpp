@@ -6,6 +6,7 @@ Node::Node() {
       my_config::finger_table_length);  // Construct an empty finger table
                                         // with a length (specified in
                                         // config.h)
+  my_hash = get_hash(my_hostname);
 }
 
 /*
@@ -105,7 +106,19 @@ void Node::run_user_terminal_interface() {
         break;
       case 3:
         // TODO: ky99 这里调用lookup file函数
-      {  
+      { 
+        cout << "Please enter the name of the file you are looking for \n\n";
+        string file_name;
+        cin >> file_name;
+        digest_t file_hash = get_hash(file_name); 
+        bool does_exist;
+        contactInfo_t successor, owner;
+        lookup(file_hash, my_config::user_interface_port_num, &does_exist, &successor, &owner);
+        if (does_exist) {
+          cout << "\nYes! We have this file!\n\n";
+        } else {
+          cout << "\nSorry! We do not have this file.\n\n";
+        }
         break;
       }
       case 4:

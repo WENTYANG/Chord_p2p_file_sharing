@@ -10,16 +10,36 @@ using namespace std;
 typedef google::protobuf::io::FileOutputStream proto_out;
 typedef google::protobuf::io::FileInputStream proto_in;
 
+
+// try to send a protobuf to another host
 class ProtoStreamOut {
 public: 
-  ProtoStreamOut(string & hostname, string & port) : hostname(hostname), port(port), fd(0), out(nullptr) {}
+  ProtoStreamOut(const string & hostname, const string & port) : hostname(hostname), port(port), fd(0), out(nullptr) {}
   ~ProtoStreamOut();
   proto_out* get_proto_out();
+  void close_proto_out();
 
+private:
   string hostname;
   string port;
   int fd;
   proto_out * out;
+};
+
+// wait to get a protobuf message on a port
+class ProtoStreamIn {
+public: 
+  ProtoStreamIn(const string &port) : port(port), server_fd(0), client_fd(0), in(nullptr) {}
+  ~ProtoStreamIn();
+  // this might block to wait for connection to come in
+  proto_in * get_proto_in();
+  void close_proto_in();
+  void close_listening_socket();
+private:
+  string port;
+  int server_fd;
+  int client_fd;
+  proto_in * in;
 };
 
 template <typename T>

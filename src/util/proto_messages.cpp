@@ -3,7 +3,7 @@
 using namespace std;
 using namespace p2pfilesharing;
 
-NodeResponse generate_lookup_response(bool if_exist, string successor_host_name, string successor_port, string owner_host_name, string owner_port) {
+NodeResponse generate_lookup_response(bool if_exist, const string& successor_host_name, const string& successor_port, const string& owner_host_name, const string& owner_port) {
   LookupFileResponse * lrsp = new LookupFileResponse();
   lrsp->set_ifexists(if_exist);
   lrsp->set_successorhostname(successor_host_name);
@@ -25,3 +25,13 @@ NodeRequest generate_lookup_request(const LookupFileRequest& req) {
   return node_req;
 }
 
+NodeRequest generate_lookup_request(digest_t hash, const string & hostname, const string & port) {
+  NodeRequest node_req;
+  node_req.set_type(3);
+  LookupFileRequest * req = new LookupFileRequest();
+  req->set_filenamehash(hash);
+  req->set_sourcehostname(hostname);
+  req->set_sourceport(port);
+  node_req.set_allocated_lookup(req);
+  return node_req;
+}
