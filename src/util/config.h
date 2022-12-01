@@ -5,6 +5,7 @@
 
 namespace my_config {
 const string listening_port_num = "8888";
+const string user_interface_port_num = "8889";
 const int finger_table_length = 48;
 }  // namespace my_config
 

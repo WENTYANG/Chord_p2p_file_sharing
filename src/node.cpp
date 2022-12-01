@@ -1,10 +1,12 @@
 #include "node.h"
+#include "proto_messages.h"
 
 Node::Node() {
   fingerTable = vector<pair<contactInfo_t, digest_t> >(
       my_config::finger_table_length);  // Construct an empty finger table
                                         // with a length (specified in
                                         // config.h)
+  my_hash = get_hash(my_hostname);
 }
 
 /*
@@ -19,15 +21,50 @@ void Node::run_server() {
     try {
       int client_fd = serverAcceptConnection(server_fd, clientIP);
       cout << "Accepted a connection from " << clientIP << endl;
-      string request = socketRecvMsg(client_fd);
-      cout << "Received a request " << request << endl;
+      proto_in * in = new proto_in(client_fd);
+      NodeRequest request;
+      recvMesgFrom<NodeRequest>(request, in);
+      cout << "Received a request " << request.DebugString() << endl;
+      delete in;
       close(client_fd);
       // TODO: Spawn a new thread to handle the request
+      int64_t type = request.type();
+      switch (type) {
+        case 2:
+          // AddFileRequest fm128
+          break;
+        case 3:
+          // LookupFileRequest ky99
+        {
+          const LookupFileRequest& lfr = request.lookup();
+          thread t = thread(&Node::lookup_req_handle, this, lfr);
+          t.detach();
+          break;
+        }
+        case 4:
+          // DeleteFileRequest fm128
+          break;
+        case 5: 
+          // DownloadRequest ky99
+          break;
+        case 6:
+          // JoinRequest jz399
+          break;
+        case 7:
+          // RouteInsertRequest jz399
+          break;
+        case 8:
+          // RouteDeleteRequest jz399
+          break;
+        default:
+          cout << "Invalid Request Type: " << type << endl;
+      }
     } catch (const std::exception& e) {
       std::cerr << e.what() << endl;
       continue;
     }
   }
+  close(server_fd);
 }
 
 /*
@@ -48,8 +85,16 @@ void Node::run_user_terminal_interface() {
     cout << "5 Node exit" << endl;
 
     // Receive command from user
+    string option_str;
+    cin >> option_str;
     int option;
-    cin >> option;
+    try {
+      option = stoi(option_str);
+    }
+    catch (const exception& e) {
+      cout << "Invalid input, please select a number from the provided ";
+      continue;
+    }
 
     // Process command
     switch (option) {
@@ -61,7 +106,21 @@ void Node::run_user_terminal_interface() {
         break;
       case 3:
         // TODO: ky99 这里调用lookup file函数
+      { 
+        cout << "Please enter the name of the file you are looking for \n\n";
+        string file_name;
+        cin >> file_name;
+        digest_t file_hash = get_hash(file_name); 
+        bool does_exist;
+        contactInfo_t successor, owner;
+        lookup(file_hash, my_config::user_interface_port_num, &does_exist, &successor, &owner);
+        if (does_exist) {
+          cout << "\nYes! We have this file!\n\n";
+        } else {
+          cout << "\nSorry! We do not have this file.\n\n";
+        }
         break;
+      }
       case 4:
         // TODO: ky99 这里调用lookup file, 然后downlod file
         break;
@@ -92,6 +151,7 @@ void Node::main() {
     // Node is not the first one in the circle
     // TODO: jz399
     // 这里调用新节点加入的函数，第一个联系的随机节点信息存在entryNode这个pair中，first是hostname，second是port
+    // please also update local_start and local_end 
   }
 
   run_user_terminal_interface();

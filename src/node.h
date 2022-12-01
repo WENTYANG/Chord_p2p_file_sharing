@@ -4,15 +4,21 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include <thread>
+
 #include "threadpool.h"
 #include "util/config.h"
 #include "util/socket.h"
+#include "util/util.h"
+#include "util/proto.h"
+#include "protobuf/P2P_Protocol.pb.h"
+#include "types.h"
+
 #include <openssl/sha.h>
 #include <cmath>
 
 using namespace std;
-typedef long long int digest_t;                       // The type for the hash digest
-typedef pair<string, string> contactInfo_t;  // The pair of (hostname, port)
+using namespace p2pfilesharing;
 
 class Node {
  private:
@@ -23,6 +29,8 @@ class Node {
 
  public:
   contactInfo_t entryNode;
+  hostname_t my_hostname;
+  digest_t my_hash;
 
  private:
   Node();
@@ -39,6 +47,22 @@ class Node {
   void run_server();  // initialize the server and listen on port
   void run_user_terminal_interface();  // Start interacting with user on terminal
   digest_t get_hash(string key);
+
+  /***** Lookup Related *****/
+  private:
+    digest_t local_start; // file hash for the first file that the node is responsible to, this should equals to its predecessor's hash + 1
+    pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); // port for the user interface thread, default should be my_config::user_interface_port_num 
+    
+    void lookup_req_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
+    void lookup(digest_t hash, const string & port, bool * does_exist, contactInfo_t * successor, contactInfo_t * owner); 
+    
+    bool is_responsible_to(digest_t file_hash);
+    contactInfo_t get_next_hop_info(digest_t hash);
+  /***** Download Related *****/
+  private:
+    void download_handle(DownloadRequest& req);
+    void download(string file_name);
 };
+  
 
 #endif

@@ -21,59 +21,74 @@ message DeleteFileRequest{
 
 message LookupFileResponse{
 	required bool ifexists = 1;
-	optional string ownerhostname = 2;
-	optional string ownerport = 3;
+  required string successorhostname = 2;
+  required string successorport = 3;
+  optional string ownerhostname = 4;
+	optional string ownerport = 5;
 }
 
-message fileInfoRequest{
-	required int64 filenamehash = 1;
-	required string sourcehostname = 2;
-	required string sourceport = 3;
-}
-
-message fileInfoResponse{
+message FileInfoResponse{
 	required string ownerhostname = 1;
 	required string ownerport = 2;
 }
 
-message downloadRequest{
+message DownloadRequest{
 	required int64 filenamehash = 1;
 	required string sourcehostname = 2;
 	required string sourceport = 3;
 }
 
-message joinRequest{
+message JoinRequest{
 	required string sourcehostname = 1;
 	required string sourceport = 2;
 	required int64 hostnamehash = 3;
 }
 
-message routeTableInit{
-	repeated routeTableEntry entry = 1;
+message RouteTableInit{
+	repeated RouteTableEntry entry = 1;
 }
 
-message routeTableEntry{
+message RouteTableEntry{
 	required string hostname = 1;
 	required string port = 2;
 	required int64 hostnamehash = 3;
 }
 
-message fileTable{
-	repeated fileTableEntry entry = 1;
+message FileTable{
+	repeated FileTableEntry entry = 1;
 }
 
-message fileTableEntry{
+message FileTableEntry{
 	required int64 filenamehash = 1;
 	required string ownerhostname = 2;
 	required string ownerport = 3;
 }
 
-message routeInsertRequest{
-	repeated routeTableEntry entry = 1;
+message RouteInsertRequest{
+	repeated RouteTableEntry entry = 1;
 }
 
-message routeDeleteRequest{
-	repeated routeTableEntry entry = 1;
+message RouteDeleteRequest{
+	repeated RouteTableEntry entry = 1;
+}
+
+message NodeRequest {
+  required int64 type = 1;
+  optional AddFileRequest addfile= 2;
+  optional LookupFileRequest lookup = 3;
+  optional DeleteFileRequest delete = 4;
+  optional DownloadRequest download = 5;
+  optional JoinRequest join = 6;
+  optional RouteInsertRequest insertroute = 7;
+  optional RouteDeleteRequest deleteroute = 8;
+}
+
+message NodeResponse {
+  required int64 type = 1;
+  optional LookupFileResponse lookup = 2;
+  optional FileInfoResponse fileinforsp= 3;
+  optional RouteTableInit routeinit = 4;
+  optional FileTable filetable = 5;
 }
 
 // message <>{

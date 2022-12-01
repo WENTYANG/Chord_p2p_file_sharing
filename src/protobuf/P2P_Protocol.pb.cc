@@ -64,7 +64,9 @@ struct DeleteFileRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteFileRequestDefaultTypeInternal _DeleteFileRequest_default_instance_;
 PROTOBUF_CONSTEXPR LookupFileResponse::LookupFileResponse(
     ::_pbi::ConstantInitialized)
-  : ownerhostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
+  : successorhostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
+  , successorport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
+  , ownerhostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , ownerport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , ifexists_(false){}
 struct LookupFileResponseDefaultTypeInternal {
@@ -76,139 +78,160 @@ struct LookupFileResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LookupFileResponseDefaultTypeInternal _LookupFileResponse_default_instance_;
-PROTOBUF_CONSTEXPR fileInfoRequest::fileInfoRequest(
-    ::_pbi::ConstantInitialized)
-  : sourcehostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
-  , sourceport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
-  , filenamehash_(int64_t{0}){}
-struct fileInfoRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR fileInfoRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~fileInfoRequestDefaultTypeInternal() {}
-  union {
-    fileInfoRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 fileInfoRequestDefaultTypeInternal _fileInfoRequest_default_instance_;
-PROTOBUF_CONSTEXPR fileInfoResponse::fileInfoResponse(
+PROTOBUF_CONSTEXPR FileInfoResponse::FileInfoResponse(
     ::_pbi::ConstantInitialized)
   : ownerhostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , ownerport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}){}
-struct fileInfoResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR fileInfoResponseDefaultTypeInternal()
+struct FileInfoResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FileInfoResponseDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~fileInfoResponseDefaultTypeInternal() {}
+  ~FileInfoResponseDefaultTypeInternal() {}
   union {
-    fileInfoResponse _instance;
+    FileInfoResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 fileInfoResponseDefaultTypeInternal _fileInfoResponse_default_instance_;
-PROTOBUF_CONSTEXPR downloadRequest::downloadRequest(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FileInfoResponseDefaultTypeInternal _FileInfoResponse_default_instance_;
+PROTOBUF_CONSTEXPR DownloadRequest::DownloadRequest(
     ::_pbi::ConstantInitialized)
   : sourcehostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , sourceport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , filenamehash_(int64_t{0}){}
-struct downloadRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR downloadRequestDefaultTypeInternal()
+struct DownloadRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DownloadRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~downloadRequestDefaultTypeInternal() {}
+  ~DownloadRequestDefaultTypeInternal() {}
   union {
-    downloadRequest _instance;
+    DownloadRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 downloadRequestDefaultTypeInternal _downloadRequest_default_instance_;
-PROTOBUF_CONSTEXPR joinRequest::joinRequest(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DownloadRequestDefaultTypeInternal _DownloadRequest_default_instance_;
+PROTOBUF_CONSTEXPR JoinRequest::JoinRequest(
     ::_pbi::ConstantInitialized)
   : sourcehostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , sourceport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , hostnamehash_(int64_t{0}){}
-struct joinRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR joinRequestDefaultTypeInternal()
+struct JoinRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR JoinRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~joinRequestDefaultTypeInternal() {}
+  ~JoinRequestDefaultTypeInternal() {}
   union {
-    joinRequest _instance;
+    JoinRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 joinRequestDefaultTypeInternal _joinRequest_default_instance_;
-PROTOBUF_CONSTEXPR routeTableInit::routeTableInit(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 JoinRequestDefaultTypeInternal _JoinRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouteTableInit::RouteTableInit(
     ::_pbi::ConstantInitialized)
   : entry_(){}
-struct routeTableInitDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR routeTableInitDefaultTypeInternal()
+struct RouteTableInitDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouteTableInitDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~routeTableInitDefaultTypeInternal() {}
+  ~RouteTableInitDefaultTypeInternal() {}
   union {
-    routeTableInit _instance;
+    RouteTableInit _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 routeTableInitDefaultTypeInternal _routeTableInit_default_instance_;
-PROTOBUF_CONSTEXPR routeTableEntry::routeTableEntry(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouteTableInitDefaultTypeInternal _RouteTableInit_default_instance_;
+PROTOBUF_CONSTEXPR RouteTableEntry::RouteTableEntry(
     ::_pbi::ConstantInitialized)
   : hostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , port_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , hostnamehash_(int64_t{0}){}
-struct routeTableEntryDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR routeTableEntryDefaultTypeInternal()
+struct RouteTableEntryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouteTableEntryDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~routeTableEntryDefaultTypeInternal() {}
+  ~RouteTableEntryDefaultTypeInternal() {}
   union {
-    routeTableEntry _instance;
+    RouteTableEntry _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 routeTableEntryDefaultTypeInternal _routeTableEntry_default_instance_;
-PROTOBUF_CONSTEXPR fileTable::fileTable(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouteTableEntryDefaultTypeInternal _RouteTableEntry_default_instance_;
+PROTOBUF_CONSTEXPR FileTable::FileTable(
     ::_pbi::ConstantInitialized)
   : entry_(){}
-struct fileTableDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR fileTableDefaultTypeInternal()
+struct FileTableDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FileTableDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~fileTableDefaultTypeInternal() {}
+  ~FileTableDefaultTypeInternal() {}
   union {
-    fileTable _instance;
+    FileTable _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 fileTableDefaultTypeInternal _fileTable_default_instance_;
-PROTOBUF_CONSTEXPR fileTableEntry::fileTableEntry(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FileTableDefaultTypeInternal _FileTable_default_instance_;
+PROTOBUF_CONSTEXPR FileTableEntry::FileTableEntry(
     ::_pbi::ConstantInitialized)
   : ownerhostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , ownerport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , filenamehash_(int64_t{0}){}
-struct fileTableEntryDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR fileTableEntryDefaultTypeInternal()
+struct FileTableEntryDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FileTableEntryDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~fileTableEntryDefaultTypeInternal() {}
+  ~FileTableEntryDefaultTypeInternal() {}
   union {
-    fileTableEntry _instance;
+    FileTableEntry _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 fileTableEntryDefaultTypeInternal _fileTableEntry_default_instance_;
-PROTOBUF_CONSTEXPR routeInsertRequest::routeInsertRequest(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FileTableEntryDefaultTypeInternal _FileTableEntry_default_instance_;
+PROTOBUF_CONSTEXPR RouteInsertRequest::RouteInsertRequest(
     ::_pbi::ConstantInitialized)
   : entry_(){}
-struct routeInsertRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR routeInsertRequestDefaultTypeInternal()
+struct RouteInsertRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouteInsertRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~routeInsertRequestDefaultTypeInternal() {}
+  ~RouteInsertRequestDefaultTypeInternal() {}
   union {
-    routeInsertRequest _instance;
+    RouteInsertRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 routeInsertRequestDefaultTypeInternal _routeInsertRequest_default_instance_;
-PROTOBUF_CONSTEXPR routeDeleteRequest::routeDeleteRequest(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouteInsertRequestDefaultTypeInternal _RouteInsertRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouteDeleteRequest::RouteDeleteRequest(
     ::_pbi::ConstantInitialized)
   : entry_(){}
-struct routeDeleteRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR routeDeleteRequestDefaultTypeInternal()
+struct RouteDeleteRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouteDeleteRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~routeDeleteRequestDefaultTypeInternal() {}
+  ~RouteDeleteRequestDefaultTypeInternal() {}
   union {
-    routeDeleteRequest _instance;
+    RouteDeleteRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 routeDeleteRequestDefaultTypeInternal _routeDeleteRequest_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouteDeleteRequestDefaultTypeInternal _RouteDeleteRequest_default_instance_;
+PROTOBUF_CONSTEXPR NodeRequest::NodeRequest(
+    ::_pbi::ConstantInitialized)
+  : addfile_(nullptr)
+  , lookup_(nullptr)
+  , delete__(nullptr)
+  , download_(nullptr)
+  , join_(nullptr)
+  , insertroute_(nullptr)
+  , deleteroute_(nullptr)
+  , type_(int64_t{0}){}
+struct NodeRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NodeRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NodeRequestDefaultTypeInternal() {}
+  union {
+    NodeRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NodeRequestDefaultTypeInternal _NodeRequest_default_instance_;
+PROTOBUF_CONSTEXPR NodeResponse::NodeResponse(
+    ::_pbi::ConstantInitialized)
+  : lookup_(nullptr)
+  , fileinforsp_(nullptr)
+  , routeinit_(nullptr)
+  , filetable_(nullptr)
+  , type_(int64_t{0}){}
+struct NodeResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NodeResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NodeResponseDefaultTypeInternal() {}
+  union {
+    NodeResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NodeResponseDefaultTypeInternal _NodeResponse_default_instance_;
 }  // namespace p2pfilesharing
-static ::_pb::Metadata file_level_metadata_P2P_5fProtocol_2eproto[14];
+static ::_pb::Metadata file_level_metadata_P2P_5fProtocol_2eproto[15];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_P2P_5fProtocol_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_P2P_5fProtocol_2eproto = nullptr;
 
@@ -254,125 +277,156 @@ const uint32_t TableStruct_P2P_5fProtocol_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileResponse, ifexists_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileResponse, successorhostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileResponse, successorport_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileResponse, ownerhostname_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileResponse, ownerport_),
+  4,
+  0,
+  1,
+  2,
+  3,
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileInfoResponse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileInfoResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileInfoResponse, ownerhostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileInfoResponse, ownerport_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::DownloadRequest, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::DownloadRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::DownloadRequest, filenamehash_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::DownloadRequest, sourcehostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::DownloadRequest, sourceport_),
   2,
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoRequest, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::JoinRequest, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::JoinRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoRequest, filenamehash_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoRequest, sourcehostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoRequest, sourceport_),
-  2,
-  0,
-  1,
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoResponse, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoResponse, ownerhostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileInfoResponse, ownerport_),
-  0,
-  1,
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::downloadRequest, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::downloadRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::downloadRequest, filenamehash_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::downloadRequest, sourcehostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::downloadRequest, sourceport_),
-  2,
-  0,
-  1,
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::joinRequest, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::joinRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::joinRequest, sourcehostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::joinRequest, sourceport_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::joinRequest, hostnamehash_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::JoinRequest, sourcehostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::JoinRequest, sourceport_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::JoinRequest, hostnamehash_),
   0,
   1,
   2,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableInit, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableInit, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableInit, entry_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableEntry, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableEntry, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableInit, entry_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableEntry, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableEntry, hostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableEntry, port_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeTableEntry, hostnamehash_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableEntry, hostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableEntry, port_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteTableEntry, hostnamehash_),
   0,
   1,
   2,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTable, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTable, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTable, entry_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTableEntry, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTableEntry, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTable, entry_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTableEntry, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTableEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTableEntry, filenamehash_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTableEntry, ownerhostname_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::fileTableEntry, ownerport_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTableEntry, filenamehash_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTableEntry, ownerhostname_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::FileTableEntry, ownerport_),
   2,
   0,
   1,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeInsertRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteInsertRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeInsertRequest, entry_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteInsertRequest, entry_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeDeleteRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteDeleteRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::routeDeleteRequest, entry_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::RouteDeleteRequest, entry_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, type_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, addfile_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, lookup_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, delete__),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, download_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, join_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, insertroute_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, deleteroute_),
+  7,
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, type_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, lookup_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, fileinforsp_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, routeinit_),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeResponse, filetable_),
+  4,
+  0,
+  1,
+  2,
+  3,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::p2pfilesharing::AddFileRequest)},
   { 10, 19, -1, sizeof(::p2pfilesharing::LookupFileRequest)},
   { 22, 31, -1, sizeof(::p2pfilesharing::DeleteFileRequest)},
-  { 34, 43, -1, sizeof(::p2pfilesharing::LookupFileResponse)},
-  { 46, 55, -1, sizeof(::p2pfilesharing::fileInfoRequest)},
-  { 58, 66, -1, sizeof(::p2pfilesharing::fileInfoResponse)},
-  { 68, 77, -1, sizeof(::p2pfilesharing::downloadRequest)},
-  { 80, 89, -1, sizeof(::p2pfilesharing::joinRequest)},
-  { 92, -1, -1, sizeof(::p2pfilesharing::routeTableInit)},
-  { 99, 108, -1, sizeof(::p2pfilesharing::routeTableEntry)},
-  { 111, -1, -1, sizeof(::p2pfilesharing::fileTable)},
-  { 118, 127, -1, sizeof(::p2pfilesharing::fileTableEntry)},
-  { 130, -1, -1, sizeof(::p2pfilesharing::routeInsertRequest)},
-  { 137, -1, -1, sizeof(::p2pfilesharing::routeDeleteRequest)},
+  { 34, 45, -1, sizeof(::p2pfilesharing::LookupFileResponse)},
+  { 50, 58, -1, sizeof(::p2pfilesharing::FileInfoResponse)},
+  { 60, 69, -1, sizeof(::p2pfilesharing::DownloadRequest)},
+  { 72, 81, -1, sizeof(::p2pfilesharing::JoinRequest)},
+  { 84, -1, -1, sizeof(::p2pfilesharing::RouteTableInit)},
+  { 91, 100, -1, sizeof(::p2pfilesharing::RouteTableEntry)},
+  { 103, -1, -1, sizeof(::p2pfilesharing::FileTable)},
+  { 110, 119, -1, sizeof(::p2pfilesharing::FileTableEntry)},
+  { 122, -1, -1, sizeof(::p2pfilesharing::RouteInsertRequest)},
+  { 129, -1, -1, sizeof(::p2pfilesharing::RouteDeleteRequest)},
+  { 136, 150, -1, sizeof(::p2pfilesharing::NodeRequest)},
+  { 158, 169, -1, sizeof(::p2pfilesharing::NodeResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -380,16 +434,17 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::p2pfilesharing::_LookupFileRequest_default_instance_._instance,
   &::p2pfilesharing::_DeleteFileRequest_default_instance_._instance,
   &::p2pfilesharing::_LookupFileResponse_default_instance_._instance,
-  &::p2pfilesharing::_fileInfoRequest_default_instance_._instance,
-  &::p2pfilesharing::_fileInfoResponse_default_instance_._instance,
-  &::p2pfilesharing::_downloadRequest_default_instance_._instance,
-  &::p2pfilesharing::_joinRequest_default_instance_._instance,
-  &::p2pfilesharing::_routeTableInit_default_instance_._instance,
-  &::p2pfilesharing::_routeTableEntry_default_instance_._instance,
-  &::p2pfilesharing::_fileTable_default_instance_._instance,
-  &::p2pfilesharing::_fileTableEntry_default_instance_._instance,
-  &::p2pfilesharing::_routeInsertRequest_default_instance_._instance,
-  &::p2pfilesharing::_routeDeleteRequest_default_instance_._instance,
+  &::p2pfilesharing::_FileInfoResponse_default_instance_._instance,
+  &::p2pfilesharing::_DownloadRequest_default_instance_._instance,
+  &::p2pfilesharing::_JoinRequest_default_instance_._instance,
+  &::p2pfilesharing::_RouteTableInit_default_instance_._instance,
+  &::p2pfilesharing::_RouteTableEntry_default_instance_._instance,
+  &::p2pfilesharing::_FileTable_default_instance_._instance,
+  &::p2pfilesharing::_FileTableEntry_default_instance_._instance,
+  &::p2pfilesharing::_RouteInsertRequest_default_instance_._instance,
+  &::p2pfilesharing::_RouteDeleteRequest_default_instance_._instance,
+  &::p2pfilesharing::_NodeRequest_default_instance_._instance,
+  &::p2pfilesharing::_NodeResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_P2P_5fProtocol_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -399,34 +454,48 @@ const char descriptor_table_protodef_P2P_5fProtocol_2eproto[] PROTOBUF_SECTION_V
   "t\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016sourcehostnam"
   "e\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"U\n\021DeleteFil"
   "eRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016source"
-  "hostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"P\n\022Lo"
-  "okupFileResponse\022\020\n\010ifexists\030\001 \002(\010\022\025\n\row"
-  "nerhostname\030\002 \001(\t\022\021\n\townerport\030\003 \001(\t\"S\n\017"
-  "fileInfoRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n"
-  "\016sourcehostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002("
-  "\t\"<\n\020fileInfoResponse\022\025\n\rownerhostname\030\001"
-  " \002(\t\022\021\n\townerport\030\002 \002(\t\"S\n\017downloadReque"
-  "st\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016sourcehostna"
-  "me\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"O\n\013joinRequ"
-  "est\022\026\n\016sourcehostname\030\001 \002(\t\022\022\n\nsourcepor"
-  "t\030\002 \002(\t\022\024\n\014hostnamehash\030\003 \002(\003\"@\n\016routeTa"
-  "bleInit\022.\n\005entry\030\001 \003(\0132\037.p2pfilesharing."
-  "routeTableEntry\"G\n\017routeTableEntry\022\020\n\010ho"
-  "stname\030\001 \002(\t\022\014\n\004port\030\002 \002(\t\022\024\n\014hostnameha"
-  "sh\030\003 \002(\003\":\n\tfileTable\022-\n\005entry\030\001 \003(\0132\036.p"
-  "2pfilesharing.fileTableEntry\"P\n\016fileTabl"
-  "eEntry\022\024\n\014filenamehash\030\001 \002(\003\022\025\n\rownerhos"
-  "tname\030\002 \002(\t\022\021\n\townerport\030\003 \002(\t\"D\n\022routeI"
-  "nsertRequest\022.\n\005entry\030\001 \003(\0132\037.p2pfilesha"
-  "ring.routeTableEntry\"D\n\022routeDeleteReque"
-  "st\022.\n\005entry\030\001 \003(\0132\037.p2pfilesharing.route"
-  "TableEntry"
+  "hostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"\202\001\n\022L"
+  "ookupFileResponse\022\020\n\010ifexists\030\001 \002(\010\022\031\n\021s"
+  "uccessorhostname\030\002 \002(\t\022\025\n\rsuccessorport\030"
+  "\003 \002(\t\022\025\n\rownerhostname\030\004 \001(\t\022\021\n\townerpor"
+  "t\030\005 \001(\t\"<\n\020FileInfoResponse\022\025\n\rownerhost"
+  "name\030\001 \002(\t\022\021\n\townerport\030\002 \002(\t\"S\n\017Downloa"
+  "dRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016source"
+  "hostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"O\n\013Jo"
+  "inRequest\022\026\n\016sourcehostname\030\001 \002(\t\022\022\n\nsou"
+  "rceport\030\002 \002(\t\022\024\n\014hostnamehash\030\003 \002(\003\"@\n\016R"
+  "outeTableInit\022.\n\005entry\030\001 \003(\0132\037.p2pfilesh"
+  "aring.RouteTableEntry\"G\n\017RouteTableEntry"
+  "\022\020\n\010hostname\030\001 \002(\t\022\014\n\004port\030\002 \002(\t\022\024\n\014host"
+  "namehash\030\003 \002(\003\":\n\tFileTable\022-\n\005entry\030\001 \003"
+  "(\0132\036.p2pfilesharing.FileTableEntry\"P\n\016Fi"
+  "leTableEntry\022\024\n\014filenamehash\030\001 \002(\003\022\025\n\row"
+  "nerhostname\030\002 \002(\t\022\021\n\townerport\030\003 \002(\t\"D\n\022"
+  "RouteInsertRequest\022.\n\005entry\030\001 \003(\0132\037.p2pf"
+  "ilesharing.RouteTableEntry\"D\n\022RouteDelet"
+  "eRequest\022.\n\005entry\030\001 \003(\0132\037.p2pfilesharing"
+  ".RouteTableEntry\"\202\003\n\013NodeRequest\022\014\n\004type"
+  "\030\001 \002(\003\022/\n\007addfile\030\002 \001(\0132\036.p2pfilesharing"
+  ".AddFileRequest\0221\n\006lookup\030\003 \001(\0132!.p2pfil"
+  "esharing.LookupFileRequest\0221\n\006delete\030\004 \001"
+  "(\0132!.p2pfilesharing.DeleteFileRequest\0221\n"
+  "\010download\030\005 \001(\0132\037.p2pfilesharing.Downloa"
+  "dRequest\022)\n\004join\030\006 \001(\0132\033.p2pfilesharing."
+  "JoinRequest\0227\n\013insertroute\030\007 \001(\0132\".p2pfi"
+  "lesharing.RouteInsertRequest\0227\n\013deletero"
+  "ute\030\010 \001(\0132\".p2pfilesharing.RouteDeleteRe"
+  "quest\"\350\001\n\014NodeResponse\022\014\n\004type\030\001 \002(\003\0222\n\006"
+  "lookup\030\002 \001(\0132\".p2pfilesharing.LookupFile"
+  "Response\0225\n\013fileinforsp\030\003 \001(\0132 .p2pfiles"
+  "haring.FileInfoResponse\0221\n\trouteinit\030\004 \001"
+  "(\0132\036.p2pfilesharing.RouteTableInit\022,\n\tfi"
+  "letable\030\005 \001(\0132\031.p2pfilesharing.FileTable"
   ;
 static ::_pbi::once_flag descriptor_table_P2P_5fProtocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_P2P_5fProtocol_2eproto = {
-    false, false, 1090, descriptor_table_protodef_P2P_5fProtocol_2eproto,
+    false, false, 1680, descriptor_table_protodef_P2P_5fProtocol_2eproto,
     "P2P_Protocol.proto",
-    &descriptor_table_P2P_5fProtocol_2eproto_once, nullptr, 0, 14,
+    &descriptor_table_P2P_5fProtocol_2eproto_once, nullptr, 0, 15,
     schemas, file_default_instances, TableStruct_P2P_5fProtocol_2eproto::offsets,
     file_level_metadata_P2P_5fProtocol_2eproto, file_level_enum_descriptors_P2P_5fProtocol_2eproto,
     file_level_service_descriptors_P2P_5fProtocol_2eproto,
@@ -1367,16 +1436,22 @@ class LookupFileResponse::_Internal {
  public:
   using HasBits = decltype(std::declval<LookupFileResponse>()._has_bits_);
   static void set_has_ifexists(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 16u;
   }
-  static void set_has_ownerhostname(HasBits* has_bits) {
+  static void set_has_successorhostname(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_ownerport(HasBits* has_bits) {
+  static void set_has_successorport(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
+  static void set_has_ownerhostname(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_ownerport(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000004) ^ 0x00000004) != 0;
+    return ((has_bits[0] & 0x00000013) ^ 0x00000013) != 0;
   }
 };
 
@@ -1390,6 +1465,22 @@ LookupFileResponse::LookupFileResponse(const LookupFileResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  successorhostname_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    successorhostname_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_successorhostname()) {
+    successorhostname_.Set(from._internal_successorhostname(), 
+      GetArenaForAllocation());
+  }
+  successorport_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    successorport_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_successorport()) {
+    successorport_.Set(from._internal_successorport(), 
+      GetArenaForAllocation());
+  }
   ownerhostname_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     ownerhostname_.Set("", GetArenaForAllocation());
@@ -1411,6 +1502,14 @@ LookupFileResponse::LookupFileResponse(const LookupFileResponse& from)
 }
 
 inline void LookupFileResponse::SharedCtor() {
+successorhostname_.InitDefault();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  successorhostname_.Set("", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+successorport_.InitDefault();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  successorport_.Set("", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ownerhostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   ownerhostname_.Set("", GetArenaForAllocation());
@@ -1433,6 +1532,8 @@ LookupFileResponse::~LookupFileResponse() {
 
 inline void LookupFileResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  successorhostname_.Destroy();
+  successorport_.Destroy();
   ownerhostname_.Destroy();
   ownerport_.Destroy();
 }
@@ -1448,11 +1549,17 @@ void LookupFileResponse::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      ownerhostname_.ClearNonDefaultToEmpty();
+      successorhostname_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
+      successorport_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      ownerhostname_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000008u) {
       ownerport_.ClearNonDefaultToEmpty();
     }
   }
@@ -1477,9 +1584,33 @@ const char* LookupFileResponse::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // optional string ownerhostname = 2;
+      // required string successorhostname = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_successorhostname();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.LookupFileResponse.successorhostname");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // required string successorport = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_successorport();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.LookupFileResponse.successorport");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string ownerhostname = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_ownerhostname();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -1489,9 +1620,9 @@ const char* LookupFileResponse::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // optional string ownerport = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // optional string ownerport = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_ownerport();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -1533,29 +1664,49 @@ uint8_t* LookupFileResponse::_InternalSerialize(
 
   cached_has_bits = _has_bits_[0];
   // required bool ifexists = 1;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_ifexists(), target);
   }
 
-  // optional string ownerhostname = 2;
+  // required string successorhostname = 2;
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_successorhostname().data(), static_cast<int>(this->_internal_successorhostname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "p2pfilesharing.LookupFileResponse.successorhostname");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_successorhostname(), target);
+  }
+
+  // required string successorport = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_successorport().data(), static_cast<int>(this->_internal_successorport().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "p2pfilesharing.LookupFileResponse.successorport");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_successorport(), target);
+  }
+
+  // optional string ownerhostname = 4;
+  if (cached_has_bits & 0x00000004u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerhostname().data(), static_cast<int>(this->_internal_ownerhostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
       "p2pfilesharing.LookupFileResponse.ownerhostname");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_ownerhostname(), target);
+        4, this->_internal_ownerhostname(), target);
   }
 
-  // optional string ownerport = 3;
-  if (cached_has_bits & 0x00000002u) {
+  // optional string ownerport = 5;
+  if (cached_has_bits & 0x00000008u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerport().data(), static_cast<int>(this->_internal_ownerport().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
       "p2pfilesharing.LookupFileResponse.ownerport");
     target = stream->WriteStringMaybeAliased(
-        3, this->_internal_ownerport(), target);
+        5, this->_internal_ownerport(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1566,29 +1717,67 @@ uint8_t* LookupFileResponse::_InternalSerialize(
   return target;
 }
 
+size_t LookupFileResponse::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.LookupFileResponse)
+  size_t total_size = 0;
+
+  if (_internal_has_successorhostname()) {
+    // required string successorhostname = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_successorhostname());
+  }
+
+  if (_internal_has_successorport()) {
+    // required string successorport = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_successorport());
+  }
+
+  if (_internal_has_ifexists()) {
+    // required bool ifexists = 1;
+    total_size += 1 + 1;
+  }
+
+  return total_size;
+}
 size_t LookupFileResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.LookupFileResponse)
   size_t total_size = 0;
 
-  // required bool ifexists = 1;
-  if (_internal_has_ifexists()) {
+  if (((_has_bits_[0] & 0x00000013) ^ 0x00000013) == 0) {  // All required fields are present.
+    // required string successorhostname = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_successorhostname());
+
+    // required string successorport = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_successorport());
+
+    // required bool ifexists = 1;
     total_size += 1 + 1;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional string ownerhostname = 2;
-    if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x0000000cu) {
+    // optional string ownerhostname = 4;
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
           this->_internal_ownerhostname());
     }
 
-    // optional string ownerport = 3;
-    if (cached_has_bits & 0x00000002u) {
+    // optional string ownerport = 5;
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
           this->_internal_ownerport());
@@ -1618,14 +1807,20 @@ void LookupFileResponse::MergeFrom(const LookupFileResponse& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_ownerhostname(from._internal_ownerhostname());
+      _internal_set_successorhostname(from._internal_successorhostname());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_ownerport(from._internal_ownerport());
+      _internal_set_successorport(from._internal_successorport());
     }
     if (cached_has_bits & 0x00000004u) {
+      _internal_set_ownerhostname(from._internal_ownerhostname());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _internal_set_ownerport(from._internal_ownerport());
+    }
+    if (cached_has_bits & 0x00000010u) {
       ifexists_ = from.ifexists_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1652,6 +1847,14 @@ void LookupFileResponse::InternalSwap(LookupFileResponse* other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &successorhostname_, lhs_arena,
+      &other->successorhostname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &successorport_, lhs_arena,
+      &other->successorport_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &ownerhostname_, lhs_arena,
       &other->ownerhostname_, rhs_arena
   );
@@ -1670,337 +1873,9 @@ void LookupFileResponse::InternalSwap(LookupFileResponse* other) {
 
 // ===================================================================
 
-class fileInfoRequest::_Internal {
+class FileInfoResponse::_Internal {
  public:
-  using HasBits = decltype(std::declval<fileInfoRequest>()._has_bits_);
-  static void set_has_filenamehash(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
-  static void set_has_sourcehostname(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static void set_has_sourceport(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-  static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
-  }
-};
-
-fileInfoRequest::fileInfoRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.fileInfoRequest)
-}
-fileInfoRequest::fileInfoRequest(const fileInfoRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  sourcehostname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    sourcehostname_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_sourcehostname()) {
-    sourcehostname_.Set(from._internal_sourcehostname(), 
-      GetArenaForAllocation());
-  }
-  sourceport_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    sourceport_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_sourceport()) {
-    sourceport_.Set(from._internal_sourceport(), 
-      GetArenaForAllocation());
-  }
-  filenamehash_ = from.filenamehash_;
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.fileInfoRequest)
-}
-
-inline void fileInfoRequest::SharedCtor() {
-sourcehostname_.InitDefault();
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  sourcehostname_.Set("", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-sourceport_.InitDefault();
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  sourceport_.Set("", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-filenamehash_ = int64_t{0};
-}
-
-fileInfoRequest::~fileInfoRequest() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.fileInfoRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void fileInfoRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  sourcehostname_.Destroy();
-  sourceport_.Destroy();
-}
-
-void fileInfoRequest::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void fileInfoRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.fileInfoRequest)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      sourcehostname_.ClearNonDefaultToEmpty();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      sourceport_.ClearNonDefaultToEmpty();
-    }
-  }
-  filenamehash_ = int64_t{0};
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* fileInfoRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // required int64 filenamehash = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _Internal::set_has_filenamehash(&has_bits);
-          filenamehash_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // required string sourcehostname = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_sourcehostname();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileInfoRequest.sourcehostname");
-          #endif  // !NDEBUG
-        } else
-          goto handle_unusual;
-        continue;
-      // required string sourceport = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_sourceport();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileInfoRequest.sourceport");
-          #endif  // !NDEBUG
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* fileInfoRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.fileInfoRequest)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int64 filenamehash = 1;
-  if (cached_has_bits & 0x00000004u) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_filenamehash(), target);
-  }
-
-  // required string sourcehostname = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->_internal_sourcehostname().data(), static_cast<int>(this->_internal_sourcehostname().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileInfoRequest.sourcehostname");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_sourcehostname(), target);
-  }
-
-  // required string sourceport = 3;
-  if (cached_has_bits & 0x00000002u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->_internal_sourceport().data(), static_cast<int>(this->_internal_sourceport().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileInfoRequest.sourceport");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_sourceport(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.fileInfoRequest)
-  return target;
-}
-
-size_t fileInfoRequest::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.fileInfoRequest)
-  size_t total_size = 0;
-
-  if (_internal_has_sourcehostname()) {
-    // required string sourcehostname = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sourcehostname());
-  }
-
-  if (_internal_has_sourceport()) {
-    // required string sourceport = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sourceport());
-  }
-
-  if (_internal_has_filenamehash()) {
-    // required int64 filenamehash = 1;
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_filenamehash());
-  }
-
-  return total_size;
-}
-size_t fileInfoRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.fileInfoRequest)
-  size_t total_size = 0;
-
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required string sourcehostname = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sourcehostname());
-
-    // required string sourceport = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_sourceport());
-
-    // required int64 filenamehash = 1;
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_filenamehash());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData fileInfoRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    fileInfoRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*fileInfoRequest::GetClassData() const { return &_class_data_; }
-
-void fileInfoRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<fileInfoRequest *>(to)->MergeFrom(
-      static_cast<const fileInfoRequest &>(from));
-}
-
-
-void fileInfoRequest::MergeFrom(const fileInfoRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.fileInfoRequest)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_set_sourcehostname(from._internal_sourcehostname());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_set_sourceport(from._internal_sourceport());
-    }
-    if (cached_has_bits & 0x00000004u) {
-      filenamehash_ = from.filenamehash_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void fileInfoRequest::CopyFrom(const fileInfoRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.fileInfoRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool fileInfoRequest::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
-  return true;
-}
-
-void fileInfoRequest::InternalSwap(fileInfoRequest* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &sourcehostname_, lhs_arena,
-      &other->sourcehostname_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &sourceport_, lhs_arena,
-      &other->sourceport_, rhs_arena
-  );
-  swap(filenamehash_, other->filenamehash_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata fileInfoRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[4]);
-}
-
-// ===================================================================
-
-class fileInfoResponse::_Internal {
- public:
-  using HasBits = decltype(std::declval<fileInfoResponse>()._has_bits_);
+  using HasBits = decltype(std::declval<FileInfoResponse>()._has_bits_);
   static void set_has_ownerhostname(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -2012,13 +1887,13 @@ class fileInfoResponse::_Internal {
   }
 };
 
-fileInfoResponse::fileInfoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+FileInfoResponse::FileInfoResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.fileInfoResponse)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.FileInfoResponse)
 }
-fileInfoResponse::fileInfoResponse(const fileInfoResponse& from)
+FileInfoResponse::FileInfoResponse(const FileInfoResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2038,10 +1913,10 @@ fileInfoResponse::fileInfoResponse(const fileInfoResponse& from)
     ownerport_.Set(from._internal_ownerport(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.fileInfoResponse)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.FileInfoResponse)
 }
 
-inline void fileInfoResponse::SharedCtor() {
+inline void FileInfoResponse::SharedCtor() {
 ownerhostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   ownerhostname_.Set("", GetArenaForAllocation());
@@ -2052,8 +1927,8 @@ ownerport_.InitDefault();
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-fileInfoResponse::~fileInfoResponse() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.fileInfoResponse)
+FileInfoResponse::~FileInfoResponse() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.FileInfoResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2061,18 +1936,18 @@ fileInfoResponse::~fileInfoResponse() {
   SharedDtor();
 }
 
-inline void fileInfoResponse::SharedDtor() {
+inline void FileInfoResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   ownerhostname_.Destroy();
   ownerport_.Destroy();
 }
 
-void fileInfoResponse::SetCachedSize(int size) const {
+void FileInfoResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void fileInfoResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.fileInfoResponse)
+void FileInfoResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.FileInfoResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2090,7 +1965,7 @@ void fileInfoResponse::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* fileInfoResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* FileInfoResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -2104,7 +1979,7 @@ const char* fileInfoResponse::_InternalParse(const char* ptr, ::_pbi::ParseConte
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileInfoResponse.ownerhostname");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.FileInfoResponse.ownerhostname");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2116,7 +1991,7 @@ const char* fileInfoResponse::_InternalParse(const char* ptr, ::_pbi::ParseConte
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileInfoResponse.ownerport");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.FileInfoResponse.ownerport");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2145,9 +2020,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* fileInfoResponse::_InternalSerialize(
+uint8_t* FileInfoResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.fileInfoResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.FileInfoResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2157,7 +2032,7 @@ uint8_t* fileInfoResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerhostname().data(), static_cast<int>(this->_internal_ownerhostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileInfoResponse.ownerhostname");
+      "p2pfilesharing.FileInfoResponse.ownerhostname");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_ownerhostname(), target);
   }
@@ -2167,7 +2042,7 @@ uint8_t* fileInfoResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerport().data(), static_cast<int>(this->_internal_ownerport().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileInfoResponse.ownerport");
+      "p2pfilesharing.FileInfoResponse.ownerport");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_ownerport(), target);
   }
@@ -2176,12 +2051,12 @@ uint8_t* fileInfoResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.fileInfoResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.FileInfoResponse)
   return target;
 }
 
-size_t fileInfoResponse::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.fileInfoResponse)
+size_t FileInfoResponse::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.FileInfoResponse)
   size_t total_size = 0;
 
   if (_internal_has_ownerhostname()) {
@@ -2200,8 +2075,8 @@ size_t fileInfoResponse::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t fileInfoResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.fileInfoResponse)
+size_t FileInfoResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.FileInfoResponse)
   size_t total_size = 0;
 
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
@@ -2225,21 +2100,21 @@ size_t fileInfoResponse::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData fileInfoResponse::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FileInfoResponse::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    fileInfoResponse::MergeImpl
+    FileInfoResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*fileInfoResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FileInfoResponse::GetClassData() const { return &_class_data_; }
 
-void fileInfoResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void FileInfoResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<fileInfoResponse *>(to)->MergeFrom(
-      static_cast<const fileInfoResponse &>(from));
+  static_cast<FileInfoResponse *>(to)->MergeFrom(
+      static_cast<const FileInfoResponse &>(from));
 }
 
 
-void fileInfoResponse::MergeFrom(const fileInfoResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.fileInfoResponse)
+void FileInfoResponse::MergeFrom(const FileInfoResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.FileInfoResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2256,19 +2131,19 @@ void fileInfoResponse::MergeFrom(const fileInfoResponse& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void fileInfoResponse::CopyFrom(const fileInfoResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.fileInfoResponse)
+void FileInfoResponse::CopyFrom(const FileInfoResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.FileInfoResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool fileInfoResponse::IsInitialized() const {
+bool FileInfoResponse::IsInitialized() const {
   if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void fileInfoResponse::InternalSwap(fileInfoResponse* other) {
+void FileInfoResponse::InternalSwap(FileInfoResponse* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2284,17 +2159,17 @@ void fileInfoResponse::InternalSwap(fileInfoResponse* other) {
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata fileInfoResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata FileInfoResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[5]);
+      file_level_metadata_P2P_5fProtocol_2eproto[4]);
 }
 
 // ===================================================================
 
-class downloadRequest::_Internal {
+class DownloadRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<downloadRequest>()._has_bits_);
+  using HasBits = decltype(std::declval<DownloadRequest>()._has_bits_);
   static void set_has_filenamehash(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
@@ -2309,13 +2184,13 @@ class downloadRequest::_Internal {
   }
 };
 
-downloadRequest::downloadRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+DownloadRequest::DownloadRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.downloadRequest)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.DownloadRequest)
 }
-downloadRequest::downloadRequest(const downloadRequest& from)
+DownloadRequest::DownloadRequest(const DownloadRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2336,10 +2211,10 @@ downloadRequest::downloadRequest(const downloadRequest& from)
       GetArenaForAllocation());
   }
   filenamehash_ = from.filenamehash_;
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.downloadRequest)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.DownloadRequest)
 }
 
-inline void downloadRequest::SharedCtor() {
+inline void DownloadRequest::SharedCtor() {
 sourcehostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   sourcehostname_.Set("", GetArenaForAllocation());
@@ -2351,8 +2226,8 @@ sourceport_.InitDefault();
 filenamehash_ = int64_t{0};
 }
 
-downloadRequest::~downloadRequest() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.downloadRequest)
+DownloadRequest::~DownloadRequest() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.DownloadRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2360,18 +2235,18 @@ downloadRequest::~downloadRequest() {
   SharedDtor();
 }
 
-inline void downloadRequest::SharedDtor() {
+inline void DownloadRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   sourcehostname_.Destroy();
   sourceport_.Destroy();
 }
 
-void downloadRequest::SetCachedSize(int size) const {
+void DownloadRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void downloadRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.downloadRequest)
+void DownloadRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.DownloadRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2390,7 +2265,7 @@ void downloadRequest::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* downloadRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* DownloadRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -2413,7 +2288,7 @@ const char* downloadRequest::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.downloadRequest.sourcehostname");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.DownloadRequest.sourcehostname");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2425,7 +2300,7 @@ const char* downloadRequest::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.downloadRequest.sourceport");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.DownloadRequest.sourceport");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2454,9 +2329,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* downloadRequest::_InternalSerialize(
+uint8_t* DownloadRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.downloadRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.DownloadRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2472,7 +2347,7 @@ uint8_t* downloadRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_sourcehostname().data(), static_cast<int>(this->_internal_sourcehostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.downloadRequest.sourcehostname");
+      "p2pfilesharing.DownloadRequest.sourcehostname");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_sourcehostname(), target);
   }
@@ -2482,7 +2357,7 @@ uint8_t* downloadRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_sourceport().data(), static_cast<int>(this->_internal_sourceport().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.downloadRequest.sourceport");
+      "p2pfilesharing.DownloadRequest.sourceport");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_sourceport(), target);
   }
@@ -2491,12 +2366,12 @@ uint8_t* downloadRequest::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.downloadRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.DownloadRequest)
   return target;
 }
 
-size_t downloadRequest::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.downloadRequest)
+size_t DownloadRequest::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.DownloadRequest)
   size_t total_size = 0;
 
   if (_internal_has_sourcehostname()) {
@@ -2520,8 +2395,8 @@ size_t downloadRequest::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t downloadRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.downloadRequest)
+size_t DownloadRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.DownloadRequest)
   size_t total_size = 0;
 
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
@@ -2548,21 +2423,21 @@ size_t downloadRequest::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData downloadRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DownloadRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    downloadRequest::MergeImpl
+    DownloadRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*downloadRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DownloadRequest::GetClassData() const { return &_class_data_; }
 
-void downloadRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void DownloadRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<downloadRequest *>(to)->MergeFrom(
-      static_cast<const downloadRequest &>(from));
+  static_cast<DownloadRequest *>(to)->MergeFrom(
+      static_cast<const DownloadRequest &>(from));
 }
 
 
-void downloadRequest::MergeFrom(const downloadRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.downloadRequest)
+void DownloadRequest::MergeFrom(const DownloadRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.DownloadRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2583,19 +2458,19 @@ void downloadRequest::MergeFrom(const downloadRequest& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void downloadRequest::CopyFrom(const downloadRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.downloadRequest)
+void DownloadRequest::CopyFrom(const DownloadRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.DownloadRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool downloadRequest::IsInitialized() const {
+bool DownloadRequest::IsInitialized() const {
   if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void downloadRequest::InternalSwap(downloadRequest* other) {
+void DownloadRequest::InternalSwap(DownloadRequest* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2612,17 +2487,17 @@ void downloadRequest::InternalSwap(downloadRequest* other) {
   swap(filenamehash_, other->filenamehash_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata downloadRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata DownloadRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[6]);
+      file_level_metadata_P2P_5fProtocol_2eproto[5]);
 }
 
 // ===================================================================
 
-class joinRequest::_Internal {
+class JoinRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<joinRequest>()._has_bits_);
+  using HasBits = decltype(std::declval<JoinRequest>()._has_bits_);
   static void set_has_sourcehostname(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -2637,13 +2512,13 @@ class joinRequest::_Internal {
   }
 };
 
-joinRequest::joinRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+JoinRequest::JoinRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.joinRequest)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.JoinRequest)
 }
-joinRequest::joinRequest(const joinRequest& from)
+JoinRequest::JoinRequest(const JoinRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2664,10 +2539,10 @@ joinRequest::joinRequest(const joinRequest& from)
       GetArenaForAllocation());
   }
   hostnamehash_ = from.hostnamehash_;
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.joinRequest)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.JoinRequest)
 }
 
-inline void joinRequest::SharedCtor() {
+inline void JoinRequest::SharedCtor() {
 sourcehostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   sourcehostname_.Set("", GetArenaForAllocation());
@@ -2679,8 +2554,8 @@ sourceport_.InitDefault();
 hostnamehash_ = int64_t{0};
 }
 
-joinRequest::~joinRequest() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.joinRequest)
+JoinRequest::~JoinRequest() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.JoinRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2688,18 +2563,18 @@ joinRequest::~joinRequest() {
   SharedDtor();
 }
 
-inline void joinRequest::SharedDtor() {
+inline void JoinRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   sourcehostname_.Destroy();
   sourceport_.Destroy();
 }
 
-void joinRequest::SetCachedSize(int size) const {
+void JoinRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void joinRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.joinRequest)
+void JoinRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.JoinRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2718,7 +2593,7 @@ void joinRequest::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* joinRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* JoinRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -2732,7 +2607,7 @@ const char* joinRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.joinRequest.sourcehostname");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.JoinRequest.sourcehostname");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2744,7 +2619,7 @@ const char* joinRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.joinRequest.sourceport");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.JoinRequest.sourceport");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -2782,9 +2657,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* joinRequest::_InternalSerialize(
+uint8_t* JoinRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.joinRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.JoinRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2794,7 +2669,7 @@ uint8_t* joinRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_sourcehostname().data(), static_cast<int>(this->_internal_sourcehostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.joinRequest.sourcehostname");
+      "p2pfilesharing.JoinRequest.sourcehostname");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_sourcehostname(), target);
   }
@@ -2804,7 +2679,7 @@ uint8_t* joinRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_sourceport().data(), static_cast<int>(this->_internal_sourceport().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.joinRequest.sourceport");
+      "p2pfilesharing.JoinRequest.sourceport");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_sourceport(), target);
   }
@@ -2819,12 +2694,12 @@ uint8_t* joinRequest::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.joinRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.JoinRequest)
   return target;
 }
 
-size_t joinRequest::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.joinRequest)
+size_t JoinRequest::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.JoinRequest)
   size_t total_size = 0;
 
   if (_internal_has_sourcehostname()) {
@@ -2848,8 +2723,8 @@ size_t joinRequest::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t joinRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.joinRequest)
+size_t JoinRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.JoinRequest)
   size_t total_size = 0;
 
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
@@ -2876,21 +2751,21 @@ size_t joinRequest::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData joinRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData JoinRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    joinRequest::MergeImpl
+    JoinRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*joinRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*JoinRequest::GetClassData() const { return &_class_data_; }
 
-void joinRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void JoinRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<joinRequest *>(to)->MergeFrom(
-      static_cast<const joinRequest &>(from));
+  static_cast<JoinRequest *>(to)->MergeFrom(
+      static_cast<const JoinRequest &>(from));
 }
 
 
-void joinRequest::MergeFrom(const joinRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.joinRequest)
+void JoinRequest::MergeFrom(const JoinRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.JoinRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2911,19 +2786,19 @@ void joinRequest::MergeFrom(const joinRequest& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void joinRequest::CopyFrom(const joinRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.joinRequest)
+void JoinRequest::CopyFrom(const JoinRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.JoinRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool joinRequest::IsInitialized() const {
+bool JoinRequest::IsInitialized() const {
   if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void joinRequest::InternalSwap(joinRequest* other) {
+void JoinRequest::InternalSwap(JoinRequest* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -2940,37 +2815,37 @@ void joinRequest::InternalSwap(joinRequest* other) {
   swap(hostnamehash_, other->hostnamehash_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata joinRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata JoinRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[7]);
+      file_level_metadata_P2P_5fProtocol_2eproto[6]);
 }
 
 // ===================================================================
 
-class routeTableInit::_Internal {
+class RouteTableInit::_Internal {
  public:
 };
 
-routeTableInit::routeTableInit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+RouteTableInit::RouteTableInit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   entry_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.routeTableInit)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.RouteTableInit)
 }
-routeTableInit::routeTableInit(const routeTableInit& from)
+RouteTableInit::RouteTableInit(const RouteTableInit& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       entry_(from.entry_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.routeTableInit)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.RouteTableInit)
 }
 
-inline void routeTableInit::SharedCtor() {
+inline void RouteTableInit::SharedCtor() {
 }
 
-routeTableInit::~routeTableInit() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.routeTableInit)
+RouteTableInit::~RouteTableInit() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.RouteTableInit)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2978,16 +2853,16 @@ routeTableInit::~routeTableInit() {
   SharedDtor();
 }
 
-inline void routeTableInit::SharedDtor() {
+inline void RouteTableInit::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void routeTableInit::SetCachedSize(int size) const {
+void RouteTableInit::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void routeTableInit::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.routeTableInit)
+void RouteTableInit::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.RouteTableInit)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2996,13 +2871,13 @@ void routeTableInit::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* routeTableInit::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* RouteTableInit::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .p2pfilesharing.routeTableEntry entry = 1;
+      // repeated .p2pfilesharing.RouteTableEntry entry = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -3038,13 +2913,13 @@ failure:
 #undef CHK_
 }
 
-uint8_t* routeTableInit::_InternalSerialize(
+uint8_t* RouteTableInit::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.routeTableInit)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.RouteTableInit)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_entry_size()); i < n; i++) {
     const auto& repfield = this->_internal_entry(i);
@@ -3056,19 +2931,19 @@ uint8_t* routeTableInit::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.routeTableInit)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.RouteTableInit)
   return target;
 }
 
-size_t routeTableInit::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.routeTableInit)
+size_t RouteTableInit::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.RouteTableInit)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
   total_size += 1UL * this->_internal_entry_size();
   for (const auto& msg : this->entry_) {
     total_size +=
@@ -3078,21 +2953,21 @@ size_t routeTableInit::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData routeTableInit::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouteTableInit::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    routeTableInit::MergeImpl
+    RouteTableInit::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*routeTableInit::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouteTableInit::GetClassData() const { return &_class_data_; }
 
-void routeTableInit::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void RouteTableInit::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<routeTableInit *>(to)->MergeFrom(
-      static_cast<const routeTableInit &>(from));
+  static_cast<RouteTableInit *>(to)->MergeFrom(
+      static_cast<const RouteTableInit &>(from));
 }
 
 
-void routeTableInit::MergeFrom(const routeTableInit& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.routeTableInit)
+void RouteTableInit::MergeFrom(const RouteTableInit& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.RouteTableInit)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3101,36 +2976,36 @@ void routeTableInit::MergeFrom(const routeTableInit& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void routeTableInit::CopyFrom(const routeTableInit& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.routeTableInit)
+void RouteTableInit::CopyFrom(const RouteTableInit& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.RouteTableInit)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool routeTableInit::IsInitialized() const {
+bool RouteTableInit::IsInitialized() const {
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(entry_))
     return false;
   return true;
 }
 
-void routeTableInit::InternalSwap(routeTableInit* other) {
+void RouteTableInit::InternalSwap(RouteTableInit* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   entry_.InternalSwap(&other->entry_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata routeTableInit::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouteTableInit::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[8]);
+      file_level_metadata_P2P_5fProtocol_2eproto[7]);
 }
 
 // ===================================================================
 
-class routeTableEntry::_Internal {
+class RouteTableEntry::_Internal {
  public:
-  using HasBits = decltype(std::declval<routeTableEntry>()._has_bits_);
+  using HasBits = decltype(std::declval<RouteTableEntry>()._has_bits_);
   static void set_has_hostname(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -3145,13 +3020,13 @@ class routeTableEntry::_Internal {
   }
 };
 
-routeTableEntry::routeTableEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+RouteTableEntry::RouteTableEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.routeTableEntry)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.RouteTableEntry)
 }
-routeTableEntry::routeTableEntry(const routeTableEntry& from)
+RouteTableEntry::RouteTableEntry(const RouteTableEntry& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -3172,10 +3047,10 @@ routeTableEntry::routeTableEntry(const routeTableEntry& from)
       GetArenaForAllocation());
   }
   hostnamehash_ = from.hostnamehash_;
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.routeTableEntry)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.RouteTableEntry)
 }
 
-inline void routeTableEntry::SharedCtor() {
+inline void RouteTableEntry::SharedCtor() {
 hostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   hostname_.Set("", GetArenaForAllocation());
@@ -3187,8 +3062,8 @@ port_.InitDefault();
 hostnamehash_ = int64_t{0};
 }
 
-routeTableEntry::~routeTableEntry() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.routeTableEntry)
+RouteTableEntry::~RouteTableEntry() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.RouteTableEntry)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3196,18 +3071,18 @@ routeTableEntry::~routeTableEntry() {
   SharedDtor();
 }
 
-inline void routeTableEntry::SharedDtor() {
+inline void RouteTableEntry::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   hostname_.Destroy();
   port_.Destroy();
 }
 
-void routeTableEntry::SetCachedSize(int size) const {
+void RouteTableEntry::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void routeTableEntry::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.routeTableEntry)
+void RouteTableEntry::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.RouteTableEntry)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3226,7 +3101,7 @@ void routeTableEntry::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* routeTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* RouteTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -3240,7 +3115,7 @@ const char* routeTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.routeTableEntry.hostname");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.RouteTableEntry.hostname");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -3252,7 +3127,7 @@ const char* routeTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.routeTableEntry.port");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.RouteTableEntry.port");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -3290,9 +3165,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* routeTableEntry::_InternalSerialize(
+uint8_t* RouteTableEntry::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.routeTableEntry)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.RouteTableEntry)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3302,7 +3177,7 @@ uint8_t* routeTableEntry::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_hostname().data(), static_cast<int>(this->_internal_hostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.routeTableEntry.hostname");
+      "p2pfilesharing.RouteTableEntry.hostname");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_hostname(), target);
   }
@@ -3312,7 +3187,7 @@ uint8_t* routeTableEntry::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_port().data(), static_cast<int>(this->_internal_port().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.routeTableEntry.port");
+      "p2pfilesharing.RouteTableEntry.port");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_port(), target);
   }
@@ -3327,12 +3202,12 @@ uint8_t* routeTableEntry::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.routeTableEntry)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.RouteTableEntry)
   return target;
 }
 
-size_t routeTableEntry::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.routeTableEntry)
+size_t RouteTableEntry::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.RouteTableEntry)
   size_t total_size = 0;
 
   if (_internal_has_hostname()) {
@@ -3356,8 +3231,8 @@ size_t routeTableEntry::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t routeTableEntry::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.routeTableEntry)
+size_t RouteTableEntry::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.RouteTableEntry)
   size_t total_size = 0;
 
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
@@ -3384,21 +3259,21 @@ size_t routeTableEntry::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData routeTableEntry::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouteTableEntry::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    routeTableEntry::MergeImpl
+    RouteTableEntry::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*routeTableEntry::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouteTableEntry::GetClassData() const { return &_class_data_; }
 
-void routeTableEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void RouteTableEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<routeTableEntry *>(to)->MergeFrom(
-      static_cast<const routeTableEntry &>(from));
+  static_cast<RouteTableEntry *>(to)->MergeFrom(
+      static_cast<const RouteTableEntry &>(from));
 }
 
 
-void routeTableEntry::MergeFrom(const routeTableEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.routeTableEntry)
+void RouteTableEntry::MergeFrom(const RouteTableEntry& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.RouteTableEntry)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3419,19 +3294,19 @@ void routeTableEntry::MergeFrom(const routeTableEntry& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void routeTableEntry::CopyFrom(const routeTableEntry& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.routeTableEntry)
+void RouteTableEntry::CopyFrom(const RouteTableEntry& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.RouteTableEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool routeTableEntry::IsInitialized() const {
+bool RouteTableEntry::IsInitialized() const {
   if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void routeTableEntry::InternalSwap(routeTableEntry* other) {
+void RouteTableEntry::InternalSwap(RouteTableEntry* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -3448,37 +3323,37 @@ void routeTableEntry::InternalSwap(routeTableEntry* other) {
   swap(hostnamehash_, other->hostnamehash_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata routeTableEntry::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouteTableEntry::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[9]);
+      file_level_metadata_P2P_5fProtocol_2eproto[8]);
 }
 
 // ===================================================================
 
-class fileTable::_Internal {
+class FileTable::_Internal {
  public:
 };
 
-fileTable::fileTable(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+FileTable::FileTable(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   entry_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.fileTable)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.FileTable)
 }
-fileTable::fileTable(const fileTable& from)
+FileTable::FileTable(const FileTable& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       entry_(from.entry_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.fileTable)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.FileTable)
 }
 
-inline void fileTable::SharedCtor() {
+inline void FileTable::SharedCtor() {
 }
 
-fileTable::~fileTable() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.fileTable)
+FileTable::~FileTable() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.FileTable)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3486,16 +3361,16 @@ fileTable::~fileTable() {
   SharedDtor();
 }
 
-inline void fileTable::SharedDtor() {
+inline void FileTable::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void fileTable::SetCachedSize(int size) const {
+void FileTable::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void fileTable::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.fileTable)
+void FileTable::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.FileTable)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3504,13 +3379,13 @@ void fileTable::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* fileTable::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* FileTable::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .p2pfilesharing.fileTableEntry entry = 1;
+      // repeated .p2pfilesharing.FileTableEntry entry = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -3546,13 +3421,13 @@ failure:
 #undef CHK_
 }
 
-uint8_t* fileTable::_InternalSerialize(
+uint8_t* FileTable::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.fileTable)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.FileTable)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.fileTableEntry entry = 1;
+  // repeated .p2pfilesharing.FileTableEntry entry = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_entry_size()); i < n; i++) {
     const auto& repfield = this->_internal_entry(i);
@@ -3564,19 +3439,19 @@ uint8_t* fileTable::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.fileTable)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.FileTable)
   return target;
 }
 
-size_t fileTable::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.fileTable)
+size_t FileTable::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.FileTable)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.fileTableEntry entry = 1;
+  // repeated .p2pfilesharing.FileTableEntry entry = 1;
   total_size += 1UL * this->_internal_entry_size();
   for (const auto& msg : this->entry_) {
     total_size +=
@@ -3586,21 +3461,21 @@ size_t fileTable::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData fileTable::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FileTable::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    fileTable::MergeImpl
+    FileTable::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*fileTable::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FileTable::GetClassData() const { return &_class_data_; }
 
-void fileTable::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void FileTable::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<fileTable *>(to)->MergeFrom(
-      static_cast<const fileTable &>(from));
+  static_cast<FileTable *>(to)->MergeFrom(
+      static_cast<const FileTable &>(from));
 }
 
 
-void fileTable::MergeFrom(const fileTable& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.fileTable)
+void FileTable::MergeFrom(const FileTable& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.FileTable)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3609,36 +3484,36 @@ void fileTable::MergeFrom(const fileTable& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void fileTable::CopyFrom(const fileTable& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.fileTable)
+void FileTable::CopyFrom(const FileTable& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.FileTable)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool fileTable::IsInitialized() const {
+bool FileTable::IsInitialized() const {
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(entry_))
     return false;
   return true;
 }
 
-void fileTable::InternalSwap(fileTable* other) {
+void FileTable::InternalSwap(FileTable* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   entry_.InternalSwap(&other->entry_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata fileTable::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata FileTable::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
-      file_level_metadata_P2P_5fProtocol_2eproto[10]);
+      file_level_metadata_P2P_5fProtocol_2eproto[9]);
 }
 
 // ===================================================================
 
-class fileTableEntry::_Internal {
+class FileTableEntry::_Internal {
  public:
-  using HasBits = decltype(std::declval<fileTableEntry>()._has_bits_);
+  using HasBits = decltype(std::declval<FileTableEntry>()._has_bits_);
   static void set_has_filenamehash(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
@@ -3653,13 +3528,13 @@ class fileTableEntry::_Internal {
   }
 };
 
-fileTableEntry::fileTableEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+FileTableEntry::FileTableEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.fileTableEntry)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.FileTableEntry)
 }
-fileTableEntry::fileTableEntry(const fileTableEntry& from)
+FileTableEntry::FileTableEntry(const FileTableEntry& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -3680,10 +3555,10 @@ fileTableEntry::fileTableEntry(const fileTableEntry& from)
       GetArenaForAllocation());
   }
   filenamehash_ = from.filenamehash_;
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.fileTableEntry)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.FileTableEntry)
 }
 
-inline void fileTableEntry::SharedCtor() {
+inline void FileTableEntry::SharedCtor() {
 ownerhostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   ownerhostname_.Set("", GetArenaForAllocation());
@@ -3695,8 +3570,8 @@ ownerport_.InitDefault();
 filenamehash_ = int64_t{0};
 }
 
-fileTableEntry::~fileTableEntry() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.fileTableEntry)
+FileTableEntry::~FileTableEntry() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.FileTableEntry)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3704,18 +3579,18 @@ fileTableEntry::~fileTableEntry() {
   SharedDtor();
 }
 
-inline void fileTableEntry::SharedDtor() {
+inline void FileTableEntry::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   ownerhostname_.Destroy();
   ownerport_.Destroy();
 }
 
-void fileTableEntry::SetCachedSize(int size) const {
+void FileTableEntry::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void fileTableEntry::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.fileTableEntry)
+void FileTableEntry::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.FileTableEntry)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3734,7 +3609,7 @@ void fileTableEntry::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* fileTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* FileTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -3757,7 +3632,7 @@ const char* fileTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileTableEntry.ownerhostname");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.FileTableEntry.ownerhostname");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -3769,7 +3644,7 @@ const char* fileTableEntry::_InternalParse(const char* ptr, ::_pbi::ParseContext
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           #ifndef NDEBUG
-          ::_pbi::VerifyUTF8(str, "p2pfilesharing.fileTableEntry.ownerport");
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.FileTableEntry.ownerport");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -3798,9 +3673,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* fileTableEntry::_InternalSerialize(
+uint8_t* FileTableEntry::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.fileTableEntry)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.FileTableEntry)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3816,7 +3691,7 @@ uint8_t* fileTableEntry::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerhostname().data(), static_cast<int>(this->_internal_ownerhostname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileTableEntry.ownerhostname");
+      "p2pfilesharing.FileTableEntry.ownerhostname");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_ownerhostname(), target);
   }
@@ -3826,7 +3701,7 @@ uint8_t* fileTableEntry::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       this->_internal_ownerport().data(), static_cast<int>(this->_internal_ownerport().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "p2pfilesharing.fileTableEntry.ownerport");
+      "p2pfilesharing.FileTableEntry.ownerport");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_ownerport(), target);
   }
@@ -3835,12 +3710,12 @@ uint8_t* fileTableEntry::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.fileTableEntry)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.FileTableEntry)
   return target;
 }
 
-size_t fileTableEntry::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.fileTableEntry)
+size_t FileTableEntry::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:p2pfilesharing.FileTableEntry)
   size_t total_size = 0;
 
   if (_internal_has_ownerhostname()) {
@@ -3864,8 +3739,8 @@ size_t fileTableEntry::RequiredFieldsByteSizeFallback() const {
 
   return total_size;
 }
-size_t fileTableEntry::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.fileTableEntry)
+size_t FileTableEntry::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.FileTableEntry)
   size_t total_size = 0;
 
   if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
@@ -3892,21 +3767,21 @@ size_t fileTableEntry::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData fileTableEntry::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData FileTableEntry::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    fileTableEntry::MergeImpl
+    FileTableEntry::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*fileTableEntry::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*FileTableEntry::GetClassData() const { return &_class_data_; }
 
-void fileTableEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void FileTableEntry::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<fileTableEntry *>(to)->MergeFrom(
-      static_cast<const fileTableEntry &>(from));
+  static_cast<FileTableEntry *>(to)->MergeFrom(
+      static_cast<const FileTableEntry &>(from));
 }
 
 
-void fileTableEntry::MergeFrom(const fileTableEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.fileTableEntry)
+void FileTableEntry::MergeFrom(const FileTableEntry& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.FileTableEntry)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3927,19 +3802,19 @@ void fileTableEntry::MergeFrom(const fileTableEntry& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void fileTableEntry::CopyFrom(const fileTableEntry& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.fileTableEntry)
+void FileTableEntry::CopyFrom(const FileTableEntry& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.FileTableEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool fileTableEntry::IsInitialized() const {
+bool FileTableEntry::IsInitialized() const {
   if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
-void fileTableEntry::InternalSwap(fileTableEntry* other) {
+void FileTableEntry::InternalSwap(FileTableEntry* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -3956,7 +3831,187 @@ void fileTableEntry::InternalSwap(fileTableEntry* other) {
   swap(filenamehash_, other->filenamehash_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata fileTableEntry::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata FileTableEntry::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
+      file_level_metadata_P2P_5fProtocol_2eproto[10]);
+}
+
+// ===================================================================
+
+class RouteInsertRequest::_Internal {
+ public:
+};
+
+RouteInsertRequest::RouteInsertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  entry_(arena) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.RouteInsertRequest)
+}
+RouteInsertRequest::RouteInsertRequest(const RouteInsertRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      entry_(from.entry_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.RouteInsertRequest)
+}
+
+inline void RouteInsertRequest::SharedCtor() {
+}
+
+RouteInsertRequest::~RouteInsertRequest() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.RouteInsertRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RouteInsertRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void RouteInsertRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void RouteInsertRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.RouteInsertRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  entry_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RouteInsertRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .p2pfilesharing.RouteTableEntry entry = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_entry(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RouteInsertRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.RouteInsertRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_entry_size()); i < n; i++) {
+    const auto& repfield = this->_internal_entry(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.RouteInsertRequest)
+  return target;
+}
+
+size_t RouteInsertRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.RouteInsertRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
+  total_size += 1UL * this->_internal_entry_size();
+  for (const auto& msg : this->entry_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouteInsertRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    RouteInsertRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouteInsertRequest::GetClassData() const { return &_class_data_; }
+
+void RouteInsertRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<RouteInsertRequest *>(to)->MergeFrom(
+      static_cast<const RouteInsertRequest &>(from));
+}
+
+
+void RouteInsertRequest::MergeFrom(const RouteInsertRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.RouteInsertRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  entry_.MergeFrom(from.entry_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RouteInsertRequest::CopyFrom(const RouteInsertRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.RouteInsertRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RouteInsertRequest::IsInitialized() const {
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(entry_))
+    return false;
+  return true;
+}
+
+void RouteInsertRequest::InternalSwap(RouteInsertRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  entry_.InternalSwap(&other->entry_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RouteInsertRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
       file_level_metadata_P2P_5fProtocol_2eproto[11]);
@@ -3964,29 +4019,29 @@ void fileTableEntry::InternalSwap(fileTableEntry* other) {
 
 // ===================================================================
 
-class routeInsertRequest::_Internal {
+class RouteDeleteRequest::_Internal {
  public:
 };
 
-routeInsertRequest::routeInsertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+RouteDeleteRequest::RouteDeleteRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   entry_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.routeInsertRequest)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.RouteDeleteRequest)
 }
-routeInsertRequest::routeInsertRequest(const routeInsertRequest& from)
+RouteDeleteRequest::RouteDeleteRequest(const RouteDeleteRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       entry_(from.entry_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.routeInsertRequest)
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.RouteDeleteRequest)
 }
 
-inline void routeInsertRequest::SharedCtor() {
+inline void RouteDeleteRequest::SharedCtor() {
 }
 
-routeInsertRequest::~routeInsertRequest() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.routeInsertRequest)
+RouteDeleteRequest::~RouteDeleteRequest() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.RouteDeleteRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3994,16 +4049,16 @@ routeInsertRequest::~routeInsertRequest() {
   SharedDtor();
 }
 
-inline void routeInsertRequest::SharedDtor() {
+inline void RouteDeleteRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void routeInsertRequest::SetCachedSize(int size) const {
+void RouteDeleteRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void routeInsertRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.routeInsertRequest)
+void RouteDeleteRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.RouteDeleteRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4012,13 +4067,13 @@ void routeInsertRequest::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* routeInsertRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* RouteDeleteRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .p2pfilesharing.routeTableEntry entry = 1;
+      // repeated .p2pfilesharing.RouteTableEntry entry = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -4054,13 +4109,13 @@ failure:
 #undef CHK_
 }
 
-uint8_t* routeInsertRequest::_InternalSerialize(
+uint8_t* RouteDeleteRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.routeInsertRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.RouteDeleteRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_entry_size()); i < n; i++) {
     const auto& repfield = this->_internal_entry(i);
@@ -4072,19 +4127,19 @@ uint8_t* routeInsertRequest::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.routeInsertRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.RouteDeleteRequest)
   return target;
 }
 
-size_t routeInsertRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.routeInsertRequest)
+size_t RouteDeleteRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.RouteDeleteRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
+  // repeated .p2pfilesharing.RouteTableEntry entry = 1;
   total_size += 1UL * this->_internal_entry_size();
   for (const auto& msg : this->entry_) {
     total_size +=
@@ -4094,21 +4149,21 @@ size_t routeInsertRequest::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData routeInsertRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouteDeleteRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    routeInsertRequest::MergeImpl
+    RouteDeleteRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*routeInsertRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouteDeleteRequest::GetClassData() const { return &_class_data_; }
 
-void routeInsertRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void RouteDeleteRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<routeInsertRequest *>(to)->MergeFrom(
-      static_cast<const routeInsertRequest &>(from));
+  static_cast<RouteDeleteRequest *>(to)->MergeFrom(
+      static_cast<const RouteDeleteRequest &>(from));
 }
 
 
-void routeInsertRequest::MergeFrom(const routeInsertRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.routeInsertRequest)
+void RouteDeleteRequest::MergeFrom(const RouteDeleteRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.RouteDeleteRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -4117,26 +4172,26 @@ void routeInsertRequest::MergeFrom(const routeInsertRequest& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void routeInsertRequest::CopyFrom(const routeInsertRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.routeInsertRequest)
+void RouteDeleteRequest::CopyFrom(const RouteDeleteRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.RouteDeleteRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool routeInsertRequest::IsInitialized() const {
+bool RouteDeleteRequest::IsInitialized() const {
   if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(entry_))
     return false;
   return true;
 }
 
-void routeInsertRequest::InternalSwap(routeInsertRequest* other) {
+void RouteDeleteRequest::InternalSwap(RouteDeleteRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   entry_.InternalSwap(&other->entry_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata routeInsertRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouteDeleteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
       file_level_metadata_P2P_5fProtocol_2eproto[12]);
@@ -4144,29 +4199,131 @@ void routeInsertRequest::InternalSwap(routeInsertRequest* other) {
 
 // ===================================================================
 
-class routeDeleteRequest::_Internal {
+class NodeRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<NodeRequest>()._has_bits_);
+  static void set_has_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static const ::p2pfilesharing::AddFileRequest& addfile(const NodeRequest* msg);
+  static void set_has_addfile(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::p2pfilesharing::LookupFileRequest& lookup(const NodeRequest* msg);
+  static void set_has_lookup(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::p2pfilesharing::DeleteFileRequest& delete_(const NodeRequest* msg);
+  static void set_has_delete_(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static const ::p2pfilesharing::DownloadRequest& download(const NodeRequest* msg);
+  static void set_has_download(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static const ::p2pfilesharing::JoinRequest& join(const NodeRequest* msg);
+  static void set_has_join(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static const ::p2pfilesharing::RouteInsertRequest& insertroute(const NodeRequest* msg);
+  static void set_has_insertroute(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static const ::p2pfilesharing::RouteDeleteRequest& deleteroute(const NodeRequest* msg);
+  static void set_has_deleteroute(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000080) ^ 0x00000080) != 0;
+  }
 };
 
-routeDeleteRequest::routeDeleteRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+const ::p2pfilesharing::AddFileRequest&
+NodeRequest::_Internal::addfile(const NodeRequest* msg) {
+  return *msg->addfile_;
+}
+const ::p2pfilesharing::LookupFileRequest&
+NodeRequest::_Internal::lookup(const NodeRequest* msg) {
+  return *msg->lookup_;
+}
+const ::p2pfilesharing::DeleteFileRequest&
+NodeRequest::_Internal::delete_(const NodeRequest* msg) {
+  return *msg->delete__;
+}
+const ::p2pfilesharing::DownloadRequest&
+NodeRequest::_Internal::download(const NodeRequest* msg) {
+  return *msg->download_;
+}
+const ::p2pfilesharing::JoinRequest&
+NodeRequest::_Internal::join(const NodeRequest* msg) {
+  return *msg->join_;
+}
+const ::p2pfilesharing::RouteInsertRequest&
+NodeRequest::_Internal::insertroute(const NodeRequest* msg) {
+  return *msg->insertroute_;
+}
+const ::p2pfilesharing::RouteDeleteRequest&
+NodeRequest::_Internal::deleteroute(const NodeRequest* msg) {
+  return *msg->deleteroute_;
+}
+NodeRequest::NodeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  entry_(arena) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.routeDeleteRequest)
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.NodeRequest)
 }
-routeDeleteRequest::routeDeleteRequest(const routeDeleteRequest& from)
+NodeRequest::NodeRequest(const NodeRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      entry_(from.entry_) {
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.routeDeleteRequest)
+  if (from._internal_has_addfile()) {
+    addfile_ = new ::p2pfilesharing::AddFileRequest(*from.addfile_);
+  } else {
+    addfile_ = nullptr;
+  }
+  if (from._internal_has_lookup()) {
+    lookup_ = new ::p2pfilesharing::LookupFileRequest(*from.lookup_);
+  } else {
+    lookup_ = nullptr;
+  }
+  if (from._internal_has_delete_()) {
+    delete__ = new ::p2pfilesharing::DeleteFileRequest(*from.delete__);
+  } else {
+    delete__ = nullptr;
+  }
+  if (from._internal_has_download()) {
+    download_ = new ::p2pfilesharing::DownloadRequest(*from.download_);
+  } else {
+    download_ = nullptr;
+  }
+  if (from._internal_has_join()) {
+    join_ = new ::p2pfilesharing::JoinRequest(*from.join_);
+  } else {
+    join_ = nullptr;
+  }
+  if (from._internal_has_insertroute()) {
+    insertroute_ = new ::p2pfilesharing::RouteInsertRequest(*from.insertroute_);
+  } else {
+    insertroute_ = nullptr;
+  }
+  if (from._internal_has_deleteroute()) {
+    deleteroute_ = new ::p2pfilesharing::RouteDeleteRequest(*from.deleteroute_);
+  } else {
+    deleteroute_ = nullptr;
+  }
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.NodeRequest)
 }
 
-inline void routeDeleteRequest::SharedCtor() {
+inline void NodeRequest::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&addfile_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&addfile_)) + sizeof(type_));
 }
 
-routeDeleteRequest::~routeDeleteRequest() {
-  // @@protoc_insertion_point(destructor:p2pfilesharing.routeDeleteRequest)
+NodeRequest::~NodeRequest() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.NodeRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -4174,40 +4331,132 @@ routeDeleteRequest::~routeDeleteRequest() {
   SharedDtor();
 }
 
-inline void routeDeleteRequest::SharedDtor() {
+inline void NodeRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete addfile_;
+  if (this != internal_default_instance()) delete lookup_;
+  if (this != internal_default_instance()) delete delete__;
+  if (this != internal_default_instance()) delete download_;
+  if (this != internal_default_instance()) delete join_;
+  if (this != internal_default_instance()) delete insertroute_;
+  if (this != internal_default_instance()) delete deleteroute_;
 }
 
-void routeDeleteRequest::SetCachedSize(int size) const {
+void NodeRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void routeDeleteRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:p2pfilesharing.routeDeleteRequest)
+void NodeRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.NodeRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  entry_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000007fu) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(addfile_ != nullptr);
+      addfile_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(lookup_ != nullptr);
+      lookup_->Clear();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      GOOGLE_DCHECK(delete__ != nullptr);
+      delete__->Clear();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(download_ != nullptr);
+      download_->Clear();
+    }
+    if (cached_has_bits & 0x00000010u) {
+      GOOGLE_DCHECK(join_ != nullptr);
+      join_->Clear();
+    }
+    if (cached_has_bits & 0x00000020u) {
+      GOOGLE_DCHECK(insertroute_ != nullptr);
+      insertroute_->Clear();
+    }
+    if (cached_has_bits & 0x00000040u) {
+      GOOGLE_DCHECK(deleteroute_ != nullptr);
+      deleteroute_->Clear();
+    }
+  }
+  type_ = int64_t{0};
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* routeDeleteRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* NodeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .p2pfilesharing.routeTableEntry entry = 1;
+      // required int64 type = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_entry(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_type(&has_bits);
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.AddFileRequest addfile = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_addfile(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.LookupFileRequest lookup = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_lookup(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_delete_(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.DownloadRequest download = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_download(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.JoinRequest join = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_join(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.RouteInsertRequest insertroute = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          ptr = ctx->ParseMessage(_internal_mutable_insertroute(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.RouteDeleteRequest deleteroute = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          ptr = ctx->ParseMessage(_internal_mutable_deleteroute(), ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -4227,6 +4476,7 @@ const char* routeDeleteRequest::_InternalParse(const char* ptr, ::_pbi::ParseCon
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -4234,92 +4484,629 @@ failure:
 #undef CHK_
 }
 
-uint8_t* routeDeleteRequest::_InternalSerialize(
+uint8_t* NodeRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.routeDeleteRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.NodeRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
-  for (unsigned i = 0,
-      n = static_cast<unsigned>(this->_internal_entry_size()); i < n; i++) {
-    const auto& repfield = this->_internal_entry(i);
+  cached_has_bits = _has_bits_[0];
+  // required int64 type = 1;
+  if (cached_has_bits & 0x00000080u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_type(), target);
+  }
+
+  // optional .p2pfilesharing.AddFileRequest addfile = 2;
+  if (cached_has_bits & 0x00000001u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+      InternalWriteMessage(2, _Internal::addfile(this),
+        _Internal::addfile(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.LookupFileRequest lookup = 3;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::lookup(this),
+        _Internal::lookup(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::delete_(this),
+        _Internal::delete_(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.DownloadRequest download = 5;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(5, _Internal::download(this),
+        _Internal::download(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.JoinRequest join = 6;
+  if (cached_has_bits & 0x00000010u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::join(this),
+        _Internal::join(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.RouteInsertRequest insertroute = 7;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(7, _Internal::insertroute(this),
+        _Internal::insertroute(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.RouteDeleteRequest deleteroute = 8;
+  if (cached_has_bits & 0x00000040u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(8, _Internal::deleteroute(this),
+        _Internal::deleteroute(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.routeDeleteRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.NodeRequest)
   return target;
 }
 
-size_t routeDeleteRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.routeDeleteRequest)
+size_t NodeRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.NodeRequest)
   size_t total_size = 0;
 
+  // required int64 type = 1;
+  if (_internal_has_type()) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_type());
+  }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .p2pfilesharing.routeTableEntry entry = 1;
-  total_size += 1UL * this->_internal_entry_size();
-  for (const auto& msg : this->entry_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
-  }
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000007fu) {
+    // optional .p2pfilesharing.AddFileRequest addfile = 2;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *addfile_);
+    }
 
+    // optional .p2pfilesharing.LookupFileRequest lookup = 3;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *lookup_);
+    }
+
+    // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *delete__);
+    }
+
+    // optional .p2pfilesharing.DownloadRequest download = 5;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *download_);
+    }
+
+    // optional .p2pfilesharing.JoinRequest join = 6;
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *join_);
+    }
+
+    // optional .p2pfilesharing.RouteInsertRequest insertroute = 7;
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *insertroute_);
+    }
+
+    // optional .p2pfilesharing.RouteDeleteRequest deleteroute = 8;
+    if (cached_has_bits & 0x00000040u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *deleteroute_);
+    }
+
+  }
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData routeDeleteRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NodeRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    routeDeleteRequest::MergeImpl
+    NodeRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*routeDeleteRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NodeRequest::GetClassData() const { return &_class_data_; }
 
-void routeDeleteRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void NodeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<routeDeleteRequest *>(to)->MergeFrom(
-      static_cast<const routeDeleteRequest &>(from));
+  static_cast<NodeRequest *>(to)->MergeFrom(
+      static_cast<const NodeRequest &>(from));
 }
 
 
-void routeDeleteRequest::MergeFrom(const routeDeleteRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.routeDeleteRequest)
+void NodeRequest::MergeFrom(const NodeRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.NodeRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  entry_.MergeFrom(from.entry_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_mutable_addfile()->::p2pfilesharing::AddFileRequest::MergeFrom(from._internal_addfile());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _internal_mutable_lookup()->::p2pfilesharing::LookupFileRequest::MergeFrom(from._internal_lookup());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _internal_mutable_delete_()->::p2pfilesharing::DeleteFileRequest::MergeFrom(from._internal_delete_());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _internal_mutable_download()->::p2pfilesharing::DownloadRequest::MergeFrom(from._internal_download());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _internal_mutable_join()->::p2pfilesharing::JoinRequest::MergeFrom(from._internal_join());
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _internal_mutable_insertroute()->::p2pfilesharing::RouteInsertRequest::MergeFrom(from._internal_insertroute());
+    }
+    if (cached_has_bits & 0x00000040u) {
+      _internal_mutable_deleteroute()->::p2pfilesharing::RouteDeleteRequest::MergeFrom(from._internal_deleteroute());
+    }
+    if (cached_has_bits & 0x00000080u) {
+      type_ = from.type_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void routeDeleteRequest::CopyFrom(const routeDeleteRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.routeDeleteRequest)
+void NodeRequest::CopyFrom(const NodeRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.NodeRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool routeDeleteRequest::IsInitialized() const {
-  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(entry_))
-    return false;
+bool NodeRequest::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_internal_has_addfile()) {
+    if (!addfile_->IsInitialized()) return false;
+  }
+  if (_internal_has_lookup()) {
+    if (!lookup_->IsInitialized()) return false;
+  }
+  if (_internal_has_delete_()) {
+    if (!delete__->IsInitialized()) return false;
+  }
+  if (_internal_has_download()) {
+    if (!download_->IsInitialized()) return false;
+  }
+  if (_internal_has_join()) {
+    if (!join_->IsInitialized()) return false;
+  }
+  if (_internal_has_insertroute()) {
+    if (!insertroute_->IsInitialized()) return false;
+  }
+  if (_internal_has_deleteroute()) {
+    if (!deleteroute_->IsInitialized()) return false;
+  }
   return true;
 }
 
-void routeDeleteRequest::InternalSwap(routeDeleteRequest* other) {
+void NodeRequest::InternalSwap(NodeRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  entry_.InternalSwap(&other->entry_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NodeRequest, type_)
+      + sizeof(NodeRequest::type_)
+      - PROTOBUF_FIELD_OFFSET(NodeRequest, addfile_)>(
+          reinterpret_cast<char*>(&addfile_),
+          reinterpret_cast<char*>(&other->addfile_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata routeDeleteRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata NodeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
       file_level_metadata_P2P_5fProtocol_2eproto[13]);
+}
+
+// ===================================================================
+
+class NodeResponse::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NodeResponse>()._has_bits_);
+  static void set_has_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static const ::p2pfilesharing::LookupFileResponse& lookup(const NodeResponse* msg);
+  static void set_has_lookup(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::p2pfilesharing::FileInfoResponse& fileinforsp(const NodeResponse* msg);
+  static void set_has_fileinforsp(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::p2pfilesharing::RouteTableInit& routeinit(const NodeResponse* msg);
+  static void set_has_routeinit(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static const ::p2pfilesharing::FileTable& filetable(const NodeResponse* msg);
+  static void set_has_filetable(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000010) ^ 0x00000010) != 0;
+  }
+};
+
+const ::p2pfilesharing::LookupFileResponse&
+NodeResponse::_Internal::lookup(const NodeResponse* msg) {
+  return *msg->lookup_;
+}
+const ::p2pfilesharing::FileInfoResponse&
+NodeResponse::_Internal::fileinforsp(const NodeResponse* msg) {
+  return *msg->fileinforsp_;
+}
+const ::p2pfilesharing::RouteTableInit&
+NodeResponse::_Internal::routeinit(const NodeResponse* msg) {
+  return *msg->routeinit_;
+}
+const ::p2pfilesharing::FileTable&
+NodeResponse::_Internal::filetable(const NodeResponse* msg) {
+  return *msg->filetable_;
+}
+NodeResponse::NodeResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:p2pfilesharing.NodeResponse)
+}
+NodeResponse::NodeResponse(const NodeResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_lookup()) {
+    lookup_ = new ::p2pfilesharing::LookupFileResponse(*from.lookup_);
+  } else {
+    lookup_ = nullptr;
+  }
+  if (from._internal_has_fileinforsp()) {
+    fileinforsp_ = new ::p2pfilesharing::FileInfoResponse(*from.fileinforsp_);
+  } else {
+    fileinforsp_ = nullptr;
+  }
+  if (from._internal_has_routeinit()) {
+    routeinit_ = new ::p2pfilesharing::RouteTableInit(*from.routeinit_);
+  } else {
+    routeinit_ = nullptr;
+  }
+  if (from._internal_has_filetable()) {
+    filetable_ = new ::p2pfilesharing::FileTable(*from.filetable_);
+  } else {
+    filetable_ = nullptr;
+  }
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:p2pfilesharing.NodeResponse)
+}
+
+inline void NodeResponse::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&lookup_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&lookup_)) + sizeof(type_));
+}
+
+NodeResponse::~NodeResponse() {
+  // @@protoc_insertion_point(destructor:p2pfilesharing.NodeResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NodeResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete lookup_;
+  if (this != internal_default_instance()) delete fileinforsp_;
+  if (this != internal_default_instance()) delete routeinit_;
+  if (this != internal_default_instance()) delete filetable_;
+}
+
+void NodeResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void NodeResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:p2pfilesharing.NodeResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(lookup_ != nullptr);
+      lookup_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(fileinforsp_ != nullptr);
+      fileinforsp_->Clear();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      GOOGLE_DCHECK(routeinit_ != nullptr);
+      routeinit_->Clear();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(filetable_ != nullptr);
+      filetable_->Clear();
+    }
+  }
+  type_ = int64_t{0};
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NodeResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required int64 type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_type(&has_bits);
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.LookupFileResponse lookup = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_lookup(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.FileInfoResponse fileinforsp = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_fileinforsp(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.RouteTableInit routeinit = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_routeinit(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .p2pfilesharing.FileTable filetable = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_filetable(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NodeResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:p2pfilesharing.NodeResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required int64 type = 1;
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_type(), target);
+  }
+
+  // optional .p2pfilesharing.LookupFileResponse lookup = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::lookup(this),
+        _Internal::lookup(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.FileInfoResponse fileinforsp = 3;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::fileinforsp(this),
+        _Internal::fileinforsp(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.RouteTableInit routeinit = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::routeinit(this),
+        _Internal::routeinit(this).GetCachedSize(), target, stream);
+  }
+
+  // optional .p2pfilesharing.FileTable filetable = 5;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(5, _Internal::filetable(this),
+        _Internal::filetable(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:p2pfilesharing.NodeResponse)
+  return target;
+}
+
+size_t NodeResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.NodeResponse)
+  size_t total_size = 0;
+
+  // required int64 type = 1;
+  if (_internal_has_type()) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_type());
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    // optional .p2pfilesharing.LookupFileResponse lookup = 2;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *lookup_);
+    }
+
+    // optional .p2pfilesharing.FileInfoResponse fileinforsp = 3;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *fileinforsp_);
+    }
+
+    // optional .p2pfilesharing.RouteTableInit routeinit = 4;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *routeinit_);
+    }
+
+    // optional .p2pfilesharing.FileTable filetable = 5;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *filetable_);
+    }
+
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NodeResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    NodeResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NodeResponse::GetClassData() const { return &_class_data_; }
+
+void NodeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<NodeResponse *>(to)->MergeFrom(
+      static_cast<const NodeResponse &>(from));
+}
+
+
+void NodeResponse::MergeFrom(const NodeResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:p2pfilesharing.NodeResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x0000001fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_mutable_lookup()->::p2pfilesharing::LookupFileResponse::MergeFrom(from._internal_lookup());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _internal_mutable_fileinforsp()->::p2pfilesharing::FileInfoResponse::MergeFrom(from._internal_fileinforsp());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _internal_mutable_routeinit()->::p2pfilesharing::RouteTableInit::MergeFrom(from._internal_routeinit());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _internal_mutable_filetable()->::p2pfilesharing::FileTable::MergeFrom(from._internal_filetable());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      type_ = from.type_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NodeResponse::CopyFrom(const NodeResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:p2pfilesharing.NodeResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NodeResponse::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_internal_has_lookup()) {
+    if (!lookup_->IsInitialized()) return false;
+  }
+  if (_internal_has_fileinforsp()) {
+    if (!fileinforsp_->IsInitialized()) return false;
+  }
+  if (_internal_has_routeinit()) {
+    if (!routeinit_->IsInitialized()) return false;
+  }
+  if (_internal_has_filetable()) {
+    if (!filetable_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void NodeResponse::InternalSwap(NodeResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NodeResponse, type_)
+      + sizeof(NodeResponse::type_)
+      - PROTOBUF_FIELD_OFFSET(NodeResponse, lookup_)>(
+          reinterpret_cast<char*>(&lookup_),
+          reinterpret_cast<char*>(&other->lookup_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NodeResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_P2P_5fProtocol_2eproto_getter, &descriptor_table_P2P_5fProtocol_2eproto_once,
+      file_level_metadata_P2P_5fProtocol_2eproto[14]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -4341,45 +5128,49 @@ template<> PROTOBUF_NOINLINE ::p2pfilesharing::LookupFileResponse*
 Arena::CreateMaybeMessage< ::p2pfilesharing::LookupFileResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::p2pfilesharing::LookupFileResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::fileInfoRequest*
-Arena::CreateMaybeMessage< ::p2pfilesharing::fileInfoRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::fileInfoRequest >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::FileInfoResponse*
+Arena::CreateMaybeMessage< ::p2pfilesharing::FileInfoResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::FileInfoResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::fileInfoResponse*
-Arena::CreateMaybeMessage< ::p2pfilesharing::fileInfoResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::fileInfoResponse >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::DownloadRequest*
+Arena::CreateMaybeMessage< ::p2pfilesharing::DownloadRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::DownloadRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::downloadRequest*
-Arena::CreateMaybeMessage< ::p2pfilesharing::downloadRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::downloadRequest >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::JoinRequest*
+Arena::CreateMaybeMessage< ::p2pfilesharing::JoinRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::JoinRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::joinRequest*
-Arena::CreateMaybeMessage< ::p2pfilesharing::joinRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::joinRequest >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::RouteTableInit*
+Arena::CreateMaybeMessage< ::p2pfilesharing::RouteTableInit >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::RouteTableInit >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::routeTableInit*
-Arena::CreateMaybeMessage< ::p2pfilesharing::routeTableInit >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::routeTableInit >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::RouteTableEntry*
+Arena::CreateMaybeMessage< ::p2pfilesharing::RouteTableEntry >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::RouteTableEntry >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::routeTableEntry*
-Arena::CreateMaybeMessage< ::p2pfilesharing::routeTableEntry >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::routeTableEntry >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::FileTable*
+Arena::CreateMaybeMessage< ::p2pfilesharing::FileTable >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::FileTable >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::fileTable*
-Arena::CreateMaybeMessage< ::p2pfilesharing::fileTable >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::fileTable >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::FileTableEntry*
+Arena::CreateMaybeMessage< ::p2pfilesharing::FileTableEntry >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::FileTableEntry >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::fileTableEntry*
-Arena::CreateMaybeMessage< ::p2pfilesharing::fileTableEntry >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::fileTableEntry >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::RouteInsertRequest*
+Arena::CreateMaybeMessage< ::p2pfilesharing::RouteInsertRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::RouteInsertRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::routeInsertRequest*
-Arena::CreateMaybeMessage< ::p2pfilesharing::routeInsertRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::routeInsertRequest >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::RouteDeleteRequest*
+Arena::CreateMaybeMessage< ::p2pfilesharing::RouteDeleteRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::RouteDeleteRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::p2pfilesharing::routeDeleteRequest*
-Arena::CreateMaybeMessage< ::p2pfilesharing::routeDeleteRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::p2pfilesharing::routeDeleteRequest >(arena);
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::NodeRequest*
+Arena::CreateMaybeMessage< ::p2pfilesharing::NodeRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::NodeRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::p2pfilesharing::NodeResponse*
+Arena::CreateMaybeMessage< ::p2pfilesharing::NodeResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::p2pfilesharing::NodeResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
