@@ -26,11 +26,12 @@ class Node {
       fingerTable;                             //((hostname, port), node hash)
   unordered_map<digest_t, contactInfo_t> DHT;  // file hash --> (hostname, port)
   unordered_map<digest_t, string> localFiles;  // file hash --> file name
+  digest_t local_start; // file hash for the first file that the node is responsible to, this should equals to its predecessor's hash + 1
+  digest_t my_hash;
 
  public:
   contactInfo_t entryNode;
   hostname_t my_hostname;
-  digest_t my_hash;
 
  private:
   Node();
@@ -50,7 +51,6 @@ class Node {
 
   /***** Lookup Related *****/
   private:
-    digest_t local_start; // file hash for the first file that the node is responsible to, this should equals to its predecessor's hash + 1
     pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); // port for the user interface thread, default should be my_config::user_interface_port_num 
     
     void lookup_req_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
