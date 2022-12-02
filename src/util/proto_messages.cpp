@@ -35,3 +35,15 @@ NodeRequest generate_lookup_request(digest_t hash, const string & hostname, cons
   node_req.set_allocated_lookup(req);
   return node_req;
 }
+
+
+NodeRequest generate_download_request(digest_t hash, const string & hostname, const string & port) {
+  NodeRequest node_req;
+  node_req.set_type(5);
+  DownloadRequest * req = new DownloadRequest();
+  req->set_filenamehash(hash);
+  req->set_sourcehostname(hostname);
+  req->set_sourceport(port);
+  node_req.set_allocated_download(req);
+  return node_req;
+}

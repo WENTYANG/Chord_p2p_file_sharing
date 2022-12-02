@@ -53,15 +53,15 @@ class Node {
   private:
     pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); // port for the user interface thread, default should be my_config::user_interface_port_num 
     
-    void lookup_req_handle(LookupFileRequest req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
+    void lookup_req_handle(const LookupFileRequest& req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
     void lookup(digest_t hash, const string & port, bool * does_exist, contactInfo_t * successor, contactInfo_t * owner); 
     
     bool is_responsible_to(digest_t file_hash);
     contactInfo_t get_next_hop_info(digest_t hash);
   /***** Download Related *****/
   private:
-    void download_handle(DownloadRequest& req);
-    void download(string file_name);
+    void download_req_handle(const DownloadRequest& req);
+    void download(const string& file_name);
 };
   
 

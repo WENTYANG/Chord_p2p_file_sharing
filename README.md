@@ -40,3 +40,5 @@ contact point为node加入circle时第一个联系的random node，若contact po
 ## Lookup:
 调用lookup_successor()可以获得hashvalue的successor，其他部分应该用到这个函数
 
+## Download:
+localFiles 保存在 ./shared_file 路径下，下载的文件保存在 ./download_file 路径下

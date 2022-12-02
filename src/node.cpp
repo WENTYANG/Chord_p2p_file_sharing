@@ -46,7 +46,12 @@ void Node::run_server() {
           break;
         case 5: 
           // DownloadRequest ky99
+        {  
+          const DownloadRequest& d_req = request.download();
+          thread t = thread(&Node::download_req_handle, this, d_req);
+          t.detach();
           break;
+        }
         case 6:
           // JoinRequest jz399
           break;
@@ -123,7 +128,13 @@ void Node::run_user_terminal_interface() {
       }
       case 4:
         // TODO: ky99 这里调用lookup file, 然后downlod file
+      {
+        cout << "Please enter the name of the file you are looking for \n\n";
+        string file_name;
+        cin >> file_name;
+        download(file_name);
         break;
+      }
       case 5:
         // TODO: jz399 这里调用节点退出函数
         exit(EXIT_SUCCESS);
@@ -134,7 +145,7 @@ void Node::run_user_terminal_interface() {
         continue;  // Start over, print the options again and let user choose
     }
 
-    cout << "Your request has been completed! What else can we do?" << endl;
+    cout << "\nYour request has been completed! What else can we do?" << endl;
   }
 }
 
