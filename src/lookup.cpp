@@ -30,7 +30,7 @@ bool Node::is_responsible_to(digest_t file_hash) {
   }
 }
 
-void Node::lookup_req_handle(LookupFileRequest res) {
+void Node::lookup_req_handle(const LookupFileRequest& res) {
   digest_t filenamehash = res.filenamehash();
   if (is_responsible_to(filenamehash)) {
     string host_name = res.sourcehostname();
@@ -87,14 +87,14 @@ void Node::lookup(digest_t hash, const string & port, bool * does_exist, contact
   } else {
     // send out NodeRequest
     contactInfo_t info = get_next_hop_info(hash);
-    NodeRequest req = generate_lookup_request(hash, my_hostname, my_config::user_interface_port_num);
+    NodeRequest req = generate_lookup_request(hash, my_hostname, port);
     ProtoStreamOut proto_stream_out(info.first, info.second);
     proto_out * out = proto_stream_out.get_proto_out();
     sendMesgTo<NodeRequest> (req, out);
     proto_stream_out.close_proto_out();    
     
     // wait for NodeResponse
-    ProtoStreamIn proto_stream_in(my_config::user_interface_port_num);    
+    ProtoStreamIn proto_stream_in(port);    
     proto_in* in = proto_stream_in.get_proto_in();
     NodeResponse rsp;
     recvMesgFrom<NodeResponse>(rsp, in);
