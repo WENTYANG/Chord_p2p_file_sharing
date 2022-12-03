@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef long long int digest_t;                       // The type for the hash digest
+typedef long digest_t;                       // The type for the hash digest
 typedef string hostname_t;
 typedef pair<hostname_t, string> contactInfo_t;  // The pair of (hostname, port)
 

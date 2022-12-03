@@ -11,7 +11,7 @@ Node::Node() {
 
 /*
     Initialize the node server and listen on the port to accept connections from
-   other nodes
+   other nodes. Accept nodeRequest and spawn to handle it.
 */
 void Node::run_server() {
   int server_fd = initializeServer(my_config::listening_port_num);
@@ -158,8 +158,8 @@ void Node::main() {
   thread listenThread(&Node::run_server, this);
 
   // Join the circle
-  if (entryNode.first != "0.0.0.0") {
-    // Node is not the first one in the circle
+  if (entryNode.first == "0.0.0.0") {
+    // Node is the first one in the circle
     // TODO: jz399
     // 这里调用新节点加入的函数，第一个联系的随机节点信息存在entryNode这个pair中，first是hostname，second是port
     // please also update local_start and local_end 

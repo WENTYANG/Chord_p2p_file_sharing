@@ -27,10 +27,10 @@ class Node {
   unordered_map<digest_t, contactInfo_t> DHT;  // file hash --> (hostname, port)
   unordered_map<digest_t, string> localFiles;  // file hash --> file name
   digest_t local_start; // file hash for the first file that the node is responsible to, this should equals to its predecessor's hash + 1
-  digest_t my_hash;
+  digest_t my_hash; // the hash of my hostname
 
  public:
-  contactInfo_t entryNode;
+  contactInfo_t entryNode; // the first node to contact
   hostname_t my_hostname;
 
  private:
