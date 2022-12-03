@@ -3,7 +3,7 @@ Implementation of Chord P2P Distributed File Sharing System
 Google Doc: https://docs.google.com/document/d/1jgwUZPEkZfJI1MtdhHUCUf4GK_gOesnj7hNxs2x2Hqc/edit
 
 ## Usage:
-    ./p2p_file_sharing <contact point hostname>
+    ./p2p_file_sharing <Contact Node Hostname> <My Hostname>
 contact point为node加入circle时第一个联系的random node，若contact point hostname = “0.0.0.0” 则意味是第一个加入circle的node
 
 ## Structure:  
