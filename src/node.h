@@ -23,8 +23,8 @@ using namespace p2pfilesharing;
 class Node {
  private:
   vector<pair<contactInfo_t, digest_t> >
-      fingerTable;                             //((hostname, port), node hash)
-  unordered_map<digest_t, contactInfo_t> DHT;  // file hash --> (hostname, port)
+      fingerTable;                             // ((hostname, port), node hash)
+  unordered_map<digest_t, contactInfo_t> DHT;  // file hash --> (hostname, port). Files that are responsible by current node.
   unordered_map<digest_t, string> localFiles;  // file hash --> file name
   digest_t local_start; // file hash for the first file that the node is responsible to, this should equals to its predecessor's hash + 1
   digest_t my_hash; // the hash of my hostname
@@ -51,7 +51,11 @@ class Node {
 
   /***** Lookup Related *****/
   private:
-    pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); // port for the user interface thread, default should be my_config::user_interface_port_num 
+    // port for the user interface thread, default should be my_config::user_interface_port_num 
+    // When this function called by user_terminal, arg port should be my_config::user_interface_port_num.
+    // Because user_terminal can only execute one command at one time. 
+    // In other cases, port should be a random number.
+    pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); 
     
     void lookup_req_handle(const LookupFileRequest& req); // 转发或处理（向sourcehost 发送 response）收到的LookupFileRequest 
     void lookup(digest_t hash, const string & port, bool * does_exist, contactInfo_t * successor, contactInfo_t * owner); 
@@ -62,6 +66,13 @@ class Node {
   private:
     void download_req_handle(const DownloadRequest& req);
     void download(const string& file_name);
+  /***** Join Related *****/ 
+  private:
+    void initial_chord();
+    void join_chord(); 
+    void join_req_handle(const JoinRequest& join_req);
+    void help_join_req_handle(const HelpJoinRequset& help_join_req);
+    void handle_update_route_req(const RouteUpdateRequest& update_route_req);
 };
   
 

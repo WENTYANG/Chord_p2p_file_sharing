@@ -11,6 +11,12 @@ NodeResponse generate_lookup_response(bool if_exist, const string& successor_hos
 NodeRequest generate_lookup_request(const LookupFileRequest& req);
 NodeRequest generate_lookup_request(digest_t hash, const string & hostname, const string & port);
 NodeRequest generate_download_request(digest_t hash, const string & hostname, const string & port);
-
-
+NodeRequest generate_join_request(digest_t hash, const string& hostname, const string& port);
+NodeRequest generate_help_join_request(digest_t hash, const string& hostname, const string& port);
+NodeResponse generate_help_join_response(digest_t hash, const string& hostname, const string& port);
+NodeResponse generate_routetable_init(RouteTableInit* finger_table);
+NodeRequest generate_route_update_request(digest_t hash, const string& hostname, const string& port);
+NodeResponse generate_route_update_response(digest_t cur_hash, digest_t next_hash, const string& hostname, const string& port);
+NodeResponse generate_filetable_response(FileTable* file_table);
+NodeResponse generate_lookup_node_response(digest_t hash, const string& hostname, const string& port);
 #endif
