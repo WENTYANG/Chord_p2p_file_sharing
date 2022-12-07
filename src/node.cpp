@@ -269,6 +269,11 @@ void Node::add_file_req_handle(const AddFileRequest & request) {
         cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
         exit(EXIT_FAILURE);
     }
+    //check if the file already exists in DHT
+    if (DHT[hash_filename]) {
+        cout << "File already exists, no need to add again!\n";
+        return;
+    }
     //add to DHT
     contactInfo_t info(src_hostname, src_port);
     DHT[hash_filename] = info;
@@ -285,7 +290,7 @@ void Node::add_file_req_handle(const AddFileRequest & request) {
  */
 int Node::delete_file(string filename, const string & port) {
     digest_t hash_filename = get_hash(filename);
-    //find corresponding node
+    //find owner node and successor node
     contactInfo_t successor, owner;
     bool does_exist;
     lookup(hash, port, &does_exist, &successor, &owner);
