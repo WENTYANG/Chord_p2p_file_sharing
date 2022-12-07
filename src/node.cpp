@@ -230,11 +230,6 @@ bool file_exist(const string & filename) {
     return f.good();
 }
 
-/*
-    /Hash file name
-    发送 lookup packet 得到负责的node 的 IP&port
-    发给负责的node add_file packet
- */
 void Node::add_file(string filename, const string & port) {
     //check if the file is uploaded to ./shared_file/ successfully
     if (!file_exist(filename)) {
@@ -270,7 +265,7 @@ void Node::add_file_req_handle(const AddFileRequest & request) {
         exit(EXIT_FAILURE);
     }
     //check if the file already exists in DHT
-    if (DHT[hash_filename]) {
+    if (DHT.count(hash_filename)) {
         cout << "File already exists, no need to add again!\n";
         return;
     }
@@ -279,15 +274,6 @@ void Node::add_file_req_handle(const AddFileRequest & request) {
     DHT[hash_filename] = info;
 }
 
-/*
- * Delete file:
-    /Hash file name
-    /发送 lookup packet 得到负责的node 的 IP&port
-    /发给负责的node delete_file packet
-    负责的node 需要check 发起packet 的node IP == 拥有file的node IP
-    删除entry
-    返回succeed/fail message
- */
 int Node::delete_file(string filename, const string & port) {
     digest_t hash_filename = get_hash(filename);
     //find owner node and successor node
@@ -298,22 +284,27 @@ int Node::delete_file(string filename, const string & port) {
         cerr << "No successor node or no such file exists!\n";
         exit(EXIT_FAILURE);
     }
-    //if the node is the owner, delete file,
-    //else, send delete_file packet to the successor node
+    //if the node is the owner
     if (owner.first == my_hostname) {
-        //delete file, DHT and localFiles
-    } else {
+        //delete file in localFiles
+        localFiles.erase(hash_filename);
         //generate and send delete_file packet to the successor node
         NodeRequest request = generate_delete_file_request(hash_filename, my_hostname, port);
         ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
         proto_out * out = proto_stream_out.get_proto_out();
         sendMesgTo<NodeRequest> (request, out);
         proto_stream_out.close_proto_out();
-
     }
-
 }
 
 void Node::del_file_req_handle(const DeleteFileRequest & request) {
+    digest_t hash_filename = req.filenamehash();
 
+    //check if the file exists DHT
+    if (!DHT.count(hash_filename)) {
+        cerr << "Failed to delete file: It is not in the DHT!\n";
+        exit(EXIT_FAILURE);
+    }
+    //delete the file entry in DHT
+    DHT.erase(hash_filename);
 }
