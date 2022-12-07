@@ -33,7 +33,12 @@ void Node::run_server() {
       switch (type) {
         case 2:
           // AddFileRequest fm128
-          break;
+        {
+            const AddFileRequest & add_file_req = request.addfile();
+            thread t = thread(&Node::add_file_req_handle, this, add_file_req);
+            t.detach();
+            break;
+        }
         case 3:
           // LookupFileRequest ky99
         {
@@ -44,7 +49,12 @@ void Node::run_server() {
         }
         case 4:
           // DeleteFileRequest fm128
-          break;
+        {
+            const DeleteFileRequest & del_file_req = request.deletefile();
+            thread t = thread(&Node::del_file_req_handle, this, del_file_req);
+            t.detach();
+            break;
+        }
         case 5: 
           // DownloadRequest ky99
         {  
