@@ -224,26 +224,54 @@ digest_t Node::get_hash(string key){
     return hash;
 }
 
+bool file_exist(const string & filename) {
+    string fn = "./shared_file/" + filename;
+    ifstream f(fn);
+    return f.good();
+}
+
 /*
     /Hash file name
     发送 lookup packet 得到负责的node 的 IP&port
     发给负责的node add_file packet
  */
 void Node::add_file(string filename, const string & port) {
+    //check if the file is uploaded to ./shared_file/ successfully
+    if (!file_exist(filename)) {
+        cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
+        exit(EXIT_FAILURE);
+    }
+    //find successor node
     digest_t hash_filename = get_hash(filename);
-    //find corresponding node
     pair<bool, contactInfo_t> successor_pair;
     successor_pair = lookup_successor(hash_filename, port);
     if (!successor_pair.first) {
         cerr << "No node yet!\n";
         exit(EXIT_FAILURE);
     }
-    //generate and send add_file packet to that node
+    //add to localFiles
+    localFiles[hash_filename] = filename;
+    //generate and send add_file packet to the successor node
     NodeRequest request = generate_add_file_request(hash_filename, my_hostname, port);
     ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
     proto_out * out = proto_stream_out.get_proto_out();
     sendMesgTo<NodeRequest> (request, out);
     proto_stream_out.close_proto_out();
+}
+
+void Node::add_file_req_handle(const AddFileRequest & request) {
+    digest_t hash_filename = request.filenamehash();
+    string src_hostname = request.sourcehostname();
+    string src_port = request.sourceport();
+
+    //check if the file is uploaded to ./shared_file/ successfully
+    if (!file_exist(localFiles[hash_filename])) {
+        cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
+        exit(EXIT_FAILURE);
+    }
+    //add to DHT
+    contactInfo_t info(src_hostname, src_port);
+    DHT[hash_filename] = info;
 }
 
 /*
@@ -278,5 +306,9 @@ int Node::delete_file(string filename, const string & port) {
         proto_stream_out.close_proto_out();
 
     }
+
+}
+
+void Node::del_file_req_handle(const DeleteFileRequest & request) {
 
 }

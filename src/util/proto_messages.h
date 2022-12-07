@@ -12,5 +12,8 @@ NodeRequest generate_lookup_request(const LookupFileRequest& req);
 NodeRequest generate_lookup_request(digest_t hash, const string & hostname, const string & port);
 NodeRequest generate_download_request(digest_t hash, const string & hostname, const string & port);
 
+NodeRequest generate_add_file_request(digest_t hash, const string & hostname, const string & port);
+NodeRequest generate_delete_file_request(digest_t hash, const string & hostname, const string & port);
+
 
 #endif
