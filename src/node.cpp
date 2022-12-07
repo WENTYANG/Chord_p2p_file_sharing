@@ -1,5 +1,6 @@
 #include "node.h"
 #include "proto_messages.h"
+#include "util/proto_messages.h"
 
 Node::Node() {
   fingerTable = vector<pair<contactInfo_t, digest_t> >(
@@ -105,10 +106,22 @@ void Node::run_user_terminal_interface() {
     switch (option) {
       case 1:
         // TODO: fm128 这里调用add file函数
-        break;
+      {
+          cout << "Please enter the name of the file you want to upload\n\n";
+          string filename;
+          cin >> filename;
+          add_file(filename, my_config::user_interface_port_num);
+          break;
+      }
       case 2:
         // TODO: fm128 这里调用delete file函数
-        break;
+      {
+          cout << "Please enter the name of the file you want to delete\n\n";
+          string filename;
+          cin >> filename;
+          delete_file(filename, my_config::user_interface_port_num);
+          break;
+      }
       case 3:
         // TODO: ky99 这里调用lookup file函数
       { 
@@ -199,4 +212,61 @@ digest_t Node::get_hash(string key){
     digest_t hash = stoll(keyHash) % mod;
 
     return hash;
+}
+
+/*
+    /Hash file name
+    发送 lookup packet 得到负责的node 的 IP&port
+    发给负责的node add_file packet
+ */
+void Node::add_file(string filename, const string & port) {
+    digest_t hash_filename = get_hash(filename);
+    //find corresponding node
+    pair<bool, contactInfo_t> successor_pair;
+    successor_pair = lookup_successor(hash_filename, port);
+    if (!successor_pair.first) {
+        cerr << "No node yet!\n";
+        exit(EXIT_FAILURE);
+    }
+    //generate and send add_file packet to that node
+    NodeRequest request = generate_add_file_request(hash_filename, my_hostname, port);
+    ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
+    proto_out * out = proto_stream_out.get_proto_out();
+    sendMesgTo<NodeRequest> (request, out);
+    proto_stream_out.close_proto_out();
+}
+
+/*
+ * Delete file:
+    /Hash file name
+    /发送 lookup packet 得到负责的node 的 IP&port
+    /发给负责的node delete_file packet
+    负责的node 需要check 发起packet 的node IP == 拥有file的node IP
+    删除entry
+    返回succeed/fail message
+ */
+int Node::delete_file(string filename, const string & port) {
+    digest_t hash_filename = get_hash(filename);
+    //find corresponding node
+    contactInfo_t successor, owner;
+    bool does_exist;
+    lookup(hash, port, &does_exist, &successor, &owner);
+    if (!does_exist) {
+        cerr << "No successor node or no such file exists!\n";
+        exit(EXIT_FAILURE);
+    }
+    //if the node is the owner, delete file,
+    //else, send delete_file packet to the successor node
+    if (owner.first == my_hostname) {
+        //delete file, DHT and localFiles
+    } else {
+        //generate and send delete_file packet to the successor node
+        NodeRequest request = generate_delete_file_request(hash_filename, my_hostname, port);
+        ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
+        proto_out * out = proto_stream_out.get_proto_out();
+        sendMesgTo<NodeRequest> (request, out);
+        proto_stream_out.close_proto_out();
+
+    }
+
 }

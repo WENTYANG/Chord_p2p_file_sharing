@@ -49,6 +49,9 @@ class Node {
   void run_user_terminal_interface();  // Start interacting with user on terminal
   digest_t get_hash(string key);
 
+  void Node::add_file(string filename, const string & port);
+  int Node::delete_file(string filename, const string & port);
+
   /***** Lookup Related *****/
   private:
     pair<bool, contactInfo_t> lookup_successor(digest_t hash, const string& port); // port for the user interface thread, default should be my_config::user_interface_port_num 
