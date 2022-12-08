@@ -2,6 +2,8 @@
 #include "proto_messages.h"
 #include "util/proto_messages.h"
 
+#include <fstream>
+
 Node::Node() {
   fingerTable = vector<pair<contactInfo_t, digest_t> >(
       my_config::finger_table_length);  // Construct an empty finger table
@@ -279,7 +281,7 @@ int Node::delete_file(string filename, const string & port) {
     //find owner node and successor node
     contactInfo_t successor, owner;
     bool does_exist;
-    lookup(hash, port, &does_exist, &successor, &owner);
+    lookup(hash_filename, port, &does_exist, &successor, &owner);
     if (!does_exist) {
         cerr << "No successor node or no such file exists!\n";
         exit(EXIT_FAILURE);
@@ -290,7 +292,7 @@ int Node::delete_file(string filename, const string & port) {
         localFiles.erase(hash_filename);
         //generate and send delete_file packet to the successor node
         NodeRequest request = generate_delete_file_request(hash_filename, my_hostname, port);
-        ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
+        ProtoStreamOut proto_stream_out(successor.first, successor.second);
         proto_out * out = proto_stream_out.get_proto_out();
         sendMesgTo<NodeRequest> (request, out);
         proto_stream_out.close_proto_out();
@@ -298,7 +300,7 @@ int Node::delete_file(string filename, const string & port) {
 }
 
 void Node::del_file_req_handle(const DeleteFileRequest & request) {
-    digest_t hash_filename = req.filenamehash();
+    digest_t hash_filename = request.filenamehash();
 
     //check if the file exists DHT
     if (!DHT.count(hash_filename)) {

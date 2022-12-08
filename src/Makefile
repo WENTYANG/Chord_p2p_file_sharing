@@ -1,5 +1,5 @@
 CC=g++ 
-CFLAG = -g -Wall
+CFLAG = -g -Wall -std=c++11
 UTIL_DIR = ./util/
 PROTO_DIR = ./protobuf/
 EXECUTABLE_FILE = p2p_file_sharing

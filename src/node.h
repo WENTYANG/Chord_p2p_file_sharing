@@ -49,10 +49,10 @@ class Node {
   void run_user_terminal_interface();  // Start interacting with user on terminal
   digest_t get_hash(string key);
 
-    void Node::add_file(string filename, const string & port);
-    int Node::delete_file(string filename, const string & port);
-    void Node::add_file_req_handle(const AddFileRequest & request);
-    void Node::del_file_req_handle(const DeleteFileRequest & request);
+    void add_file(string filename, const string & port);
+    int delete_file(string filename, const string & port);
+    void add_file_req_handle(const AddFileRequest & request);
+    void del_file_req_handle(const DeleteFileRequest & request);
 
     /***** Lookup Related *****/
   private:
