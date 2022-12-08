@@ -96,6 +96,7 @@ void Node::download(const string & filename) {
     cout << "len: " << len << " length:" << length << endl;
   } catch (const std::exception& e) {
     close(client_fd);
+    close(server_fd);
     cout << "\nAn error occured when downloading the file. Please try later!\n\n";
     cout << e.what() << endl;
     return;
@@ -106,6 +107,7 @@ void Node::download(const string & filename) {
       ofs.write(received.data(), received.size());
       length -= received.size();
   }
+  close(server_fd);
   close(client_fd);
   ofs.close();
   cout << "\nDownload Complete! Please check your ./download_file directory.\n\n";
