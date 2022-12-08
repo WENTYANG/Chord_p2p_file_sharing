@@ -60,3 +60,10 @@ digest_t hash_value_add(digest_t hash, digest_t num) {
 void print_contactInfo(contactInfo_t t) {
   cout << "hostname: " << t.first << " port: " << t.second << endl;
 }
+
+
+void print_DHT(unordered_map<digest_t, contactInfo_t> DHT) {
+  for (auto iter : DHT) {
+    cout << "digest: " << iter.first << " contactInfo_t: " << iter.second.first << " : " << iter.second.second << endl;
+  }
+}

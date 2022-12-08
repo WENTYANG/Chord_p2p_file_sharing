@@ -259,6 +259,7 @@ void Node::add_file(string filename, const string & port) {
     }
     //find successor node
     digest_t hash_filename = get_hash(filename);
+    cout << "File hash for file " << filename << " is " << hash_filename << endl;
     pair<bool, contactInfo_t> successor_pair;
     successor_pair = lookup_successor(hash_filename, port);
     // if (!successor_pair.first) {
