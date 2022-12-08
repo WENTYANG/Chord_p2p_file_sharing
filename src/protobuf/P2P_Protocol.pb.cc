@@ -24,6 +24,7 @@ namespace p2pfilesharing {
 PROTOBUF_CONSTEXPR AddFileRequest::AddFileRequest(
     ::_pbi::ConstantInitialized)
   : sourcehostname_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
+  , sourceport_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , filenamehash_(int64_t{0}){}
 struct AddFileRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR AddFileRequestDefaultTypeInternal()
@@ -258,7 +259,7 @@ PROTOBUF_CONSTEXPR NodeRequest::NodeRequest(
     ::_pbi::ConstantInitialized)
   : addfile_(nullptr)
   , lookup_(nullptr)
-  , delete__(nullptr)
+  , deletefile_(nullptr)
   , download_(nullptr)
   , join_(nullptr)
   , updateroute_(nullptr)
@@ -307,8 +308,10 @@ const uint32_t TableStruct_P2P_5fProtocol_2eproto::offsets[] PROTOBUF_SECTION_VA
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::AddFileRequest, filenamehash_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::AddFileRequest, sourcehostname_),
-  1,
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::AddFileRequest, sourceport_),
+  2,
   0,
+  1,
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileRequest, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::LookupFileRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -499,7 +502,7 @@ const uint32_t TableStruct_P2P_5fProtocol_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, type_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, addfile_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, lookup_),
-  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, delete__),
+  PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, deletefile_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, download_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, join_),
   PROTOBUF_FIELD_OFFSET(::p2pfilesharing::NodeRequest, updateroute_),
@@ -538,25 +541,25 @@ const uint32_t TableStruct_P2P_5fProtocol_2eproto::offsets[] PROTOBUF_SECTION_VA
   6,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::p2pfilesharing::AddFileRequest)},
-  { 10, 19, -1, sizeof(::p2pfilesharing::LookupFileRequest)},
-  { 22, 31, -1, sizeof(::p2pfilesharing::DeleteFileRequest)},
-  { 34, 45, -1, sizeof(::p2pfilesharing::LookupFileResponse)},
-  { 50, 58, -1, sizeof(::p2pfilesharing::FileInfoResponse)},
-  { 60, 69, -1, sizeof(::p2pfilesharing::DownloadRequest)},
-  { 72, 81, -1, sizeof(::p2pfilesharing::JoinRequest)},
-  { 84, -1, -1, sizeof(::p2pfilesharing::RouteTableInit)},
-  { 91, 100, -1, sizeof(::p2pfilesharing::RouteTableEntry)},
-  { 103, -1, -1, sizeof(::p2pfilesharing::FileTable)},
-  { 110, 119, -1, sizeof(::p2pfilesharing::FileTableEntry)},
-  { 122, 131, -1, sizeof(::p2pfilesharing::RouteUpdateRequest)},
-  { 134, 144, -1, sizeof(::p2pfilesharing::RouteUpdateResponse)},
-  { 148, -1, -1, sizeof(::p2pfilesharing::RouteDeleteRequest)},
-  { 155, 164, -1, sizeof(::p2pfilesharing::HelpJoinRequset)},
-  { 167, 176, -1, sizeof(::p2pfilesharing::HelpJoinResponse)},
-  { 179, 188, -1, sizeof(::p2pfilesharing::LookupNodeResponse)},
-  { 191, 206, -1, sizeof(::p2pfilesharing::NodeRequest)},
-  { 215, 229, -1, sizeof(::p2pfilesharing::NodeResponse)},
+  { 0, 9, -1, sizeof(::p2pfilesharing::AddFileRequest)},
+  { 12, 21, -1, sizeof(::p2pfilesharing::LookupFileRequest)},
+  { 24, 33, -1, sizeof(::p2pfilesharing::DeleteFileRequest)},
+  { 36, 47, -1, sizeof(::p2pfilesharing::LookupFileResponse)},
+  { 52, 60, -1, sizeof(::p2pfilesharing::FileInfoResponse)},
+  { 62, 71, -1, sizeof(::p2pfilesharing::DownloadRequest)},
+  { 74, 83, -1, sizeof(::p2pfilesharing::JoinRequest)},
+  { 86, -1, -1, sizeof(::p2pfilesharing::RouteTableInit)},
+  { 93, 102, -1, sizeof(::p2pfilesharing::RouteTableEntry)},
+  { 105, -1, -1, sizeof(::p2pfilesharing::FileTable)},
+  { 112, 121, -1, sizeof(::p2pfilesharing::FileTableEntry)},
+  { 124, 133, -1, sizeof(::p2pfilesharing::RouteUpdateRequest)},
+  { 136, 146, -1, sizeof(::p2pfilesharing::RouteUpdateResponse)},
+  { 150, -1, -1, sizeof(::p2pfilesharing::RouteDeleteRequest)},
+  { 157, 166, -1, sizeof(::p2pfilesharing::HelpJoinRequset)},
+  { 169, 178, -1, sizeof(::p2pfilesharing::HelpJoinResponse)},
+  { 181, 190, -1, sizeof(::p2pfilesharing::LookupNodeResponse)},
+  { 193, 208, -1, sizeof(::p2pfilesharing::NodeRequest)},
+  { 217, 231, -1, sizeof(::p2pfilesharing::NodeResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -582,68 +585,69 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_P2P_5fProtocol_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\022P2P_Protocol.proto\022\016p2pfilesharing\">\n\016"
+  "\n\022P2P_Protocol.proto\022\016p2pfilesharing\"R\n\016"
   "AddFileRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016"
-  "sourcehostname\030\002 \002(\t\"U\n\021LookupFileReques"
-  "t\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016sourcehostnam"
-  "e\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"U\n\021DeleteFil"
-  "eRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016source"
-  "hostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"\202\001\n\022L"
-  "ookupFileResponse\022\020\n\010ifexists\030\001 \002(\010\022\031\n\021s"
-  "uccessorhostname\030\002 \002(\t\022\025\n\rsuccessorport\030"
-  "\003 \002(\t\022\025\n\rownerhostname\030\004 \001(\t\022\021\n\townerpor"
-  "t\030\005 \001(\t\"<\n\020FileInfoResponse\022\025\n\rownerhost"
-  "name\030\001 \002(\t\022\021\n\townerport\030\002 \002(\t\"S\n\017Downloa"
-  "dRequest\022\024\n\014filenamehash\030\001 \002(\003\022\026\n\016source"
-  "hostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t\"L\n\013Jo"
-  "inRequest\022\023\n\013newhostname\030\001 \002(\t\022\017\n\007newpor"
-  "t\030\002 \002(\t\022\027\n\017newhostnamehash\030\003 \002(\003\"@\n\016Rout"
-  "eTableInit\022.\n\005entry\030\001 \003(\0132\037.p2pfileshari"
-  "ng.RouteTableEntry\"G\n\017RouteTableEntry\022\020\n"
-  "\010hostname\030\001 \002(\t\022\014\n\004port\030\002 \002(\t\022\024\n\014hostnam"
-  "ehash\030\003 \002(\003\":\n\tFileTable\022-\n\005entry\030\001 \003(\0132"
-  "\036.p2pfilesharing.FileTableEntry\"P\n\016FileT"
-  "ableEntry\022\024\n\014filenamehash\030\001 \002(\003\022\025\n\rowner"
-  "hostname\030\002 \002(\t\022\021\n\townerport\030\003 \002(\t\"S\n\022Rou"
-  "teUpdateRequest\022\023\n\013newhostname\030\001 \002(\t\022\017\n\007"
-  "newport\030\002 \002(\t\022\027\n\017newhostnamehash\030\003 \002(\003\"\210"
-  "\001\n\023RouteUpdateResponse\022\032\n\022nextupdatehost"
-  "name\030\001 \002(\t\022\026\n\016nextupdateport\030\002 \002(\t\022\036\n\026ne"
-  "xtupdatehostnamehash\030\003 \002(\003\022\035\n\025curupdateh"
-  "ostnamehash\030\004 \002(\003\"D\n\022RouteDeleteRequest\022"
-  ".\n\005entry\030\001 \003(\0132\037.p2pfilesharing.RouteTab"
-  "leEntry\"P\n\017HelpJoinRequset\022\023\n\013newhostnam"
-  "e\030\001 \002(\t\022\017\n\007newport\030\002 \002(\t\022\027\n\017newhostnameh"
-  "ash\030\003 \002(\003\"d\n\020HelpJoinResponse\022\033\n\023respons"
-  "iblehostname\030\001 \002(\t\022\027\n\017responsibleport\030\002 "
-  "\002(\t\022\032\n\022responhostnamehash\030\003 \002(\003\"J\n\022Looku"
-  "pNodeResponse\022\020\n\010hostname\030\001 \002(\t\022\014\n\004port\030"
-  "\002 \002(\t\022\024\n\014hostnamehash\030\003 \002(\003\"\265\003\n\013NodeRequ"
-  "est\022\014\n\004type\030\001 \002(\003\022/\n\007addfile\030\002 \001(\0132\036.p2p"
-  "filesharing.AddFileRequest\0221\n\006lookup\030\003 \001"
-  "(\0132!.p2pfilesharing.LookupFileRequest\0221\n"
-  "\006delete\030\004 \001(\0132!.p2pfilesharing.DeleteFil"
-  "eRequest\0221\n\010download\030\005 \001(\0132\037.p2pfileshar"
-  "ing.DownloadRequest\022)\n\004join\030\006 \001(\0132\033.p2pf"
-  "ilesharing.JoinRequest\0227\n\013updateroute\030\007 "
-  "\001(\0132\".p2pfilesharing.RouteUpdateRequest\022"
-  "7\n\013deleteroute\030\010 \001(\0132\".p2pfilesharing.Ro"
-  "uteDeleteRequest\0221\n\010helpjoin\030\t \001(\0132\037.p2p"
-  "filesharing.HelpJoinRequset\"\216\003\n\014NodeResp"
-  "onse\022\014\n\004type\030\001 \002(\003\0222\n\006lookup\030\002 \001(\0132\".p2p"
-  "filesharing.LookupFileResponse\0225\n\013filein"
-  "forsp\030\003 \001(\0132 .p2pfilesharing.FileInfoRes"
-  "ponse\0221\n\trouteinit\030\004 \001(\0132\036.p2pfilesharin"
-  "g.RouteTableInit\022,\n\tfiletable\030\005 \001(\0132\031.p2"
-  "pfilesharing.FileTable\0222\n\010helpjoin\030\006 \001(\013"
-  "2 .p2pfilesharing.HelpJoinResponse\0228\n\013up"
-  "dateroute\030\007 \001(\0132#.p2pfilesharing.RouteUp"
-  "dateResponse\0226\n\nlookupnode\030\010 \001(\0132\".p2pfi"
-  "lesharing.LookupNodeResponse"
+  "sourcehostname\030\002 \002(\t\022\022\n\nsourceport\030\003 \002(\t"
+  "\"U\n\021LookupFileRequest\022\024\n\014filenamehash\030\001 "
+  "\002(\003\022\026\n\016sourcehostname\030\002 \002(\t\022\022\n\nsourcepor"
+  "t\030\003 \002(\t\"U\n\021DeleteFileRequest\022\024\n\014filename"
+  "hash\030\001 \002(\003\022\026\n\016sourcehostname\030\002 \002(\t\022\022\n\nso"
+  "urceport\030\003 \002(\t\"\202\001\n\022LookupFileResponse\022\020\n"
+  "\010ifexists\030\001 \002(\010\022\031\n\021successorhostname\030\002 \002"
+  "(\t\022\025\n\rsuccessorport\030\003 \002(\t\022\025\n\rownerhostna"
+  "me\030\004 \001(\t\022\021\n\townerport\030\005 \001(\t\"<\n\020FileInfoR"
+  "esponse\022\025\n\rownerhostname\030\001 \002(\t\022\021\n\townerp"
+  "ort\030\002 \002(\t\"S\n\017DownloadRequest\022\024\n\014filename"
+  "hash\030\001 \002(\003\022\026\n\016sourcehostname\030\002 \002(\t\022\022\n\nso"
+  "urceport\030\003 \002(\t\"L\n\013JoinRequest\022\023\n\013newhost"
+  "name\030\001 \002(\t\022\017\n\007newport\030\002 \002(\t\022\027\n\017newhostna"
+  "mehash\030\003 \002(\003\"@\n\016RouteTableInit\022.\n\005entry\030"
+  "\001 \003(\0132\037.p2pfilesharing.RouteTableEntry\"G"
+  "\n\017RouteTableEntry\022\020\n\010hostname\030\001 \002(\t\022\014\n\004p"
+  "ort\030\002 \002(\t\022\024\n\014hostnamehash\030\003 \002(\003\":\n\tFileT"
+  "able\022-\n\005entry\030\001 \003(\0132\036.p2pfilesharing.Fil"
+  "eTableEntry\"P\n\016FileTableEntry\022\024\n\014filenam"
+  "ehash\030\001 \002(\003\022\025\n\rownerhostname\030\002 \002(\t\022\021\n\tow"
+  "nerport\030\003 \002(\t\"S\n\022RouteUpdateRequest\022\023\n\013n"
+  "ewhostname\030\001 \002(\t\022\017\n\007newport\030\002 \002(\t\022\027\n\017new"
+  "hostnamehash\030\003 \002(\003\"\210\001\n\023RouteUpdateRespon"
+  "se\022\032\n\022nextupdatehostname\030\001 \002(\t\022\026\n\016nextup"
+  "dateport\030\002 \002(\t\022\036\n\026nextupdatehostnamehash"
+  "\030\003 \002(\003\022\035\n\025curupdatehostnamehash\030\004 \002(\003\"D\n"
+  "\022RouteDeleteRequest\022.\n\005entry\030\001 \003(\0132\037.p2p"
+  "filesharing.RouteTableEntry\"P\n\017HelpJoinR"
+  "equset\022\023\n\013newhostname\030\001 \002(\t\022\017\n\007newport\030\002"
+  " \002(\t\022\027\n\017newhostnamehash\030\003 \002(\003\"d\n\020HelpJoi"
+  "nResponse\022\033\n\023responsiblehostname\030\001 \002(\t\022\027"
+  "\n\017responsibleport\030\002 \002(\t\022\032\n\022responhostnam"
+  "ehash\030\003 \002(\003\"J\n\022LookupNodeResponse\022\020\n\010hos"
+  "tname\030\001 \002(\t\022\014\n\004port\030\002 \002(\t\022\024\n\014hostnamehas"
+  "h\030\003 \002(\003\"\271\003\n\013NodeRequest\022\014\n\004type\030\001 \002(\003\022/\n"
+  "\007addfile\030\002 \001(\0132\036.p2pfilesharing.AddFileR"
+  "equest\0221\n\006lookup\030\003 \001(\0132!.p2pfilesharing."
+  "LookupFileRequest\0225\n\ndeletefile\030\004 \001(\0132!."
+  "p2pfilesharing.DeleteFileRequest\0221\n\010down"
+  "load\030\005 \001(\0132\037.p2pfilesharing.DownloadRequ"
+  "est\022)\n\004join\030\006 \001(\0132\033.p2pfilesharing.JoinR"
+  "equest\0227\n\013updateroute\030\007 \001(\0132\".p2pfilesha"
+  "ring.RouteUpdateRequest\0227\n\013deleteroute\030\010"
+  " \001(\0132\".p2pfilesharing.RouteDeleteRequest"
+  "\0221\n\010helpjoin\030\t \001(\0132\037.p2pfilesharing.Help"
+  "JoinRequset\"\216\003\n\014NodeResponse\022\014\n\004type\030\001 \002"
+  "(\003\0222\n\006lookup\030\002 \001(\0132\".p2pfilesharing.Look"
+  "upFileResponse\0225\n\013fileinforsp\030\003 \001(\0132 .p2"
+  "pfilesharing.FileInfoResponse\0221\n\troutein"
+  "it\030\004 \001(\0132\036.p2pfilesharing.RouteTableInit"
+  "\022,\n\tfiletable\030\005 \001(\0132\031.p2pfilesharing.Fil"
+  "eTable\0222\n\010helpjoin\030\006 \001(\0132 .p2pfilesharin"
+  "g.HelpJoinResponse\0228\n\013updateroute\030\007 \001(\0132"
+  "#.p2pfilesharing.RouteUpdateResponse\0226\n\n"
+  "lookupnode\030\010 \001(\0132\".p2pfilesharing.Lookup"
+  "NodeResponse"
   ;
 static ::_pbi::once_flag descriptor_table_P2P_5fProtocol_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_P2P_5fProtocol_2eproto = {
-    false, false, 2308, descriptor_table_protodef_P2P_5fProtocol_2eproto,
+    false, false, 2332, descriptor_table_protodef_P2P_5fProtocol_2eproto,
     "P2P_Protocol.proto",
     &descriptor_table_P2P_5fProtocol_2eproto_once, nullptr, 0, 19,
     schemas, file_default_instances, TableStruct_P2P_5fProtocol_2eproto::offsets,
@@ -664,13 +668,16 @@ class AddFileRequest::_Internal {
  public:
   using HasBits = decltype(std::declval<AddFileRequest>()._has_bits_);
   static void set_has_filenamehash(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 4u;
   }
   static void set_has_sourcehostname(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
+  static void set_has_sourceport(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
   static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
   }
 };
 
@@ -692,6 +699,14 @@ AddFileRequest::AddFileRequest(const AddFileRequest& from)
     sourcehostname_.Set(from._internal_sourcehostname(), 
       GetArenaForAllocation());
   }
+  sourceport_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    sourceport_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_sourceport()) {
+    sourceport_.Set(from._internal_sourceport(), 
+      GetArenaForAllocation());
+  }
   filenamehash_ = from.filenamehash_;
   // @@protoc_insertion_point(copy_constructor:p2pfilesharing.AddFileRequest)
 }
@@ -700,6 +715,10 @@ inline void AddFileRequest::SharedCtor() {
 sourcehostname_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   sourcehostname_.Set("", GetArenaForAllocation());
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+sourceport_.InitDefault();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  sourceport_.Set("", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 filenamehash_ = int64_t{0};
 }
@@ -716,6 +735,7 @@ AddFileRequest::~AddFileRequest() {
 inline void AddFileRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   sourcehostname_.Destroy();
+  sourceport_.Destroy();
 }
 
 void AddFileRequest::SetCachedSize(int size) const {
@@ -729,8 +749,13 @@ void AddFileRequest::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    sourcehostname_.ClearNonDefaultToEmpty();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      sourcehostname_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      sourceport_.ClearNonDefaultToEmpty();
+    }
   }
   filenamehash_ = int64_t{0};
   _has_bits_.Clear();
@@ -761,6 +786,18 @@ const char* AddFileRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext
           CHK_(ptr);
           #ifndef NDEBUG
           ::_pbi::VerifyUTF8(str, "p2pfilesharing.AddFileRequest.sourcehostname");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
+        continue;
+      // required string sourceport = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_sourceport();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "p2pfilesharing.AddFileRequest.sourceport");
           #endif  // !NDEBUG
         } else
           goto handle_unusual;
@@ -797,7 +834,7 @@ uint8_t* AddFileRequest::_InternalSerialize(
 
   cached_has_bits = _has_bits_[0];
   // required int64 filenamehash = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt64ToArray(1, this->_internal_filenamehash(), target);
   }
@@ -810,6 +847,16 @@ uint8_t* AddFileRequest::_InternalSerialize(
       "p2pfilesharing.AddFileRequest.sourcehostname");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_sourcehostname(), target);
+  }
+
+  // required string sourceport = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_sourceport().data(), static_cast<int>(this->_internal_sourceport().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "p2pfilesharing.AddFileRequest.sourceport");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_sourceport(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -831,6 +878,13 @@ size_t AddFileRequest::RequiredFieldsByteSizeFallback() const {
         this->_internal_sourcehostname());
   }
 
+  if (_internal_has_sourceport()) {
+    // required string sourceport = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sourceport());
+  }
+
   if (_internal_has_filenamehash()) {
     // required int64 filenamehash = 1;
     total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_filenamehash());
@@ -842,11 +896,16 @@ size_t AddFileRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:p2pfilesharing.AddFileRequest)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required string sourcehostname = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_sourcehostname());
+
+    // required string sourceport = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_sourceport());
 
     // required int64 filenamehash = 1;
     total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_filenamehash());
@@ -881,11 +940,14 @@ void AddFileRequest::MergeFrom(const AddFileRequest& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_sourcehostname(from._internal_sourcehostname());
     }
     if (cached_has_bits & 0x00000002u) {
+      _internal_set_sourceport(from._internal_sourceport());
+    }
+    if (cached_has_bits & 0x00000004u) {
       filenamehash_ = from.filenamehash_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -914,6 +976,10 @@ void AddFileRequest::InternalSwap(AddFileRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &sourcehostname_, lhs_arena,
       &other->sourcehostname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &sourceport_, lhs_arena,
+      &other->sourceport_, rhs_arena
   );
   swap(filenamehash_, other->filenamehash_);
 }
@@ -5866,8 +5932,8 @@ class NodeRequest::_Internal {
   static void set_has_lookup(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static const ::p2pfilesharing::DeleteFileRequest& delete_(const NodeRequest* msg);
-  static void set_has_delete_(HasBits* has_bits) {
+  static const ::p2pfilesharing::DeleteFileRequest& deletefile(const NodeRequest* msg);
+  static void set_has_deletefile(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
   static const ::p2pfilesharing::DownloadRequest& download(const NodeRequest* msg);
@@ -5904,8 +5970,8 @@ NodeRequest::_Internal::lookup(const NodeRequest* msg) {
   return *msg->lookup_;
 }
 const ::p2pfilesharing::DeleteFileRequest&
-NodeRequest::_Internal::delete_(const NodeRequest* msg) {
-  return *msg->delete__;
+NodeRequest::_Internal::deletefile(const NodeRequest* msg) {
+  return *msg->deletefile_;
 }
 const ::p2pfilesharing::DownloadRequest&
 NodeRequest::_Internal::download(const NodeRequest* msg) {
@@ -5947,10 +6013,10 @@ NodeRequest::NodeRequest(const NodeRequest& from)
   } else {
     lookup_ = nullptr;
   }
-  if (from._internal_has_delete_()) {
-    delete__ = new ::p2pfilesharing::DeleteFileRequest(*from.delete__);
+  if (from._internal_has_deletefile()) {
+    deletefile_ = new ::p2pfilesharing::DeleteFileRequest(*from.deletefile_);
   } else {
-    delete__ = nullptr;
+    deletefile_ = nullptr;
   }
   if (from._internal_has_download()) {
     download_ = new ::p2pfilesharing::DownloadRequest(*from.download_);
@@ -6001,7 +6067,7 @@ inline void NodeRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete addfile_;
   if (this != internal_default_instance()) delete lookup_;
-  if (this != internal_default_instance()) delete delete__;
+  if (this != internal_default_instance()) delete deletefile_;
   if (this != internal_default_instance()) delete download_;
   if (this != internal_default_instance()) delete join_;
   if (this != internal_default_instance()) delete updateroute_;
@@ -6030,8 +6096,8 @@ void NodeRequest::Clear() {
       lookup_->Clear();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(delete__ != nullptr);
-      delete__->Clear();
+      GOOGLE_DCHECK(deletefile_ != nullptr);
+      deletefile_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
       GOOGLE_DCHECK(download_ != nullptr);
@@ -6091,10 +6157,10 @@ const char* NodeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
-      // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+      // optional .p2pfilesharing.DeleteFileRequest deletefile = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          ptr = ctx->ParseMessage(_internal_mutable_delete_(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_deletefile(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -6190,11 +6256,11 @@ uint8_t* NodeRequest::_InternalSerialize(
         _Internal::lookup(this).GetCachedSize(), target, stream);
   }
 
-  // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+  // optional .p2pfilesharing.DeleteFileRequest deletefile = 4;
   if (cached_has_bits & 0x00000004u) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, _Internal::delete_(this),
-        _Internal::delete_(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(4, _Internal::deletefile(this),
+        _Internal::deletefile(this).GetCachedSize(), target, stream);
   }
 
   // optional .p2pfilesharing.DownloadRequest download = 5;
@@ -6268,11 +6334,11 @@ size_t NodeRequest::ByteSizeLong() const {
           *lookup_);
     }
 
-    // optional .p2pfilesharing.DeleteFileRequest delete = 4;
+    // optional .p2pfilesharing.DeleteFileRequest deletefile = 4;
     if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *delete__);
+          *deletefile_);
     }
 
     // optional .p2pfilesharing.DownloadRequest download = 5;
@@ -6342,7 +6408,7 @@ void NodeRequest::MergeFrom(const NodeRequest& from) {
       _internal_mutable_lookup()->::p2pfilesharing::LookupFileRequest::MergeFrom(from._internal_lookup());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_mutable_delete_()->::p2pfilesharing::DeleteFileRequest::MergeFrom(from._internal_delete_());
+      _internal_mutable_deletefile()->::p2pfilesharing::DeleteFileRequest::MergeFrom(from._internal_deletefile());
     }
     if (cached_has_bits & 0x00000008u) {
       _internal_mutable_download()->::p2pfilesharing::DownloadRequest::MergeFrom(from._internal_download());
@@ -6381,8 +6447,8 @@ bool NodeRequest::IsInitialized() const {
   if (_internal_has_lookup()) {
     if (!lookup_->IsInitialized()) return false;
   }
-  if (_internal_has_delete_()) {
-    if (!delete__->IsInitialized()) return false;
+  if (_internal_has_deletefile()) {
+    if (!deletefile_->IsInitialized()) return false;
   }
   if (_internal_has_download()) {
     if (!download_->IsInitialized()) return false;

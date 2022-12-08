@@ -284,7 +284,7 @@ void Node::join_chord() {
   cout << my_hostname << " successfully joins chord circle.\n";
 }
 
-// TODO: test
+
 // TODO: refactor join_chord(). It's too long
 // TODO: Using exception for exit failure
 // TODO: Add block state.
