@@ -11,7 +11,9 @@ proto_out* ProtoStreamOut::get_proto_out() {
     return out;
   } else {
     if (fd == 0) {
+      cout << "requesting connection to hostname: " << hostname << " port : " << port << endl;
       fd = clientRequestConnection(hostname, port);
+      cout << "succeed in connection\n";
     }
     out = new proto_out(fd);
     return out;

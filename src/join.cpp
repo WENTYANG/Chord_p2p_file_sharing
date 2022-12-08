@@ -43,7 +43,9 @@ void Node::join_req_handle(const JoinRequest& join_req) {
       join_req.newhostnamehash(), join_req.newhostname(), join_req.newport());
   ProtoStreamOut proto_out_respon(respon_hostName, respon_port);
   proto_out* out_respon = proto_out_respon.get_proto_out();
+  cout << "start sending message to responsible node: responseble node: " << respon_hostName << " port:" << respon_port << endl;
   sendMesgTo<NodeRequest>(help_join_req, out_respon);
+  cout << "sending succeed \n'" ;
 }
 
 /*
@@ -52,10 +54,12 @@ void Node::join_req_handle(const JoinRequest& join_req) {
   the new node.
 */
 void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
+  cout << "enter the help_join_req_handle function \n";
   ProtoStreamOut proto_out_new(help_join_req.newhostname(),
                                help_join_req.newport());
+  cout << "succeed in getting proto_out_new\n";
   proto_out* out_new = proto_out_new.get_proto_out();
-
+  cout << "succeed in getting out_new\n";
   // send HelpJoinResponse
   cout << my_hostname << " sends HelpJoinResponse to "<<help_join_req.newhostname() << ": " << help_join_req.newport() <<endl;
   NodeResponse help_join_resp = generate_help_join_response(
@@ -159,6 +163,13 @@ void Node::join_chord() {
   // one-time port number for this operation
   string r_port_1 = to_string(get_random_port());
 
+  // wait for HelpJoinResponse from responsible node
+  cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
+  ProtoStreamIn proto_in_respon(r_port_1);
+  proto_in* in_respon = proto_in_respon.get_proto_in();
+  NodeResponse rsp;
+  recvMesgFrom<NodeResponse>(rsp, in_respon);
+  
   // send JoinRequest to entry node
   cout << my_hostname << " sends JoinRequest.\n";
   NodeRequest req = generate_join_request(my_hash, my_hostname, r_port_1);
@@ -167,11 +178,11 @@ void Node::join_chord() {
   sendMesgTo<NodeRequest>(req, out_entry);
 
   // wait for HelpJoinResponse from responsible node
-  cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
-  ProtoStreamIn proto_in_respon(r_port_1);
-  proto_in* in_respon = proto_in_respon.get_proto_in();
-  NodeResponse rsp;
-  recvMesgFrom<NodeResponse>(rsp, in_respon);
+  //cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
+  //ProtoStreamIn proto_in_respon(r_port_1);
+  //proto_in* in_respon = proto_in_respon.get_proto_in();
+  //NodeResponse rsp;
+  //recvMesgFrom<NodeResponse>(rsp, in_respon);
 
   // parse, make sure get response from responsible node
   int64_t type = rsp.type();

@@ -67,9 +67,13 @@ void Node::run_server() {
           break;
         case 9:  // HelpJoinRequest jz399
         {
+          cout << "received a HelpJoinRequest\n";
           const HelpJoinRequset& help_join_req = request.helpjoin();
+          cout << "parse the help_join_req\n";
           thread t = thread(&Node::help_join_req_handle, this, help_join_req);
+          cout << "spawn a thread\n";
           t.detach();
+          cout << "detach the thread\n";
           break;
         }
         default:
