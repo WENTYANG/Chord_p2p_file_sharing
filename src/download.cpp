@@ -77,7 +77,7 @@ void Node::download(const string & filename) {
   // send out DownloadRequest
   ProtoStreamOut proto_stream_out(owner.first, owner.second);
   proto_out * out = proto_stream_out.get_proto_out();
-  NodeRequest req = generate_download_request(hash, my_hostname, my_config::listening_port_num); 
+  NodeRequest req = generate_download_request(hash, my_hostname, my_config::user_interface_port_num); 
   sendMesgTo<NodeRequest> (req, out);
   proto_stream_out.close_proto_out();
 
