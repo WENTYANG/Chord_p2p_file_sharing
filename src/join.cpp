@@ -134,7 +134,7 @@ void Node::handle_update_route_req(const RouteUpdateRequest& update_route_req) {
     cout<<" d_min: "<< d_min << " d_cur_to_entry: "<<d_cur_to_entry<<endl;
     if (d_cur_to_new >= d_min && d_cur_to_new < d_cur_to_entry) {
       fingerTable[i].first.first = update_route_req.newhostname();
-      fingerTable[i].first.second = update_route_req.newport();
+      fingerTable[i].first.second = my_config::listening_port_num;
       fingerTable[i].second = update_route_req.newhostnamehash();
     }
   }
@@ -142,7 +142,7 @@ void Node::handle_update_route_req(const RouteUpdateRequest& update_route_req) {
   // send back RouteUpdateResponse
   NodeResponse rsp = generate_route_update_response(
       my_hash, fingerTable[0].second, fingerTable[0].first.first,
-      fingerTable[0].first.second);  // next node info
+      my_config::listening_port_num);  // next node info
   ProtoStreamOut proto_out_new(update_route_req.newhostname(),
                                update_route_req.newport());
   proto_out* out_new = proto_out_new.get_proto_out();
