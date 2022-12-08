@@ -1,4 +1,5 @@
 #include "node.h"
+
 #include "proto_messages.h"
 #include "util/proto_messages.h"
 
@@ -9,7 +10,6 @@ Node::Node() {
       my_config::finger_table_length);  // Construct an empty finger table
                                         // with a length (specified in
                                         // config.h)
-  my_hash = get_hash(my_hostname);
 }
 
 /*
@@ -24,12 +24,13 @@ void Node::run_server() {
     try {
       int client_fd = serverAcceptConnection(server_fd, clientIP);
       cout << "Accepted a connection from " << clientIP << endl;
-      proto_in * in = new proto_in(client_fd);
+      proto_in* in = new proto_in(client_fd);
       NodeRequest request;
       recvMesgFrom<NodeRequest>(request, in);
       cout << "Received a request " << request.DebugString() << endl;
       delete in;
       close(client_fd);
+
       // TODO: Spawn a new thread to handle the request
       int64_t type = request.type();
       switch (type) {
@@ -41,8 +42,7 @@ void Node::run_server() {
             t.detach();
             break;
         }
-        case 3:
-          // LookupFileRequest ky99
+        case 3:  // LookupFileRequest ky99
         {
           const LookupFileRequest& lfr = request.lookup();
           thread t = thread(&Node::lookup_req_handle, this, lfr);
@@ -57,23 +57,36 @@ void Node::run_server() {
             t.detach();
             break;
         }
-        case 5: 
-          // DownloadRequest ky99
-        {  
+        case 5:  // DownloadRequest ky99
+        {
           const DownloadRequest& d_req = request.download();
           thread t = thread(&Node::download_req_handle, this, d_req);
           t.detach();
           break;
         }
-        case 6:
-          // JoinRequest jz399
+        case 6:  // JoinRequest jz399
+        {
+          const JoinRequest& join_req = request.join();
+          thread t = thread(&Node::join_req_handle, this, join_req);
+          t.detach();
           break;
-        case 7:
-          // RouteInsertRequest jz399
+        }
+        case 7:  // RouteUpdateRequest jz399
+        {
+          const RouteUpdateRequest& update_route_req = request.updateroute();
+          thread t = thread(&Node::handle_update_route_req, this, update_route_req);
+          t.detach();
           break;
-        case 8:
-          // RouteDeleteRequest jz399
+        }
+        case 8:  // RouteDeleteRequest jz399
           break;
+        case 9:  // HelpJoinRequest jz399
+        {
+          const HelpJoinRequset& help_join_req = request.helpjoin();
+          thread t = thread(&Node::help_join_req_handle, this, help_join_req);
+          t.detach();
+          break;
+        }
         default:
           cout << "Invalid Request Type: " << type << endl;
       }
@@ -108,8 +121,7 @@ void Node::run_user_terminal_interface() {
     int option;
     try {
       option = stoi(option_str);
-    }
-    catch (const exception& e) {
+    } catch (const exception& e) {
       cout << "Invalid input, please select a number from the provided ";
       continue;
     }
@@ -136,30 +148,31 @@ void Node::run_user_terminal_interface() {
       }
       case 3:
         // TODO: ky99 这里调用lookup file函数
-      { 
-        cout << "Please enter the name of the file you are looking for \n\n";
-        string file_name;
-        cin >> file_name;
-        digest_t file_hash = get_hash(file_name); 
-        bool does_exist;
-        contactInfo_t successor, owner;
-        lookup(file_hash, my_config::user_interface_port_num, &does_exist, &successor, &owner);
-        if (does_exist) {
-          cout << "\nYes! We have this file!\n\n";
-        } else {
-          cout << "\nSorry! We do not have this file.\n\n";
+        {
+          cout << "Please enter the name of the file you are looking for \n\n";
+          string file_name;
+          cin >> file_name;
+          digest_t file_hash = get_hash(file_name);
+          bool does_exist;
+          contactInfo_t successor, owner;
+          lookup(file_hash, my_config::user_interface_port_num, &does_exist,
+                 &successor, &owner);
+          if (does_exist) {
+            cout << "\nYes! We have this file!\n\n";
+          } else {
+            cout << "\nSorry! We do not have this file.\n\n";
+          }
+          break;
         }
-        break;
-      }
       case 4:
         // TODO: ky99 这里调用lookup file, 然后downlod file
-      {
-        cout << "Please enter the name of the file you are looking for \n\n";
-        string file_name;
-        cin >> file_name;
-        download(file_name);
-        break;
-      }
+        {
+          cout << "Please enter the name of the file you are looking for \n\n";
+          string file_name;
+          cin >> file_name;
+          download(file_name);
+          break;
+        }
       case 5:
         // TODO: jz399 这里调用节点退出函数
         exit(EXIT_SUCCESS);
@@ -179,15 +192,19 @@ void Node::run_user_terminal_interface() {
    terminal interface
 */
 void Node::main() {
+  my_hash = get_hash(my_hostname);
+ 
   // Spawn a thread to init server and listen
   thread listenThread(&Node::run_server, this);
 
-  // Join the circle
+  cout<< "my_hash: " << my_hash << endl;
+  cout<< "my_hostname: " << my_hostname << endl;
+
+  // Join the chord circle
   if (entryNode.first == "0.0.0.0") {
-    // Node is the first one in the circle
-    // TODO: jz399
-    // 这里调用新节点加入的函数，第一个联系的随机节点信息存在entryNode这个pair中，first是hostname，second是port
-    // please also update local_start and local_end 
+    initial_chord();
+  } else {
+    join_chord();
   }
 
   run_user_terminal_interface();
@@ -195,35 +212,36 @@ void Node::main() {
 
 /*
   Get the SHA-1 hash for a given key
-  Each node will be assigned a unique ID (within 2^m (m is 48 in this case)) 
+  Each node will be assigned a unique ID (within 2^m (m is 48 in this case))
   by hashing key which will be hostname of that node by SHA-1 Algorithm
-  => a maximum of 2^48 nodes can join the circle, the finger table length is log2(2^m)=48
+  => a maximum of 2^48 nodes can join the circle, the finger table length is
+  log2(2^m)=48
 */
-digest_t Node::get_hash(string key){
+digest_t Node::get_hash(string key) {
   unsigned char obuf[41];
-    char finalHash[41];
-    string keyHash = "";
-    long unsigned int i;
-    long unsigned int m = my_config::finger_table_length;
-    digest_t mod = pow(2, m);
+  char finalHash[41];
+  string keyHash = "";
+  long unsigned int i;
+  long unsigned int m = my_config::finger_table_length;
+  digest_t mod = pow(2, m);
 
-    // convert string to an unsigned char array because SHA1 takes unsigned char array as parameter
-    unsigned char unsigned_key[key.length()+1];
-    for(i=0;i<key.length();i++){
-        unsigned_key[i] = key[i];
-    }
-    unsigned_key[i] = '\0';
+  // convert string to an unsigned char array because SHA1 takes unsigned char
+  // array as parameter
+  unsigned char unsigned_key[key.length() + 1];
+  for (i = 0; i < key.length(); i++) {
+    unsigned_key[i] = key[i];
+  }
+  unsigned_key[i] = '\0';
 
+  SHA1(unsigned_key, sizeof(unsigned_key), obuf);
+  for (i = 0; i < m / 8; i++) {
+    sprintf(finalHash, "%d", obuf[i]);
+    keyHash += finalHash;
+  }
 
-    SHA1(unsigned_key,sizeof(unsigned_key),obuf);
-    for (i = 0; i < m/8; i++) {
-        sprintf(finalHash,"%d",obuf[i]);
-        keyHash += finalHash;
-    }
+  digest_t hash = stoll(keyHash) % mod;
 
-    digest_t hash = stoll(keyHash) % mod;
-
-    return hash;
+  return hash;
 }
 
 bool file_exist(const string & filename) {

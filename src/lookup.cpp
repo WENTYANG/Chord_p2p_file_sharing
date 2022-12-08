@@ -93,7 +93,7 @@ void Node::lookup(digest_t hash, const string & port, bool * does_exist, contact
     sendMesgTo<NodeRequest> (req, out);
     proto_stream_out.close_proto_out();    
     
-    // wait for NodeResponse
+    // wait for NodeResponse from any possible node
     ProtoStreamIn proto_stream_in(port);    
     proto_in* in = proto_stream_in.get_proto_in();
     NodeResponse rsp;

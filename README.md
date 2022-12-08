@@ -21,6 +21,13 @@ contact point为node加入circle时第一个联系的random node，若contact po
 暂时定义了14种消息类型，可以在`P2P_Protocol.proto`中找到。  
 如果需要更改，可以更改后用  `protoc P2P_Protocol.proto --cpp_out=./ `  来重新编译生成新的.cc和.h文件
 
+# Protobuf Compiler:
+如果要安装protobuf compiler,可以把protobuf目录下的zip文件解压到$HOME/.local/文件夹下  
+
+    unzip protoc-3.20.1-linux-x86_64.zip -d $HOME/.local/
+    export PATH="$PATH:$HOME/.local/bin"
+执行`protoc --version`应看到version为libprotoc 3.20.1
+
 运行前需要执行 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./protobuf/lib 
 
 * 这里对不同message的修改可能容易出现conflict，要改的话可能要互相同步一下？
