@@ -60,28 +60,37 @@ void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
   NodeResponse help_join_resp = generate_help_join_response(
       my_hash, my_hostname, my_config::listening_port_num);
   sendMesgTo<NodeResponse>(help_join_resp, out_new);
-  cout << my_hostname << " sends HelpJoinResponse to "<<help_join_req.newhostname()<<endl;
+  cout << my_hostname << " sends HelpJoinResponse to "<< help_join_req.newhostname()<<endl;
 
   // generate Route table for new node and send it
-  cout << my_hostname << " generates Route table to "<<help_join_req.newhostname()<<endl;
+  cout << my_hostname << " generates Route table to "<< help_join_req.newhostname()<<endl;
   RouteTableInit* finger_table = new RouteTableInit();
   for (int i = 0; i < my_config::finger_table_length; i++) {
-    string r_port = to_string(get_random_port());
-    int64_t hash = hash_value_add(help_join_req.newhostnamehash(), pow(2, i));  // n+2^i
-
+    digest_t entry_hash = hash_value_add(help_join_req.newhostnamehash(), pow(2, i));  // n+2^i
+    
     // get successor for given hash
-    pair<bool, contactInfo_t> res = lookup_successor(hash, r_port);
-    cout<< "entry: " << i <<" hash_value: " << hash; 
-    print_contactInfo(res.second);
+    string hostname;
+    string r_port = to_string(get_random_port());
+    pair<bool, contactInfo_t> res = lookup_successor(entry_hash, r_port);
+    digest_t d_hash_to_res = get_distance(entry_hash, get_hash(res.second.first));
+    digest_t d_hash_to_new = get_distance(entry_hash, help_join_req.newhostnamehash());
+    if(d_hash_to_res > d_hash_to_new){
+      hostname = help_join_req.newhostname();
+    }else{
+      hostname = res.second.first;
+    }
+
+    cout<< "entry: " << i <<" hash_value: " << entry_hash;
+    cout<< " hostname: " << hostname << endl; 
 
     RouteTableEntry* entry = finger_table->add_entry();
-    entry->set_hostname(res.second.first);
+    entry->set_hostname(hostname);
     entry->set_port(my_config::listening_port_num);
-    entry->set_hostnamehash(get_hash(res.second.first));
+    entry->set_hostnamehash(get_hash(hostname));
   }
   NodeResponse route_init_resp = generate_routetable_init(finger_table);
   sendMesgTo<NodeResponse>(route_init_resp, out_new);
-  cout << my_hostname << " sends Route table to "<<help_join_req.newhostname()<<endl;
+  cout << my_hostname << " sends Route table to "<< help_join_req.newhostname()<<endl;
 
   // locate the furthest prev node for the new node
   string r_port = to_string(get_random_port());
@@ -112,7 +121,7 @@ void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
   }
   NodeResponse file_table_resp = generate_filetable_response(file_table);
   sendMesgTo<NodeResponse>(file_table_resp, out_new);
-  cout << my_hostname << " sends file table to "<<help_join_req.newhostname()<<endl;
+  cout << my_hostname << " sends file table to "<< help_join_req.newhostname()<<endl;
 
   // update localstart because new_node is a new predecessor
   local_start = hash_value_add(help_join_req.newhostnamehash(), 1);
