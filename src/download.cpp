@@ -33,7 +33,9 @@ void Node::download_req_handle(const DownloadRequest& req) {
     ifs.seekg(0, ifs.beg);
     
     int fd = clientRequestConnection(source_host_name, source_port);
-    socketSendMsg(fd, (void *)(&length), sizeof(int));
+    string length_str = to_string(length);
+    socketSendMsg(fd, (void *)(length_str.c_str()), length_str.size());
+    cout << "length printed! : " << length_str << "\n";
 
     while (length > 0) {
       int len = min(MAX_LENGTH, length);
@@ -91,9 +93,12 @@ void Node::download(const string & filename) {
   // check if we could successfully receive the file from another node
   try {
     string length_str = socketRecvMsg(client_fd);
+    cout << "length str :" << length_str << endl;
     length = stoi(length_str);
   } catch (const std::exception& e) {
+    close(client_fd);
     cout << "\nAn error occured when downloading the file. Please try later!\n\n";
+    cout << e.what() << endl;
     return;
   }
   ofstream ofs(file_name, ofstream::binary);
