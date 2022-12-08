@@ -5,6 +5,7 @@ package p2pfilesharing;
 message AddFileRequest{
   	required int64 filenamehash = 1;
   	required string sourcehostname = 2;
+	required string sourceport = 3;
 }
 
 message LookupFileRequest{
@@ -103,7 +104,7 @@ message NodeRequest {
 	required int64 type = 1;
 	optional AddFileRequest addfile= 2;
 	optional LookupFileRequest lookup = 3;
-	optional DeleteFileRequest delete = 4;
+	optional DeleteFileRequest deletefile = 4;
 	optional DownloadRequest download = 5;
 	optional JoinRequest join = 6;
 	optional RouteUpdateRequest updateroute = 7;
