@@ -254,16 +254,17 @@ void Node::add_file(string filename, const string & port) {
     //check if the file is uploaded to ./shared_file/ successfully
     if (!file_exist(filename)) {
         cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
-        exit(EXIT_FAILURE);
+        return;
+        // exit(EXIT_FAILURE);
     }
     //find successor node
     digest_t hash_filename = get_hash(filename);
     pair<bool, contactInfo_t> successor_pair;
     successor_pair = lookup_successor(hash_filename, port);
-    if (!successor_pair.first) {
-        cerr << "No node yet!\n";
-        exit(EXIT_FAILURE);
-    }
+    // if (!successor_pair.first) {
+    //    cerr << "No node yet!\n";
+    //    exit(EXIT_FAILURE);
+    // }
     //add to localFiles
     localFiles[hash_filename] = filename;
     //generate and send add_file packet to the successor node
