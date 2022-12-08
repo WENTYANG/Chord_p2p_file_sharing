@@ -53,6 +53,25 @@ NodeRequest generate_download_request(digest_t hash, const string& hostname,
   return node_req;
 }
 
+NodeRequest generate_add_file_request(digest_t hash, const string & hostname, const string & port) {
+    NodeRequest node_req;
+    node_req.set_type(2);
+    AddFileRequest * req = new AddFileRequest();
+    req->set_filenamehash(hash);
+    req->set_sourcehostname(hostname);
+    return node_req;
+}
+
+NodeRequest generate_delete_file_request(digest_t hash, const string & hostname, const string & port) {
+    NodeRequest node_req;
+    node_req.set_type(4);
+    DeleteFileRequest * req = new DeleteFileRequest();
+    req->set_filenamehash(hash);
+    req->set_sourcehostname(hostname);
+    req->set_sourceport(port);
+    return node_req;
+}
+
 NodeRequest generate_join_request(digest_t hash, const string& hostname,
                                   const string& port) {
   NodeRequest node_req;

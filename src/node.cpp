@@ -1,6 +1,9 @@
 #include "node.h"
 
 #include "proto_messages.h"
+#include "util/proto_messages.h"
+
+#include <fstream>
 
 Node::Node() {
   fingerTable = vector<pair<contactInfo_t, digest_t> >(
@@ -31,8 +34,14 @@ void Node::run_server() {
       // TODO: Spawn a new thread to handle the request
       int64_t type = request.type();
       switch (type) {
-        case 2:  // AddFileRequest fm128
-          break;
+        case 2:
+          // AddFileRequest fm128
+        {
+            const AddFileRequest & add_file_req = request.addfile();
+            thread t = thread(&Node::add_file_req_handle, this, add_file_req);
+            t.detach();
+            break;
+        }
         case 3:  // LookupFileRequest ky99
         {
           const LookupFileRequest& lfr = request.lookup();
@@ -40,8 +49,14 @@ void Node::run_server() {
           t.detach();
           break;
         }
-        case 4:  // DeleteFileRequest fm128
-          break;
+        case 4:
+          // DeleteFileRequest fm128
+        {
+            const DeleteFileRequest & del_file_req = request.deletefile();
+            thread t = thread(&Node::del_file_req_handle, this, del_file_req);
+            t.detach();
+            break;
+        }
         case 5:  // DownloadRequest ky99
         {
           const DownloadRequest& d_req = request.download();
@@ -115,10 +130,22 @@ void Node::run_user_terminal_interface() {
     switch (option) {
       case 1:
         // TODO: fm128 这里调用add file函数
-        break;
+      {
+          cout << "Please enter the name of the file you want to upload\n\n";
+          string filename;
+          cin >> filename;
+          add_file(filename, my_config::user_interface_port_num);
+          break;
+      }
       case 2:
         // TODO: fm128 这里调用delete file函数
-        break;
+      {
+          cout << "Please enter the name of the file you want to delete\n\n";
+          string filename;
+          cin >> filename;
+          delete_file(filename, my_config::user_interface_port_num);
+          break;
+      }
       case 3:
         // TODO: ky99 这里调用lookup file函数
         {
@@ -215,4 +242,89 @@ digest_t Node::get_hash(string key) {
   digest_t hash = stoll(keyHash) % mod;
 
   return hash;
+}
+
+bool file_exist(const string & filename) {
+    string fn = "./shared_file/" + filename;
+    ifstream f(fn);
+    return f.good();
+}
+
+void Node::add_file(string filename, const string & port) {
+    //check if the file is uploaded to ./shared_file/ successfully
+    if (!file_exist(filename)) {
+        cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
+        exit(EXIT_FAILURE);
+    }
+    //find successor node
+    digest_t hash_filename = get_hash(filename);
+    pair<bool, contactInfo_t> successor_pair;
+    successor_pair = lookup_successor(hash_filename, port);
+    if (!successor_pair.first) {
+        cerr << "No node yet!\n";
+        exit(EXIT_FAILURE);
+    }
+    //add to localFiles
+    localFiles[hash_filename] = filename;
+    //generate and send add_file packet to the successor node
+    NodeRequest request = generate_add_file_request(hash_filename, my_hostname, port);
+    ProtoStreamOut proto_stream_out(successor_pair.second.first, successor_pair.second.second);
+    proto_out * out = proto_stream_out.get_proto_out();
+    sendMesgTo<NodeRequest> (request, out);
+    proto_stream_out.close_proto_out();
+}
+
+void Node::add_file_req_handle(const AddFileRequest & request) {
+    digest_t hash_filename = request.filenamehash();
+    string src_hostname = request.sourcehostname();
+    string src_port = request.sourceport();
+
+    //check if the file is uploaded to ./shared_file/ successfully
+    if (!file_exist(localFiles[hash_filename])) {
+        cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
+        exit(EXIT_FAILURE);
+    }
+    //check if the file already exists in DHT
+    if (DHT.count(hash_filename)) {
+        cout << "File already exists, no need to add again!\n";
+        return;
+    }
+    //add to DHT
+    contactInfo_t info(src_hostname, src_port);
+    DHT[hash_filename] = info;
+}
+
+int Node::delete_file(string filename, const string & port) {
+    digest_t hash_filename = get_hash(filename);
+    //find owner node and successor node
+    contactInfo_t successor, owner;
+    bool does_exist;
+    lookup(hash_filename, port, &does_exist, &successor, &owner);
+    if (!does_exist) {
+        cerr << "No successor node or no such file exists!\n";
+        exit(EXIT_FAILURE);
+    }
+    //if the node is the owner
+    if (owner.first == my_hostname) {
+        //delete file in localFiles
+        localFiles.erase(hash_filename);
+        //generate and send delete_file packet to the successor node
+        NodeRequest request = generate_delete_file_request(hash_filename, my_hostname, port);
+        ProtoStreamOut proto_stream_out(successor.first, successor.second);
+        proto_out * out = proto_stream_out.get_proto_out();
+        sendMesgTo<NodeRequest> (request, out);
+        proto_stream_out.close_proto_out();
+    }
+}
+
+void Node::del_file_req_handle(const DeleteFileRequest & request) {
+    digest_t hash_filename = request.filenamehash();
+
+    //check if the file exists DHT
+    if (!DHT.count(hash_filename)) {
+        cerr << "Failed to delete file: It is not in the DHT!\n";
+        exit(EXIT_FAILURE);
+    }
+    //delete the file entry in DHT
+    DHT.erase(hash_filename);
 }

@@ -49,7 +49,12 @@ class Node {
   void run_user_terminal_interface();  // Start interacting with user on terminal
   digest_t get_hash(string key);
 
-  /***** Lookup Related *****/
+    void add_file(string filename, const string & port);
+    int delete_file(string filename, const string & port);
+    void add_file_req_handle(const AddFileRequest & request);
+    void del_file_req_handle(const DeleteFileRequest & request);
+
+    /***** Lookup Related *****/
   private:
     // port for the user interface thread, default should be my_config::user_interface_port_num 
     // When this function called by user_terminal, arg port should be my_config::user_interface_port_num.
