@@ -38,7 +38,7 @@ void Node::join_req_handle(const JoinRequest& join_req) {
 
   // send HelpJoinRequest to responsible node
   string respon_hostName = res.second.first;
-  string respon_port = res.second.second;
+  string respon_port = my_config::listening_port_num;
   NodeRequest help_join_req = generate_help_join_request(
       join_req.newhostnamehash(), join_req.newhostname(), join_req.newport());
   ProtoStreamOut proto_out_respon(respon_hostName, respon_port);
@@ -76,7 +76,7 @@ void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
 
     RouteTableEntry* entry = finger_table->add_entry();
     entry->set_hostname(res.second.first);
-    entry->set_port(res.second.second);
+    entry->set_port(my_config::listening_port_num);
     entry->set_hostnamehash(get_hash(res.second.first));
   }
   NodeResponse route_init_resp = generate_routetable_init(finger_table);
@@ -92,7 +92,7 @@ void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
   cout << "find furthest prev node: ";
   print_contactInfo(res.second);
   NodeResponse lookup_node_resp = generate_lookup_node_response(
-      res.first, res.second.first, res.second.second);
+      res.first, res.second.first, my_config::listening_port_num);
   sendMesgTo<NodeResponse>(lookup_node_resp, out_new);
 
   // generate file table for new node and send it
