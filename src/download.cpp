@@ -51,7 +51,7 @@ void Node::download(const string & filename) {
   // check if already have the file
   string file_name = "./download_file/" + filename;
   ifstream ifs(file_name);
-  if (!ifs.good()) {
+  if (ifs.good()) {
     cout << "\nLooks like you already have this file! Please check your ./download_file directory.\n\n";
     ifs.close();
     return;
