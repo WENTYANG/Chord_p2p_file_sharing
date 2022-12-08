@@ -5,7 +5,7 @@ package p2pfilesharing;
 message AddFileRequest{
   	required int64 filenamehash = 1;
   	required string sourcehostname = 2;
-		required string sourceport = 3;
+	required string sourceport = 3;
 }
 
 message LookupFileRequest{

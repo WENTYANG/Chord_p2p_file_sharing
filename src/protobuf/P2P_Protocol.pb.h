@@ -255,6 +255,7 @@ class AddFileRequest final :
 
   enum : int {
     kSourcehostnameFieldNumber = 2,
+    kSourceportFieldNumber = 3,
     kFilenamehashFieldNumber = 1,
   };
   // required string sourcehostname = 2;
@@ -273,6 +274,24 @@ class AddFileRequest final :
   const std::string& _internal_sourcehostname() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_sourcehostname(const std::string& value);
   std::string* _internal_mutable_sourcehostname();
+  public:
+
+  // required string sourceport = 3;
+  bool has_sourceport() const;
+  private:
+  bool _internal_has_sourceport() const;
+  public:
+  void clear_sourceport();
+  const std::string& sourceport() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sourceport(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sourceport();
+  PROTOBUF_NODISCARD std::string* release_sourceport();
+  void set_allocated_sourceport(std::string* sourceport);
+  private:
+  const std::string& _internal_sourceport() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sourceport(const std::string& value);
+  std::string* _internal_mutable_sourceport();
   public:
 
   // required int64 filenamehash = 1;
@@ -301,6 +320,7 @@ class AddFileRequest final :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sourcehostname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sourceport_;
   int64_t filenamehash_;
   friend struct ::TableStruct_P2P_5fProtocol_2eproto;
 };
@@ -4018,7 +4038,7 @@ class NodeResponse final :
 
 // required int64 filenamehash = 1;
 inline bool AddFileRequest::_internal_has_filenamehash() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool AddFileRequest::has_filenamehash() const {
@@ -4026,7 +4046,7 @@ inline bool AddFileRequest::has_filenamehash() const {
 }
 inline void AddFileRequest::clear_filenamehash() {
   filenamehash_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline int64_t AddFileRequest::_internal_filenamehash() const {
   return filenamehash_;
@@ -4036,7 +4056,7 @@ inline int64_t AddFileRequest::filenamehash() const {
   return _internal_filenamehash();
 }
 inline void AddFileRequest::_internal_set_filenamehash(int64_t value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   filenamehash_ = value;
 }
 inline void AddFileRequest::set_filenamehash(int64_t value) {
@@ -4110,6 +4130,74 @@ inline void AddFileRequest::set_allocated_sourcehostname(std::string* sourcehost
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:p2pfilesharing.AddFileRequest.sourcehostname)
+}
+
+// required string sourceport = 3;
+inline bool AddFileRequest::_internal_has_sourceport() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool AddFileRequest::has_sourceport() const {
+  return _internal_has_sourceport();
+}
+inline void AddFileRequest::clear_sourceport() {
+  sourceport_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& AddFileRequest::sourceport() const {
+  // @@protoc_insertion_point(field_get:p2pfilesharing.AddFileRequest.sourceport)
+  return _internal_sourceport();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AddFileRequest::set_sourceport(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000002u;
+ sourceport_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:p2pfilesharing.AddFileRequest.sourceport)
+}
+inline std::string* AddFileRequest::mutable_sourceport() {
+  std::string* _s = _internal_mutable_sourceport();
+  // @@protoc_insertion_point(field_mutable:p2pfilesharing.AddFileRequest.sourceport)
+  return _s;
+}
+inline const std::string& AddFileRequest::_internal_sourceport() const {
+  return sourceport_.Get();
+}
+inline void AddFileRequest::_internal_set_sourceport(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  sourceport_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AddFileRequest::_internal_mutable_sourceport() {
+  _has_bits_[0] |= 0x00000002u;
+  return sourceport_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AddFileRequest::release_sourceport() {
+  // @@protoc_insertion_point(field_release:p2pfilesharing.AddFileRequest.sourceport)
+  if (!_internal_has_sourceport()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  auto* p = sourceport_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (sourceport_.IsDefault()) {
+    sourceport_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void AddFileRequest::set_allocated_sourceport(std::string* sourceport) {
+  if (sourceport != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  sourceport_.SetAllocated(sourceport, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (sourceport_.IsDefault()) {
+    sourceport_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:p2pfilesharing.AddFileRequest.sourceport)
 }
 
 // -------------------------------------------------------------------
