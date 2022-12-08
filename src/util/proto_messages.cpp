@@ -59,6 +59,8 @@ NodeRequest generate_add_file_request(digest_t hash, const string & hostname, co
     AddFileRequest * req = new AddFileRequest();
     req->set_filenamehash(hash);
     req->set_sourcehostname(hostname);
+    req->set_sourceport(port);
+    node_req.set_allocated_addfile(req);
     return node_req;
 }
 
@@ -69,6 +71,7 @@ NodeRequest generate_delete_file_request(digest_t hash, const string & hostname,
     req->set_filenamehash(hash);
     req->set_sourcehostname(hostname);
     req->set_sourceport(port);
+    node_req.set_allocated_deletefile(req);
     return node_req;
 }
 
