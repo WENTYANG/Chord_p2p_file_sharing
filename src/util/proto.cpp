@@ -13,7 +13,7 @@ proto_out* ProtoStreamOut::get_proto_out() {
     if (fd == 0) {
       cout << "requesting connection to hostname: " << hostname << " port : " << port << endl;
       fd = clientRequestConnection(hostname, port);
-      cout << "succeed in connection\n";
+      cout << "Received fd : " << fd << endl;
     }
     out = new proto_out(fd);
     return out;

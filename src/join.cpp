@@ -163,19 +163,19 @@ void Node::join_chord() {
   // one-time port number for this operation
   string r_port_1 = to_string(get_random_port());
 
-  // wait for HelpJoinResponse from responsible node
-  cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
-  ProtoStreamIn proto_in_respon(r_port_1);
-  proto_in* in_respon = proto_in_respon.get_proto_in();
-  NodeResponse rsp;
-  recvMesgFrom<NodeResponse>(rsp, in_respon);
-  
   // send JoinRequest to entry node
   cout << my_hostname << " sends JoinRequest.\n";
   NodeRequest req = generate_join_request(my_hash, my_hostname, r_port_1);
   ProtoStreamOut proto_out_entry(entryNode.first, entryNode.second);
   proto_out* out_entry = proto_out_entry.get_proto_out();
   sendMesgTo<NodeRequest>(req, out_entry);
+  
+  // wait for HelpJoinResponse from responsible node
+  cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
+  ProtoStreamIn proto_in_respon(r_port_1);
+  proto_in* in_respon = proto_in_respon.get_proto_in();
+  NodeResponse rsp;
+  recvMesgFrom<NodeResponse>(rsp, in_respon);
 
   // wait for HelpJoinResponse from responsible node
   //cout << my_hostname << " waits for HelpJoinResponse on port " << r_port_1 << endl;
