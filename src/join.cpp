@@ -57,10 +57,10 @@ void Node::help_join_req_handle(const HelpJoinRequset& help_join_req) {
   proto_out* out_new = proto_out_new.get_proto_out();
 
   // send HelpJoinResponse
+  cout << my_hostname << " sends HelpJoinResponse to "<<help_join_req.newhostname() << ": " << help_join_req.newport() <<endl;
   NodeResponse help_join_resp = generate_help_join_response(
       my_hash, my_hostname, my_config::listening_port_num);
   sendMesgTo<NodeResponse>(help_join_resp, out_new);
-  cout << my_hostname << " sends HelpJoinResponse to "<<help_join_req.newhostname() << ": " << help_join_req.newport() <<endl;
 
   // generate Route table for new node and send it
   cout << my_hostname << " generates Route table to "<<help_join_req.newhostname()<<endl;
