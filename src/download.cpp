@@ -104,6 +104,12 @@ void Node::download(const string & filename) {
     cout << "\nAn error occured when downloading the file. Please try later! [" << e.what() << "]\n\n";
     return;
   }
+  if (length == 0) {
+    close(client_fd);
+    close(server_fd);
+    cout << "\nAn error occured when downloading the file. Please try later!\n\n";
+    return;
+  }
   ofstream ofs(file_name, ofstream::binary);
     while (length > 0) {
       string received = socketRecvMsg(client_fd);
