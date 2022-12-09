@@ -192,6 +192,7 @@ void Node::run_user_terminal_interface() {
    terminal interface
 */
 void Node::main() {
+ try{
   my_hash = get_hash(my_hostname);
  
   // Spawn a thread to init server and listen
@@ -208,6 +209,10 @@ void Node::main() {
   }
 
   run_user_terminal_interface();
+ }
+ catch (const std::exception& e) {
+  std::cerr << e.what() << endl;
+ }
 }
 
 /*

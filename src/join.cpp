@@ -173,6 +173,10 @@ void Node::join_chord() {
   NodeRequest req = generate_join_request(my_hash, my_hostname, r_port_1);
   ProtoStreamOut proto_out_entry(entryNode.first, entryNode.second);
   proto_out* out_entry = proto_out_entry.get_proto_out();
+  if (out_entry == nullptr) {
+    cerr << "Wrong entryNode info!\n";
+    exit(EXIT_FAILURE);
+  }
   sendMesgTo<NodeRequest>(req, out_entry);
 
   // wait for HelpJoinResponse from responsible node
