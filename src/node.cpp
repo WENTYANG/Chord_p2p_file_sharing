@@ -134,7 +134,7 @@ void Node::run_user_terminal_interface() {
           cout << "Please enter the name of the file you want to upload\n\n";
           string filename;
           cin >> filename;
-          add_file(filename, my_config::user_interface_port_num);
+          add_file(filename, my_config::listening_port_num);
           break;
       }
       case 2:
@@ -143,7 +143,7 @@ void Node::run_user_terminal_interface() {
           cout << "Please enter the name of the file you want to delete\n\n";
           string filename;
           cin >> filename;
-          delete_file(filename, my_config::user_interface_port_num);
+          delete_file(filename, my_config::listening_port_num);
           break;
       }
       case 3:
@@ -192,6 +192,7 @@ void Node::run_user_terminal_interface() {
    terminal interface
 */
 void Node::main() {
+ try{
   my_hash = get_hash(my_hostname);
  
   // Spawn a thread to init server and listen
@@ -208,6 +209,10 @@ void Node::main() {
   }
 
   run_user_terminal_interface();
+ }
+ catch (const std::exception& e) {
+  std::cerr << e.what() << endl;
+ }
 }
 
 /*
@@ -254,16 +259,18 @@ void Node::add_file(string filename, const string & port) {
     //check if the file is uploaded to ./shared_file/ successfully
     if (!file_exist(filename)) {
         cerr << "Failed to add file: please upload the file into shared_file folder first!\n";
-        exit(EXIT_FAILURE);
+        return;
+        // exit(EXIT_FAILURE);
     }
     //find successor node
     digest_t hash_filename = get_hash(filename);
+    cout << "File hash for file " << filename << " is " << hash_filename << endl;
     pair<bool, contactInfo_t> successor_pair;
-    successor_pair = lookup_successor(hash_filename, port);
-    if (!successor_pair.first) {
-        cerr << "No node yet!\n";
-        exit(EXIT_FAILURE);
-    }
+    successor_pair = lookup_successor(hash_filename, my_config::user_interface_port_num);
+    // if (!successor_pair.first) {
+    //    cerr << "No node yet!\n";
+    //    exit(EXIT_FAILURE);
+    // }
     //add to localFiles
     localFiles[hash_filename] = filename;
     //generate and send add_file packet to the successor node
@@ -299,7 +306,7 @@ int Node::delete_file(string filename, const string & port) {
     //find owner node and successor node
     contactInfo_t successor, owner;
     bool does_exist;
-    lookup(hash_filename, port, &does_exist, &successor, &owner);
+    lookup(hash_filename, my_config::user_interface_port_num, &does_exist, &successor, &owner);
     if (!does_exist) {
         cerr << "No successor node or no such file exists!\n";
         exit(EXIT_FAILURE);

@@ -31,3 +31,5 @@
 *.app
 .vscode/settings.json
 p2p_file_sharing
+src/shared_file/*
+src/download_file/*

@@ -7,14 +7,18 @@ ProtoStreamOut::~ProtoStreamOut() {
 }
 
 proto_out* ProtoStreamOut::get_proto_out() {
-  if (out != nullptr) {
-    return out;
-  } else {
-    if (fd == 0) {
-      fd = clientRequestConnection(hostname, port);
+  try {
+    if (out != nullptr) {
+      return out;
+    } else {
+      if (fd == 0) {
+        fd = clientRequestConnection(hostname, port);
+      }
+      out = new proto_out(fd);
+      return out;
     }
-    out = new proto_out(fd);
-    return out;
+  } catch (exception & e) {
+    return nullptr;
   }
 }
 
@@ -35,18 +39,22 @@ ProtoStreamIn::~ProtoStreamIn() {
 }
 
 proto_in * ProtoStreamIn::get_proto_in() {
-  if (in != nullptr) {
-    return in;
-  } else {
-    if (server_fd == 0) {
-      server_fd = initializeServer(port);
+  try {
+    if (in != nullptr) {
+      return in;
+    } else {
+      if (server_fd == 0) {
+        server_fd = initializeServer(port);
+      }
+      if (client_fd == 0) {
+        string clientIP;
+        client_fd = serverAcceptConnection(server_fd, clientIP);
+      }
+      in = new proto_in(client_fd);
+      return in;
     }
-    if (client_fd == 0) {
-      string clientIP;
-      client_fd = serverAcceptConnection(server_fd, clientIP);
-    }
-    in = new proto_in(client_fd);
-    return in;
+  } catch (exception & e) {
+    return nullptr;
   }
 }
 

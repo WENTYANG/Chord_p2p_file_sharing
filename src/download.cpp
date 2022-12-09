@@ -19,9 +19,11 @@ void Node::download_req_handle(const DownloadRequest& req) {
     string file_name = "./shared_file/" + localFiles[hash];
     ifstream ifs(file_name, ifstream::binary);
     if (!ifs.good()) {
-      cerr << file_name << "exists in localFiles, but can not find it in ./shared_file\n";
+      cerr << file_name << " exists in localFiles, but can not find it in ./shared_file\n";
       // connect to source and close right away, need to catch the exception
       ifs.close();
+      int fd = clientRequestConnection(source_host_name, source_port);
+      close(fd);
       return;
     }
     // send file to user
@@ -51,10 +53,15 @@ void Node::download(const string & filename) {
   // check if already have the file
   string file_name = "./download_file/" + filename;
   ifstream ifs(file_name);
-  if (!ifs.good()) {
-    cout << "\nLooks like you already have this file! Please check your ./download_file directory.\n\n";
-    ifs.close();
-    return;
+  if (ifs.good()) {
+    cout << "\nLooks like you already have this file! Please check your ./download_file directory.\n";
+    cout << "Do you want to download this file again? [y/n]";
+    string option;
+    cin >> option;
+    if (option != "y") {
+      ifs.close();
+      return;
+    } 
   }
   ifs.close();
 
@@ -70,7 +77,7 @@ void Node::download(const string & filename) {
   
   // check if the file is on this node
   if (owner.first == my_hostname) {
-    cout << "\nLooks like you already have this file! Please check your ./shared_file directory.\n\n";
+    cout << "\nLooks like you are the owner of this file! Please check your ./shared_file directory.\n\n";
     return;
   }
 
@@ -86,22 +93,30 @@ void Node::download(const string & filename) {
   string client_IP;
   int client_fd = serverAcceptConnection(server_fd, client_IP);
   
-  int length;
+  int length = 0;
   
   // check if we could successfully receive the file from another node
   try {
-    string length_str = socketRecvMsg(client_fd);
-    length = stoi(length_str);
+    int len = recv(client_fd, (void*)(&length), sizeof(int), 0);
   } catch (const std::exception& e) {
+    close(client_fd);
+    close(server_fd);
+    cout << "\nAn error occured when downloading the file. Please try later! [" << e.what() << "]\n\n";
+    return;
+  }
+  if (length == 0) {
+    close(client_fd);
+    close(server_fd);
     cout << "\nAn error occured when downloading the file. Please try later!\n\n";
     return;
   }
   ofstream ofs(file_name, ofstream::binary);
-  while (length > 0) {
+    while (length > 0) {
       string received = socketRecvMsg(client_fd);
       ofs.write(received.data(), received.size());
       length -= received.size();
-  }
+    } 
+  close(server_fd);
   close(client_fd);
   ofs.close();
   cout << "\nDownload Complete! Please check your ./download_file directory.\n\n";
