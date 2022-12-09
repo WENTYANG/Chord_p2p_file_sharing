@@ -19,9 +19,11 @@ void Node::download_req_handle(const DownloadRequest& req) {
     string file_name = "./shared_file/" + localFiles[hash];
     ifstream ifs(file_name, ifstream::binary);
     if (!ifs.good()) {
-      cerr << file_name << "exists in localFiles, but can not find it in ./shared_file\n";
+      cerr << file_name << " exists in localFiles, but can not find it in ./shared_file\n";
       // connect to source and close right away, need to catch the exception
       ifs.close();
+      int fd = clientRequestConnection(source_host_name, source_port);
+      close(fd);
       return;
     }
     // send file to user
