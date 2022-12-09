@@ -56,9 +56,9 @@ void Node::download(const string & filename) {
   if (ifs.good()) {
     cout << "\nLooks like you already have this file! Please check your ./download_file directory.\n";
     cout << "Do you want to download this file again? [y/n]";
-    char option;
+    string option;
     cin >> option;
-    if (option != 'y') {
+    if (option != "y") {
       ifs.close();
       return;
     } 
@@ -93,11 +93,10 @@ void Node::download(const string & filename) {
   string client_IP;
   int client_fd = serverAcceptConnection(server_fd, client_IP);
   
-  int length;
+  int length = 0;
   
   // check if we could successfully receive the file from another node
   try {
-
     int len = recv(client_fd, (void*)(&length), sizeof(int), 0);
   } catch (const std::exception& e) {
     close(client_fd);
@@ -106,11 +105,11 @@ void Node::download(const string & filename) {
     return;
   }
   ofstream ofs(file_name, ofstream::binary);
-  while (length > 0) {
+    while (length > 0) {
       string received = socketRecvMsg(client_fd);
       ofs.write(received.data(), received.size());
       length -= received.size();
-  }
+    } 
   close(server_fd);
   close(client_fd);
   ofs.close();
